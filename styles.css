@@ -1,30 +1,63 @@
 body {
-    background-color: black;
+    background-image: url("fiat_500_on_track.png");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
 }
-h1 {
+
+.everything-else {
+    transition: 0.5s;
+    background-color: #00000076;
+    backdrop-filter: blur(9px);
+    border:1px solid #ffffff36 ;
+    border-radius: 25px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
     color: rgb(255, 255, 255);
     text-align: center;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding-bottom: 4%;
+    padding-top: 2%;
 }
-p {
-    color: rgb(255, 255, 255);
-    text-align: center;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+.everything-else:hover {
+    transition: 0.5s;
+    background-color: #0000009e;
+    border-radius: 10px;
+    backdrop-filter: blur(25px)
 }
-p {
+
+.image {
+    transition: 0.5s;
+    background-size: cover;
+    background-position: center;
+    width: 25%;
+    border-radius: 25px;
+    margin-bottom: 3%;
 }
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%; 
-    border-radius: 50px;
+
+.image:hover {
+    transition: 0.5s;
+    border-radius: 100px;
 }
-a {
-    color: rgb(122, 233, 255);
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+a.button {
+    background-color: #ffffff2d;
+    border-radius: 25px;
+    border: 1px solid #ffffff36;
+    color: #ffffff;
+    padding: 10px 25px 10px 25px;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+a.button:hover  {
+    transition: 0.2s;
+    background-color: #ffffff71;
+    border-radius: 10px;
+    border: 1px solid #ffffff36;
+    color: #ffffff;
+    padding: 10px 25px 10px 25px;
+    text-decoration: none;
 }
