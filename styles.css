@@ -1,5 +1,5 @@
 body {
-    background-image: url("fiat_500_on_track.png");
+    background-image: url("image/fiat_500_on_track.png");
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -26,6 +26,7 @@ body {
     padding-top: 1%;
     transition: 0.75s;
 }
+
 .widget:hover {
    background-color: #0000006f; 
    color: rgb(255, 255, 255);
@@ -74,6 +75,29 @@ a.button:hover  {
     text-decoration: none;
 }
 
+.credit-card {
+    background-color: #ffffff2d;
+    border-radius: 25px;
+    border: 1px solid #ffffff36;
+    border-top: 2px solid #ffffff54;
+    color: rgb(255, 255, 255);
+    padding: 10px 25px 10px 25px;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+.credit-card:hover {
+    transition: 0.2s;
+    background-color: #ffffff71;
+    border-radius: 10px;
+    color: #ddeeff;
+    padding: 10px 25px 10px 25px;
+    text-decoration: none;
+}
+
+.small-text {
+    font-size: 7px;
+}
 
 @keyframes spin {
     from {
