@@ -1,28 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="styles.css">
      <title>WolftheE's Website</title>
+     <link rel="icon" type="image/x-icon" href="image/proto.jpg">
 </head>
 <body>
      <div class="widget">
-          <h1>Hello Welcome!</h1>
-          <p>Hello, im WolftheE</p>
-          <p>Right now I'm working on this website!</p>
-          <div class="wallpaper-showcase">
-               <img class="image" src="image/proto.jpg" alt="Wallpaper">
+          <h1>Hello Welcome to my Website!</h1>
+          <p>Hello, i'm WolftheE, Yes I am a furry...</p>
+          <p>I love coding and have worked on other projects (like this website)</p>
+          <p>Right now I'm working on this website and a game called "Chase the light"</p>
+          <div>
+               <img class="pfp" src="image/proto.jpg" alt="Wallpaper">
           </div>
-          <a href="https://wolfthee.straw.page" class="button">Vist my Other website!</a>
+     </div>
+     <div class="widget">
+          <h1>My Social</h1>
+          <div class="row">
+            <a href="https://www.instagram.com/notwolfthee/" class="button">Instagram</a>
+            <a href="https://wolfthee.itch.io" class="button">itch.io</a>
+            <a href="https://wolfthee.straw.page" class="button">Straw Page</a>
+            <a href="https://wolfthee.straw.page" class="button">Youtube</a>
+          </div>
+          <div class="row">
+               <p class="boxed-text">You can contact me on discord: @wolfthee</p>
+          </div>
+     </div>
+     <div class="widget">
+          <h2>My best Artwork I made in Blender</h2>
+          <div>
+               <img class="image" src="image/fiat_500_on_track.png" alt="Wallpaper">
+          </div>
      </div>
      <div class="widget">
           <h1>Link to my project here!</h1>
-          <p>Just put your infomation here and press submit to play!</p>
-          <form action="/submit-page" method="post">
+          <p>Just put your infomation here and press submit to access.</p>
+          <div class="row">
+                <label for="credit-card">First and last name:</label>
+               <input class="credit-card" type="text" name="user_name" placeholder="First name and last name">
+          </div>
+          <div class="row">
+                <label for="credit-card">Full Home Address: </label>
+               <input class="credit-card" type="text" name="user_name" placeholder="Full Address">
+          </div>
+          <div class="row">
                 <label for="credit-card">Credit Card Number:</label>
                <input class="credit-card" type="text" name="user_name" placeholder="Number here!">
-               <a href="https://wolfthee.itch.io/pissman-legacy" class="button">Submit</a>
-          </form>
-          <p class="small-text">This is just a joke and not real lol</p>
+          </div>
+          <p> </p>
+          <a href="https://wolfthee.itch.io/pissman-legacy" class="button">Submit</a>
+     </div>
+     <div class="row">
+          <p class="small-text">Just a reminder that the last part on this website is a joke, nothing is sent to any servers you can check the source code</p>
      </div>
 </body>
 </html>
