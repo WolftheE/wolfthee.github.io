@@ -15,28 +15,37 @@ body {
     height: 100vh;
     background-attachment: fixed;
 }
-.row {
+
+.widget-row {
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     justify-content: center;
     place-items: center;
     padding-bottom: 10px;
+    width: 51%;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    padding:3px 0px 3px 0px;
 }
 
 .widget {
-    margin: 3%;
+    margin: 3% auto 0px auto;
     background-color: #00000052;
     backdrop-filter: blur(9px);
     border:1px solid #ffffff36 ;
     border-top: 2px solid #ffffff3d;
     border-radius: 25px;
     width: 50%;
-    margin-left: auto;
-    margin-right: auto;
     color: rgba(255, 255, 255, 0.707);
     text-align: center;
     padding-bottom: 2%;
     padding-top: 1%;
-    transition: 0.75s;
+    transition: 0.5s;
 }
 
 .widget:hover {
@@ -46,6 +55,10 @@ body {
    border-radius: 10px;
     backdrop-filter: blur(25px);
     border-top: 2px solid #ffffff49;
+}
+
+.widget-row .widget {
+    margin: 3% 1% 0px 1%;
 }
     
 
