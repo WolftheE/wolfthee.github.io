@@ -1,5 +1,5 @@
 * {
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto Flex", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
@@ -16,6 +16,66 @@ body {
     background-attachment: fixed;
 }
 
+/* Top bar thing */
+.topbar {
+    position: fixed;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    z-index: 1000;
+    margin: 5px auto 0px auto;
+    left: 0;
+    right: 0;  
+    top: 0;
+    padding: 5px 0px 5px 0px;
+    background-color: #00000052;
+    backdrop-filter: blur(9px);
+    border:1px solid #ffffff36 ;
+    border-top: 2px solid #ffffff3d;
+    border-radius: 25px;
+    width: 50%;
+    color: rgba(255, 255, 255, 0.707);
+    text-align: center;
+    transition: 0.5s;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.761);
+}
+
+.topbar:hover {
+   background-color: #0000006f; 
+    transition: 0.5s;    
+    border-radius: 10px;
+    backdrop-filter: blur(25px);
+    border-top: 2px solid #ffffff49;
+}
+
+.topbar a {
+    padding: 10px 25px 10px 25px;
+    border-radius: 30px;
+    background-color: transparent;
+    margin-left: 10px;
+    margin-right: 10px;
+  transition: 0.5s;
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topbar a:hover {
+    border-radius: 10px;
+  transition: 0.35s;
+    background: #ffffff;
+  color: black;
+    padding: 10px 30px 10px 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+
+/* Put the elements in a row */
 .widget-row {
     margin-left: auto;
     margin-right: auto;
@@ -26,12 +86,15 @@ body {
     width: 51%;
 }
 
+
 .row {
     display: flex;
     justify-content: center;
     place-items: center;
     padding:3px 0px 3px 0px;
 }
+
+/* Widget box to house elements */
 
 .widget {
     margin: 3% auto 0px auto;
@@ -61,6 +124,7 @@ body {
     margin: 3% 1% 0px 1%;
 }
     
+/* Image stuff*/
 
 .pfp {
     transition: 0.5s;
@@ -92,6 +156,7 @@ body {
     border-radius: 10px;
 }
 
+/* Buttons */
 
 a.button {
     background-color: #ffffff2d;
@@ -102,15 +167,15 @@ a.button {
     padding: 10px 25px 10px 25px;
     margin-left: 10px;
     margin-right: 10px;
-    transition: 0.2s;
+    transition: 0.5s;
     text-decoration: none;
 }
 
 a.button:hover  {
-    transition: 0.2s;
-    background-color: #ffffff71;
+    transition: 0.35s;
+    background-color: #ffffff;
     border-radius: 10px;
-    color: #ddeeff;
+    color: #000000;
     padding: 10px 30px 10px 30px;
     margin-left: 5px;
     margin-right: 5px;
@@ -131,7 +196,7 @@ a.button:hover  {
 
 .credit-card:hover {
     transition: 0.2s;
-    background-color: #ffffff71;
+    background-color: #ffffff;
     border-radius: 10px;
     color: #ddeeff;
     padding: 10px 25px 10px 25px;
@@ -142,8 +207,8 @@ a.button:hover  {
 
 .credit-card:focus {
     transition: 0.2s;
-    background-color: #ffffffab;
-    border: 1px solid rgb(255, 255, 255);
+    background-color: #ffffffd7;
+    border: 2px solid rgb(255, 255, 255);
     border-radius: 10px;
     color: #000000;
     padding: 10px 25px 10px 25px;
@@ -170,6 +235,26 @@ a.button:hover  {
     transition: 0.2s;
     text-decoration: none;
 }
+
+.title-text {
+  background-clip: text;
+  display: inline-block; 
+  color: transparent;
+
+  font-family: "Roboto Flex", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: none;
+  padding: none;
+  transform: translate(0px, 25px);
+  font-size: 75px;
+  scale: 3 3;
+  background-image: linear-gradient(180deg,rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 1) 100%);
+  font-variation-settings:
+    "wdth" 25,
+}
+
+/* Animations */
 
 @keyframes spin {
     from {
