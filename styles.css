@@ -1,3 +1,12 @@
+:root {
+    --bgcolor: #00000052;
+    --bgcolorhover: #0000006f;
+    --blur: blur(9px);
+    --blurhover: blur(25px);
+
+    --maxwidth: 650px;
+}
+
 * {
     font-family: "Roboto Flex", sans-serif;
     font-optical-sizing: auto;
@@ -14,6 +23,7 @@ body {
     background-position: center;
     height: 100vh;
     background-attachment: fixed;
+    padding-top: 50px;
 }
 
 /* Top bar thing */
@@ -29,12 +39,12 @@ body {
     right: 0;  
     top: 0;
     padding: 5px 0px 5px 0px;
-    background-color: #00000052;
-    backdrop-filter: blur(9px);
+    background-color: var(--bgcolor);
+    backdrop-filter: var(--blur);
     border:1px solid #ffffff36 ;
     border-top: 2px solid #ffffff3d;
     border-radius: 25px;
-    width: 50%;
+    max-width: var(--maxwidth);
     color: rgba(255, 255, 255, 0.707);
     text-align: center;
     transition: 0.5s;
@@ -42,10 +52,10 @@ body {
 }
 
 .topbar:hover {
-   background-color: #0000006f; 
+   background-color: var(--bgcolorhover); 
     transition: 0.5s;    
     border-radius: 10px;
-    backdrop-filter: blur(25px);
+    backdrop-filter: var(--blurhover);
     border-top: 2px solid #ffffff49;
 }
 
@@ -77,33 +87,42 @@ body {
 
 /* Put the elements in a row */
 .widget-row {
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    justify-content: center;
-    place-items: center;
-    padding-bottom: 10px;
-    width: 51%;
+    max-width: var(--maxwidth);
+    gap: 20px;
 }
 
 
 .row {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     place-items: center;
     padding:3px 0px 3px 0px;
 }
 
+.column {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: 10px;
+}
+
 /* Widget box to house elements */
 
 .widget {
-    margin: 3% auto 0px auto;
-    background-color: #00000052;
+    width: 100%;
+    height: auto;
+    margin: 1% auto;
+    background-color: var(--bgcolor);
     backdrop-filter: blur(9px);
     border:1px solid #ffffff36 ;
     border-top: 2px solid #ffffff3d;
     border-radius: 25px;
-    width: 50%;
+    max-width: var(--maxwidth);
     color: rgba(255, 255, 255, 0.707);
     text-align: center;
     padding-bottom: 2%;
@@ -112,7 +131,7 @@ body {
 }
 
 .widget:hover {
-   background-color: #0000006f; 
+   background-color: var(--bgcolorhover); 
    color: rgb(255, 255, 255);
    transition: 0.5s;    
    border-radius: 10px;
@@ -121,7 +140,7 @@ body {
 }
 
 .widget-row .widget {
-    margin: 3% 1% 0px 1%;
+    width: 100%;
 }
     
 /* Image stuff*/
@@ -246,12 +265,16 @@ a.button:hover  {
   font-style: normal;
   margin: none;
   padding: none;
-  transform: translate(0px, 25px);
-  font-size: 75px;
-  scale: 3 3;
+  transform: translate(0px, 10px);
+  font-size: 65px;
+  scale: 3.5 3.5;
   background-image: linear-gradient(180deg,rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 1) 100%);
   font-variation-settings:
     "wdth" 25,
+}
+
+.text-with-padding {
+    padding: 10px;
 }
 
 /* Animations */
