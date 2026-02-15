@@ -72,6 +72,7 @@ body {
 }
 
 
+
 .widget {
     padding: 10px;
     transition: 0.6s ease-out;
@@ -147,6 +148,18 @@ body {
     text-align: center;
 }
 
+/* buttons */
+
+a {
+    transition: border 0.5s ease-in-out;
+    border: 0px solid var(--main-color);
+    color: rgb(63, 178, 255);
+    padding: 5px;
+
+    &:hover {
+        border:inherit;
+    }
+}
 
 /* texts types */
 .title-text {
