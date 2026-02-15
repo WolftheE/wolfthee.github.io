@@ -1,27 +1,11 @@
-::selection {
-  background: white; 
-  color: black;         
-}
-
-::-moz-selection {    
-  background: white;
-  color: black;
-}
-
 :root {
-    --bgcolor: #00000052;
-    --bgcolorhover: #0000006f;
-    --blur: blur(9px);
-    --blurhover: blur(25px);
-    --fgcolor: white;
-    --fghover: black;
-    --bgcolor1: #ffffff2d;
-    --bghover1: white;
-    --bgfocus1: #ffffffd7;
+    --background-color: rgb(21, 21, 33);
 
-
-    --maxwidth: 650px;
+    --main-color: #1295c1;
+    --second-color: #C19512;
+    --third-color: #12C195;
 }
+
 
 * {
     font-family: "Roboto Flex", sans-serif;
@@ -29,313 +13,173 @@
     font-style: normal;
 }
 
-*:focus {
-    outline: none;
-    background-color: var(--bgfocus1);
-}
-
 body {
-    background-image: url("image/fiat_500_on_track.png");
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    background-attachment: fixed;
-    padding-top: 50px;
-}
-
-
-/* Top bar thing */
-.topbar {
-    position: fixed;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    place-items: center;
-    z-index: 1000;
-    margin: 5px auto 0px auto;
-    left: 0;
-    right: 0;  
-    top: 0;
-    padding: 5px 0px 5px 0px;
-    background-color: var(--bgcolor);
-    backdrop-filter: var(--blur);
-    border:1px solid #ffffff36 ;
-    border-top: 2px solid #ffffff3d;
-    border-radius: 25px;
-    max-width: var(--maxwidth);
-    color: rgba(255, 255, 255, 0.707);
-    text-align: center;
-    transition: 0.5s;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.761);
-}
-
-.topbar:hover {
-   background-color: var(--bgcolorhover); 
-    transition: 0.5s;    
-    border-radius: 10px;
-    backdrop-filter: var(--blurhover);
-    border-top: 2px solid #ffffff49;
-}
-
-.topbar a {
-    padding: 10px 25px 10px 25px;
-    border-radius: 30px;
-    background-color: transparent;
-    margin-left: 10px;
-    margin-right: 10px;
-  transition: 0.5s;
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.selected-topbar-button {
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.761);
-    background-color: #1295c1 !important;
-}
-
-.topbar a:hover, .selected-topbar-button:hover {
-    border-radius: 10px;
-  transition: 0.35s;
-    background: #ffffff;
-  color: black;
-    padding: 10px 30px 10px 30px;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-
-
-/* Put the elements in a row */
-.widget-row {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    max-width: var(--maxwidth);
-    gap: 20px;
-}
-
-
-.row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    place-items: center;
-    padding:3px 15px 3px 15px;
-}
-
-.column {
+    color: white;
+    margin: 0;
+    background-color: var(--background-color);
     display: flex;
     flex-direction: column;
-    width: fit-content;
-    gap: 0px;
+    align-items: center;     /* Centers vertically across the cross axis */
+
 }
 
-/* Widget box to house elements */
+/* the top part of the page */
+.top-part {
+    width: 100%;
+    color: white;
+    position: relative;
+    background: url(images/zorin-os-dark-ly.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 1000px;
+}
+
+/*
+.fade-overlay {
+    inset: 0;
+    position: absolute;
+    mask-image: linear-gradient(to top, black 0%, transparent 5%);
+    backdrop-filter: blur(10px);
+    background: linear-gradient(to top, var(--background-color) 0%, transparent 100%);
+}
+
+
+/* the body part */
+
+.main-part {
+    position: sticky;
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 250px);
+    grid-auto-rows: 250px;
+    margin-bottom: 500px;
+    grid-gap: 15px;
+
+    grid-template-areas:
+        "info info pfp"
+        "info info smallerinfo"
+        "lorem title title"
+        "lorem pissmaninfo pissmaninfo"
+        "pissmanpfp pissmaninfo pissmaninfo"
+        "qandalink qanda qanda"
+        "qandalink qanda qanda";
+}
+
 
 .widget {
-    width: 100%;
-    height: auto;
-    margin: 1% auto;
-    background-color: var(--bgcolor);
-    backdrop-filter: blur(9px);
-    border:1px solid #ffffff36 ;
-    border-top: 2px solid #ffffff3d;
-    border-radius: 25px;
-    max-width: var(--maxwidth);
-    color: rgba(255, 255, 255, 0.707);
-    text-align: center;
-    padding-bottom: 2%;
-    padding-top: 2%;
-    transition: 0.85s;
+    padding: 10px;
+    transition: 0.6s ease-out;
+    border: 5px solid var(--main-color);
+    min-height: 00px;
+    min-width: 00px;
+    margin: 0px;
 }
-
 .widget:hover {
-   background-color: var(--bgcolorhover); 
-   color: rgb(255, 255, 255);
-   transition: 0.5s;    
-   border-radius: 10px;
-    backdrop-filter: blur(25px);
-    border-top: 2px solid #ffffff49;
+    transition: 0.3s ease-out;
+    scale: 1.04 1.04;
 }
 
-.widget-row .widget {
-    width: 100%;
-}
-    
-/* Image stuff*/
+/* a bunch of widgets */
 
-.pfp {
-    transition: 0.5s;
-    background-size: cover;
-    background-position: center;
-    width: 25%;
-    border-radius: 50%;
-    margin-bottom: 3%;
-    animation: spin 3s infinite linear;
-    animation-play-state: paused;
+.info {
+    grid-area: info;
+    border: 5px solid var(--third-color);
 }
 
-.pfp:hover {
-    transition: 0.5s;
-    border-radius: 50%;
-    animation-play-state: running;
+.pfpbox {
+    padding: 0;
+    grid-area: pfp;
 }
 
-.image {
-    opacity: 0.75;
-    transition: 0.75s;
-    background-size: cover;
-    background-position: center;
-    width: 80%;
-    border-radius: 25px;
+.smaller-info {
+    font-weight: 800;
+    color: var(--second-color);
+    font-size: 50px;
+    grid-area: smallerinfo;
+    border: 5px solid var(--second-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.image:hover {
-    opacity: 1;
-    transition: 0.5s;
-    border-radius: 10px;
+.lorem {
+    border: 5px solid var(--third-color);
+    color: rgba(128, 128, 128, 0.75);
+    grid-area: lorem;
 }
 
-/* Buttons */
-
-a.button, a.buttonalt {
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.761);
-    background-color: #ffffff2d;
-    border-radius: 25px;
-    border: 1px solid #ffffff36;
-    border-top: 2px solid #ffffff54;
-    color: #ffffff;
-    padding: 10px 25px 10px 25px;
-    margin: 5px 10px;
-    transition: 0.5s;
-    text-decoration: none;
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    grid-area: title;
 }
 
-a.button:hover  {
-    transition: 0.35s;
-    background-color: #ffffff;
-    border-radius: 10px;
-    color: #000000;
-    padding: 10px 30px 10px 30px;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-a.buttonalt:hover {
-    transition: 0.35s;
-    background-color: #1295c1;
-        border: 1px solid #1295c1;
-    border-top: 2px solid #1295c1;
-    border-radius: 10px;
-    color: #ffffff;
-    padding: 10px 30px 10px 30px;
-    margin-left: 5px;
-    margin-right: 5px;  
+.pissmaninfo {
+    border: 5px solid var(--second-color);
+    grid-area: pissmaninfo;
+    text-align: center;
 }
 
-.credit-card {
-    background-color: #ffffff2d;
-    border-radius: 25px;
-    border: 1px solid #ffffff36;
-    border-top: 2px solid #ffffff54;
-    color: rgb(255, 255, 255);
-    padding: 10px 25px 10px 25px;
-    margin: 5px 10px;
-    transition: 0.2s;
-    text-decoration: none;
+.pissmanpfp {
+    border: 5px solid var(--second-color);
+    grid-area: pissmanpfp;
 }
 
-.credit-card:hover {
-    transition: 0.2s;
-    background-color: #ffffff;
-    border-radius: 10px;
-    color: #ddeeff;
-    padding: 10px 25px 10px 25px;
-    padding: 10px 30px 10px 30px;
-    margin-left: 5px;
-    margin-right: 5px;
+.qandalink {
+    border: 5px solid var(--third-color);
+    grid-area: qandalink;
+    text-align: center;
 }
 
-.credit-card:focus {
-    transition: 0.2s;
-    background-color: #ffffffd7;
-    border: 2px solid rgb(255, 255, 255);
-    border-radius: 10px;
-    color: #000000;
-    padding: 10px 25px 10px 25px;
-    padding: 10px 30px 10px 30px;
-    margin-left: 5px;
-    margin-right: 5px;
+.qanda {
+    border: 5px solid var(--main-color);
+    grid-area: qanda;
+    text-align: center;
 }
 
-/* texts */
 
-.small-text {
-    font-size: 7px;
-    color: rgba(255, 255, 255, 0.49);
-}
-
-.boxed-text {
-    background-color: #ffffff2d;
-    border-radius: 25px;
-    border: 1px solid #ffffff36;
-    border-top: 2px solid #ffffff54;
-    color: rgb(255, 255, 255);
-    padding: 10px 25px 10px 25px;
-    margin: 5px 10px;
-    margin-bottom: none;
-    transition: 0.2s;
-    text-decoration: none;
-}
-
+/* texts types */
 .title-text {
-  background-clip: text;
-  display: inline-block; 
-  color: rgba(255,255,255,0);
-  transition: color 1.0s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 500px;
+    font-size: 64px;
+}
 
-  font-family: "Roboto Flex", sans-serif;
+.title-mega {
+  animation: glowing-text 3s infinite alternate;
+
   font-weight: 400;
   font-style: normal;
-  margin: none;
-  padding: none;
   transform: translate(0px, 10px);
-  font-size: 65px;
-  scale: 3.5 3.5;
-  background-image: linear-gradient(180deg,rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 1) 100%);
+  font-size: 128px;
+  scale: 2.5 2.5;
   font-variation-settings:
-    "wdth" 25,
-}
-.title-text:hover {
-  color: rgba(255,255,255,1);
-}
+    "wdth" 25;
+  }
 
-.text-with-padding {
-    margin: 15px 0px;
-}
-
-.widget h2, .widget, h1 {
-    transition: 0.55s;
-    text-shadow: none;
+/* images like pfp and art */
+.pfp {
+    object-fit: contain;
+    width: 100%;
 }
 
-.widget:hover h2, .widget:hover h1  {
-    transition: 0.5s;
-    text-shadow: 0px 0px 10px rgba(255,255,255,0.5);
-}
-
-
-
-/* Animations */
-
-@keyframes spin {
+@keyframes glowing-text {
     from {
-        transform: rotate(0deg);
+        text-shadow: 0px 0px 10px rgba(255,255,255,0);
     }
     to {
-        transform: rotate(360deg);
-    }
+        text-shadow: 0px 0px 10px rgba(255,255,255,0.4);
+  }
 }
