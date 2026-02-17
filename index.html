@@ -8,21 +8,23 @@
      <title>WolftheE's Website</title>
      <link rel="icon" type="image/x-icon" href="images/proto.jpg">
      <meta name="theme-color" content="#1295c1">
+
 </head>
 <body>
 
     <div class="top-part">
-        <h1 class="title-mega">Hello I'm WolftheE</h1>
-        <p>You can call me Dan, but I prefer you call me by my username</p>
-        <h3>Welcome to my website!</h3>
-
-        <p>This website is a work in progress</p>
-        <p>Please note there is missing infomation!</p>
+        <div class="container">
+            <h1 class="title-mega hi">Hello I'm WolftheE</h1>
+            <hr class="line">
+            <p class="hi">You can call me Dan, but I prefer you call me by my username</p>
+            <h3 class="hi">Welcome to my website!</h3>
+            <img class="dropdown" src="images/dropdown-arrow.svg" alt="Scroll down!">
+        </div>
         <div class="fade-overlay"></div>
     </div>
 
     <div class="main-part">
-        <div class="widget info">
+        <div class="widget info" id="widget">
             <h2>About me!</h2>
             <p>I'm a furry... (a protogen to be exact ^w^)</p>
             <p>I love everything about tech!</p>
@@ -30,13 +32,31 @@
             <p>I love Linux! I used Arch, Fedora, ZorinOS, Debian and CachyOS but right now Mint is my favourite! (Mint my goat)</p>
             <p>I also like to game (who doesn't) I use steam and somtimes Itch.io</p>
             <p>All the VALVe games are bangers</p>
+            <p>My favourite color is blue :3</p>
         </div>
         <div class="widget pfpbox">
             <img class="pfp" alt="Protogen pfp" src="images/proto.jpg">
         </div>
-        <div class="widget smaller-info">^w^</div>
-        <div class="widget lorem">Lorem ipsum dolor sit amet consectetur adipiscing elit. Iaculis massa nisl malesuada lacinia integer nunc posuere. Since no one reads this I will say that I love furries. Ligula congue sollicitudin erat viverra ac tincidunt nam. Dui felis venenatis ultrices proin libero feugiat tristique. Type one two three four five six seven nine times eight into your calc. Taciti sociosqu ad litora torquent per conubia nostra. Mauris pharetra vestibulum fusce dictum risus blandit quis. Justo lectus commodo augue arcu dignissim velit aliquam. Senectus netus suscipit auctor curabitur facilisi cubilia curae. Sed diam urna tempor pulvinar vivamus fringilla lacus. Et magnis dis parturient montes nascetur ridiculus mus. Ante condimentum neque at luctus nibh finibus facilisis. Well it looks like this is near the end btw, why on earth are you reading this. lol bye.</div>
-        <div class="widget title">
+        <div class="widget smaller-info" id="widget">^w^</div>
+        <div class="widget social">
+            <h2>Socials Links</h2>
+            <a href="https://youtube.com/@wolfthee">Youtube</a>
+            <a href="https://wolfthee.itch.io">Itch.io page</a>
+            <a href="https://github.com/WolftheE">Github</a>
+            <p>Discord username: @wolfthee</p>
+        </div>
+
+        <div class="widget gamesinfo">
+            <h2>Games I love</h2>
+            <p>Half-life 2 is the greatest game of all time, fight me</p>
+            <p>Portal has to be the second best game of all time</p>
+            <p>Geometry Dash is a really fun game (most of the time)</p>
+            <p>Btd6 (that moneky and bloons game) is really fun to play in class</p>
+            <p>I also enjoy playing Terraria, Subnatucia, </p>
+        </div>
+
+        <div class="widget lorem" id="widget">Lorem ipsum dolor sit amet consectetur adipiscing elit. Iaculis massa nisl malesuada lacinia integer nunc posuere. Since no one reads this I will say that I love furries. Ligula congue sollicitudin erat viverra ac tincidunt nam. Dui felis venenatis ultrices proin libero feugiat tristique. Type one two three four five six seven nine times eight into your calc. Taciti sociosqu ad litora torquent per conubia nostra. Mauris pharetra vestibulum fusce dictum risus blandit quis. Justo lectus commodo augue arcu dignissim velit aliquam. Senectus netus suscipit auctor curabitur facilisi cubilia curae. Sed diam urna tempor pulvinar vivamus fringilla lacus. Et magnis dis parturient montes nascetur ridiculus mus. Ante condimentum neque at luctus nibh finibus facilisis. Well it looks like this is near the end btw, why on earth are you reading this. lol bye.</div>
+        <div class="widget title" id="widget">
             <h1>Some things that I've made!</h1>
             <h3>List of stuff I've made, scroll down to see more details</h3>
         </div>
@@ -48,10 +68,29 @@
             <p>Yep thats how he was born....</p>
             <p>If you want to try this game (idk why) here is the link</p>
             <a href="https://wolfthee.itch.io/pissman-legacy">Link here</a>
+
+            <!-- <img alt="pissman screenshot" src="images/pissmanscreenshot.png"> -->
         </div>
+
+        <div class="widget lorem1">
+            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Iaculis massa nisl malesuada lacinia integer nunc posuere. Since no one reads this I will say that I love furries. Ligula congue sollicitudin erat viverra ac tincidunt nam. Dui felis venenatis ultrices proin libero feugiat tristique. I love furries lol. Well idk anymore.</p>
+        </div>
+
+
         <div class="widget pissmanpfp">
+            <img class="pfp pfpsmall" alt="null guy" src="images/null.png">
             <img class="pfp" alt="pissman guy" src="images/pissman.png">
         </div>
+
+        <div class="widget vivaldicss">
+            <h2>Vivaldi CSS theme!</h2>
+            <p>I love the Vivaldi browser but some things about it I don't like which is why I created a css theme to make it to my liking.</p>
+            <p>You can download the css theme here!</p>
+            <a href="https://github.com/WolftheE/Wolf-Vivaldi">Link to github here!</a>
+        </div>
+
+
+
         <div class="widget qandalink">
             <h2>Ask me anything here!</h2>
             <p>And you will see your question with a answer on the right</p>
@@ -61,7 +100,7 @@
         <div class="widget qanda">
             <h2>Q&A about me!</h2>
             <p>Q: Why are you a furry?</p>
-            <p>A: Well mostly becuase I love wolves and I love tech, then I learnt about protogens :3</p>
+            <p>A: Well mostly becuase I love wolves and I love tech, then I saw a protogen and became a furry :3</p>
             <p>----------------------------------------------------------------------</p>
             <p>Q: Why do you like Linux Mint the most?</p>
             <p>A: Becuase it just works and I don't have to use the terminal every time and it doesn't crash every second</p>
@@ -69,7 +108,9 @@
     </div>
 
 
-    <footer class="widget">More to come soon</footer>
+    <footer class="widget">
+        <lable>More to come soon</lable>
+    </footer>
 
 </body>
 </html>

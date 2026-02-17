@@ -4,6 +4,10 @@
     --main-color: #1295c1;
     --second-color: #C19512;
     --third-color: #12C195;
+    --fourth-color: #9512C1;
+
+    --greyed-out-color: rgba(128, 128, 128, 0.65);
+    --more-greyed-color: rgba(128, 128, 128, 0.15);
 }
 
 
@@ -17,6 +21,10 @@ body {
     color: white;
     margin: 0;
     background-color: var(--background-color);
+    background-image: url("images/background.svg");
+    background-attachment: fixed;
+    
+
     display: flex;
     flex-direction: column;
     align-items: center;     /* Centers vertically across the cross axis */
@@ -38,6 +46,29 @@ body {
     align-items: center;
     justify-content: flex-start;
     height: 1000px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    opacity: 0;
+    translate: 0 -300px;
+    animation: review 1.5s cubic-bezier(0.175, 0.1, 0.32, 1.275);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+}
+
+.line {
+  animation: line-expand 3s cubic-bezier(0.175, 0.1, 0.32, 2.2) !important;
+  animation-iteration-count: 1 !important;
+  animation-fill-mode: forwards !important;
+  width: 0px;
+  border: none; 
+  height: 3px; 
+  background-color: white;
 }
 
 /*
@@ -64,9 +95,13 @@ body {
     grid-template-areas:
         "info info pfp"
         "info info smallerinfo"
+        "social gamesinfo gamesinfo"
+        " - - -"
         "lorem title title"
         "lorem pissmaninfo pissmaninfo"
         "pissmanpfp pissmaninfo pissmaninfo"
+        "vivaldicss vivaldicss lorem1"
+        "a a a"
         "qandalink qanda qanda"
         "qandalink qanda qanda";
 }
@@ -74,26 +109,50 @@ body {
 
 
 .widget {
+    background-color: var(--background-color);
+    box-shadow:5px 5px 0 rgba(0, 0, 0, 0.5);
+
     padding: 10px;
-    transition: 0.6s ease-out;
+    transition: all 0.6s ease-out;
     border: 5px solid var(--main-color);
     min-height: 00px;
     min-width: 00px;
     margin: 0px;
+
+    text-align: center;
 }
 .widget:hover {
     transition: 0.3s ease-out;
     scale: 1.04 1.04;
 }
 
+/* animate on shown */
+.not-in-view-right {
+    opacity: 0;
+    transform: translateX(50);
+}
+
+.not-in-view-left {
+    opacity: 0;
+    transform: translateX(-50);
+}
+
+
+.is-in-view {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
 /* a bunch of widgets */
 
 .info {
+    text-align: left;
     grid-area: info;
     border: 5px solid var(--third-color);
 }
 
 .pfpbox {
+    background-color: var(--main-color);
     padding: 0;
     grid-area: pfp;
 }
@@ -110,13 +169,32 @@ body {
     text-align: center;
 }
 
+.social {
+    display:flex;
+    flex-direction: column;
+    grid-area: social;
+}
+
+.gamesinfo {
+    border: 5px solid var(--fourth-color);
+    line-height: 15px;
+    grid-area: gamesinfo;
+}
+
 .lorem {
-    border: 5px solid var(--third-color);
+    border: 5px solid var(--greyed-out-color);
     color: rgba(128, 128, 128, 0.75);
     grid-area: lorem;
 }
 
+.lorem1 {
+    border: 5px solid var(--greyed-out-color);
+    color: rgba(128, 128, 128, 0.75);
+    grid-area: lorem1;
+}
+
 .title {
+    border: 5px solid var(--third-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -126,15 +204,42 @@ body {
 }
 
 .pissmaninfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border: 5px solid var(--second-color);
     grid-area: pissmaninfo;
     text-align: center;
 }
 
 .pissmanpfp {
+    display:flex;
+    align-items: end;
+    flex-shrink: 10px;
     border: 5px solid var(--second-color);
     grid-area: pissmanpfp;
 }
+
+.pissmanpfp .pfp {
+    width: 100px;
+    scale: 1.7 1.7;
+    translate: 10px -30px;
+}
+
+.pissmanpfp .pfp.pfpsmall {
+    width: 85px;
+    scale: 1 1;
+    translate: 10px 0px;
+}
+
+
+.vivaldicss {
+    grid-area: vivaldicss;
+    border: 5px solid var(--fourth-color);
+}
+
+
+
 
 .qandalink {
     border: 5px solid var(--third-color);
@@ -151,13 +256,17 @@ body {
 /* buttons */
 
 a {
-    transition: border 0.5s ease-in-out;
-    border: 0px solid var(--main-color);
+    background-color: var(--more-greyed-color);
+    transition: all 0.5s ease-out;
+    border: 2px solid var(--greyed-out-color);
     color: rgb(63, 178, 255);
     padding: 5px;
+    margin: 3px;
 
     &:hover {
-        border:inherit;
+        border: inherit;
+        padding: 3px;
+        box-shadow:5px 5px 0 rgba(0, 0, 0, 0.5);
     }
 }
 
@@ -180,13 +289,24 @@ a {
   scale: 2.5 2.5;
   font-variation-settings:
     "wdth" 25;
-  }
+}
+
+
+
 
 /* images like pfp and art */
+.dropdown {
+    width: 50px;
+    filter: invert(100%);
+    animation: dropdown 3s infinite alternate ease-in-out;
+}
+
 .pfp {
     object-fit: contain;
     width: 100%;
 }
+
+/* Animations */
 
 @keyframes glowing-text {
     from {
@@ -195,4 +315,36 @@ a {
     to {
         text-shadow: 0px 0px 10px rgba(255,255,255,0.4);
   }
+}
+
+@keyframes dropdown {
+    from {
+        translate: 0 -20px;
+    }
+    to {
+        translate: 0 -10px;
+    }
+    
+}
+
+
+@keyframes review {
+    from {
+        translate: 0 -300px;
+        opacity: 0;
+    }
+    to {
+        translate: 0 0px;
+        opacity: 1;
+    }
+    
+}
+
+@keyframes line-expand {
+    from {
+        width: 0;
+    }
+    to {
+        width: 500px;
+    }
 }
