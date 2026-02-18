@@ -89,7 +89,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 250px);
     grid-auto-rows: 250px;
-    margin-bottom: 500px;
+    margin-bottom: 100px;
     grid-gap: 15px;
 
     grid-template-areas:
@@ -106,7 +106,13 @@ body {
         "qandalink qanda qanda";
 }
 
+footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+}
 
+/* wigets and stuff */
 
 .widget {
     background-color: var(--background-color);
@@ -124,6 +130,12 @@ body {
 .widget:hover {
     transition: 0.3s ease-out;
     scale: 1.04 1.04;
+}
+
+.row {
+    text-align: right;
+    display: flex;
+    justify-content: baseline;
 }
 
 /* animate on shown */
@@ -255,7 +267,7 @@ body {
 
 /* buttons */
 
-a {
+a, button {
     background-color: var(--more-greyed-color);
     transition: all 0.5s ease-out;
     border: 2px solid var(--greyed-out-color);
@@ -304,6 +316,12 @@ a {
 .pfp {
     object-fit: contain;
     width: 100%;
+}
+
+
+.bug-background {
+    background-image: url("images/bug_report_32dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.svg") !important;
+    background-color: red !important;
 }
 
 /* Animations */

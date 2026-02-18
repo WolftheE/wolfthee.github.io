@@ -10,9 +10,9 @@
      <meta name="theme-color" content="#1295c1">
 
 </head>
-<body>
+<body id="background">
 
-    <div class="top-part">
+    <div class="top-part" id="background">
         <div class="container">
             <h1 class="title-mega hi">Hello I'm WolftheE</h1>
             <hr class="line">
@@ -48,11 +48,16 @@
 
         <div class="widget gamesinfo">
             <h2>Games I love</h2>
-            <p>Half-life 2 is the greatest game of all time, fight me</p>
-            <p>Portal has to be the second best game of all time</p>
-            <p>Geometry Dash is a really fun game (most of the time)</p>
-            <p>Btd6 (that moneky and bloons game) is really fun to play in class</p>
-            <p>I also enjoy playing Terraria, Subnatucia, </p>
+            <div class="row">
+                <img src="images/crowbar.png" width="120px" height="120px"> 
+                <div>
+                <p>Half-life 2 is the greatest game of all time, fight me</p>
+                <p>Portal has to be the second best game of all time</p>
+                <p>Geometry Dash is a really fun game (most of the time)</p>
+                <p>Btd6 is really fun to play in class</p>
+                <p>I also enjoy playing Terraria, Subnatucia, Fallout and other peak games!</p>
+                </div>
+            </div>
         </div>
 
         <div class="widget lorem" id="widget">Lorem ipsum dolor sit amet consectetur adipiscing elit. Iaculis massa nisl malesuada lacinia integer nunc posuere. Since no one reads this I will say that I love furries. Ligula congue sollicitudin erat viverra ac tincidunt nam. Dui felis venenatis ultrices proin libero feugiat tristique. Type one two three four five six seven nine times eight into your calc. Taciti sociosqu ad litora torquent per conubia nostra. Mauris pharetra vestibulum fusce dictum risus blandit quis. Justo lectus commodo augue arcu dignissim velit aliquam. Senectus netus suscipit auctor curabitur facilisi cubilia curae. Sed diam urna tempor pulvinar vivamus fringilla lacus. Et magnis dis parturient montes nascetur ridiculus mus. Ante condimentum neque at luctus nibh finibus facilisis. Well it looks like this is near the end btw, why on earth are you reading this. lol bye.</div>
@@ -109,7 +114,20 @@
 
 
     <footer class="widget">
-        <lable>More to come soon</lable>
+        <script>
+            function showAlert() {
+                const element = document.getElementById("background");
+                alert("Why did you click me?");
+                alert("Do you not know who I am?");
+                alert("Well thanks for clicking me");
+                alert("I'm a bug and I WILL infect everthing!");
+                alert("There is nothing you can do");
+                element.classList.add("bug-background");
+            }
+        </script>
+        <button onclick="showAlert()">Yoo I'm a bug, Don't touch me</button>
+
+        <img src="images/bug_report_32dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.svg" width="30px">
     </footer>
 
 </body>
