@@ -10,125 +10,94 @@
      <meta name="theme-color" content="#1295c1">
 
 </head>
-<body id="background">
+<body>
 
-    <div class="top-part" id="background">
-        <div class="container">
-            <h1 class="title-mega hi">Hello I'm WolftheE</h1>
-            <hr class="line">
-            <p class="hi">You can call me Dan, but I prefer you call me by my username</p>
-            <h3 class="hi">Welcome to my website!</h3>
-            <img class="dropdown" src="images/dropdown-arrow.svg" alt="Scroll down!">
+    <dialog id="modal" class="modal">
+        <div>
+            <p id="modaltext">Some text here that will change</p>
+            <br>
+            <button class="close_button" onclick="closemodal()">Ok</button>
         </div>
-        <div class="fade-overlay"></div>
+    </dialog>
+
+
+    
+
+    <script src="javascript.js"></script>
+
+    <div class="container">
+        <div class="blob"></div>
     </div>
+    
+    <section>
 
-    <div class="main-part">
-        <div class="widget info" id="widget">
-            <h2>About me!</h2>
-            <p>I'm a furry... (a protogen to be exact ^w^)</p>
-            <p>I love everything about tech!</p>
-            <p>I code in python, gdscript and learning html/css!</p>
-            <p>I love Linux! I used Arch, Fedora, ZorinOS, Debian and CachyOS but right now Mint is my favourite! (Mint my goat)</p>
-            <p>I also like to game (who doesn't) I use steam and somtimes Itch.io</p>
-            <p>All the VALVe games are bangers</p>
-            <p>My favourite color is blue :3</p>
-        </div>
-        <div class="widget pfpbox">
-            <img class="pfp" alt="Protogen pfp" src="images/proto.jpg">
-        </div>
-        <div class="widget smaller-info" id="widget">^w^</div>
-        <div class="widget social">
-            <h2>Socials Links</h2>
-            <a href="https://youtube.com/@wolfthee">Youtube</a>
-            <a href="https://wolfthee.itch.io">Itch.io page</a>
-            <a href="https://github.com/WolftheE">Github</a>
-            <p>Discord username: @wolfthee</p>
-        </div>
+        <div class="main-content">
+            <div class="widget top-widget">
 
-        <div class="widget gamesinfo">
-            <h2>Games I love</h2>
-            <div class="row">
-                <img src="images/crowbar.png" width="120px" height="120px"> 
-                <div>
-                <p>Half-life 2 is the greatest game of all time, fight me</p>
-                <p>Portal has to be the second best game of all time</p>
-                <p>Geometry Dash is a really fun game (most of the time)</p>
-                <p>Btd6 is really fun to play in class</p>
-                <p>I also enjoy playing Terraria, Subnatucia, Fallout and other peak games!</p>
+                <div class="inside-content">
+                    <div class="Text-content">
+                        <h1>Hi I'm WolftheE</h1>
+                        <h3>Hello there! Welcome to my website QwQ</h3>
+                        <hr>
+                        <p>As you can see I'm a furry (protogen ^w^)</p>
+                        <p>I love computers and everything about how they work!</p>
+                        <p>I also love to code!</p>
+                        <p>I code in HTML, python and gdscript but I am learning flutter/dart</p>
+                        <p>I love Half-life and Portal</p>
+                        <p>I love my Blåhaj</p>
+                        <p></p>
+                    </div>
+
+                    <div class="row">
+                        <a class="start" href="https://github.com/WolftheE">My Github Page</a>
+                        <a href="https://youtube.com/@wolfthee">My Youtube</a>
+                        <a href="https://wolfthee.itch.io">My Itch.io</a>
+                    </div>
                 </div>
+                    <img class="pfp" alt="test" src="images/proto.jpg" width="225vw" height="225vw" onclick="showmodal('boop >w<')">
+            
+
             </div>
         </div>
 
-        <div class="widget lorem" id="widget">Lorem ipsum dolor sit amet consectetur adipiscing elit. Iaculis massa nisl malesuada lacinia integer nunc posuere. Since no one reads this I will say that I love furries. Ligula congue sollicitudin erat viverra ac tincidunt nam. Dui felis venenatis ultrices proin libero feugiat tristique. Type one two three four five six seven nine times eight into your calc. Taciti sociosqu ad litora torquent per conubia nostra. Mauris pharetra vestibulum fusce dictum risus blandit quis. Justo lectus commodo augue arcu dignissim velit aliquam. Senectus netus suscipit auctor curabitur facilisi cubilia curae. Sed diam urna tempor pulvinar vivamus fringilla lacus. Et magnis dis parturient montes nascetur ridiculus mus. Ante condimentum neque at luctus nibh finibus facilisis. Well it looks like this is near the end btw, why on earth are you reading this. lol bye.</div>
-        <div class="widget title" id="widget">
-            <h1>Some things that I've made!</h1>
-            <h3>List of stuff I've made, scroll down to see more details</h3>
-        </div>
-        <div class="widget pissmaninfo">
-            <h2>Pissman!</h2>
-            <p>Back when I was in year 9, I had to make a game for an assessment task.
-            I was paired up with my freind and he came up with a dumb name for one of the characters.
-            He recolored the purple guy sprite to yellow and called him Pissman...</p>
-            <p>Yep thats how he was born....</p>
-            <p>If you want to try this game (idk why) here is the link</p>
-            <a href="https://wolfthee.itch.io/pissman-legacy">Link here</a>
+    </section>
 
-            <!-- <img alt="pissman screenshot" src="images/pissmanscreenshot.png"> -->
-        </div>
+    <section>
+            <div class="widget">
+                <div class="simple">
+                    <h2>Some of the Stuff I've made! >w<</h2>
+                    <hr>
+                    <div class="row same-length">
+                        <div class="column" align="left">
+                            <h3>Pissman!</h3>
+                            <p>A stupid game that I had to make back when I was in year 9 (2024)</p>
+                            <p>Its a 2d platformer (or 3d) with some kind of story and lore</p>
+                            <br>
+                            <a href="https://wolfthee.itch.io/pissman-legacy">Play it here! (please don't)</a>
 
-        <div class="widget lorem1">
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Iaculis massa nisl malesuada lacinia integer nunc posuere. Since no one reads this I will say that I love furries. Ligula congue sollicitudin erat viverra ac tincidunt nam. Dui felis venenatis ultrices proin libero feugiat tristique. I love furries lol. Well idk anymore.</p>
-        </div>
+                            
+                        </div>
 
-
-        <div class="widget pissmanpfp">
-            <img class="pfp pfpsmall" alt="null guy" src="images/null.png">
-            <img class="pfp" alt="pissman guy" src="images/pissman.png">
-        </div>
-
-        <div class="widget vivaldicss">
-            <h2>Vivaldi CSS theme!</h2>
-            <p>I love the Vivaldi browser but some things about it I don't like which is why I created a css theme to make it to my liking.</p>
-            <p>You can download the css theme here!</p>
-            <a href="https://github.com/WolftheE/Wolf-Vivaldi">Link to github here!</a>
-        </div>
+                        <div class="column" align="right">
+                            <h3>Wolf-Vivaldi</h3>
+                            <p>I use the Vivaldi Web browser!</p>
+                            <p>While I love it, there are many parts of the UI that I hate so I created a css theme to make it to my liking!</p>
+                            <br>
+                            <a href="https://github.com/WolftheE/Wolf-Vivaldi">Get it here!</a>
+                        </div>
+                    </div>
 
 
+                </div>
+            </div>
+    </section>
 
-        <div class="widget qandalink">
-            <h2>Ask me anything here!</h2>
-            <p>And you will see your question with a answer on the right</p>
-            <p>Please note though that I will not answer your question that isn't really appropriate. I know that you have commmon sense so please use it</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUyUii04RQgRbKoXYREUyKeXUe5ifQJnDEPzsmqCYXp5h2KA/viewform?usp=publish-editor">Link to form here!</a>
-        </div>
-        <div class="widget qanda">
-            <h2>Q&A about me!</h2>
-            <p>Q: Why are you a furry?</p>
-            <p>A: Well mostly becuase I love wolves and I love tech, then I saw a protogen and became a furry :3</p>
-            <p>----------------------------------------------------------------------</p>
-            <p>Q: Why do you like Linux Mint the most?</p>
-            <p>A: Becuase it just works and I don't have to use the terminal every time and it doesn't crash every second</p>
-        </div>
-    </div>
-
-
-    <footer class="widget">
-        <script>
-            function showAlert() {
-                const element = document.getElementById("background");
-                alert("Why did you click me?");
-                alert("Do you not know who I am?");
-                alert("Well thanks for clicking me");
-                alert("I'm a bug and I WILL infect everthing!");
-                alert("There is nothing you can do");
-                element.classList.add("bug-background");
-            }
-        </script>
-        <button onclick="showAlert()">Yoo I'm a bug, Don't touch me</button>
-
-        <img src="images/bug_report_32dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.svg" width="30px">
+    <footer>
+        <button onclick="showmodal('Hia ^w^')"> ^w^ more comming soon....</button>
     </footer>
+
+
+
 
 </body>
 </html>

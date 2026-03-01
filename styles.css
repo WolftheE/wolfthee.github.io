@@ -1,368 +1,357 @@
 :root {
     --background-color: rgb(21, 21, 33);
 
+    --radius: 8px;
+
+    --widget-color: rgba(10, 10, 20, 0.5);
+    --widget-border: rgb(255, 255, 255, 0.1);
+
+    --button-background: rgba(255, 255, 255, 0.15);
+
+
     --main-color: #1295c1;
     --second-color: #C19512;
     --third-color: #12C195;
-    --fourth-color: #9512C1;
+    --fourth-color: #123EC1;
 
     --greyed-out-color: rgba(128, 128, 128, 0.65);
     --more-greyed-color: rgba(128, 128, 128, 0.15);
 }
 
-
 * {
+    margin: 0;
     font-family: "Roboto Flex", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
 }
 
 body {
-    color: white;
-    margin: 0;
+    height: 100vh;
     background-color: var(--background-color);
-    background-image: url("images/background.svg");
-    background-attachment: fixed;
-    
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;     /* Centers vertically across the cross axis */
-
 }
 
-/* the top part of the page */
-.top-part {
-    width: 100%;
-    color: white;
-    position: relative;
-    background: url(images/zorin-os-dark-ly.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-
+section, footer {
+    padding-bottom: 50px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    height: 1000px;
-}
-
-.container{
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    opacity: 0;
-    translate: 0 -300px;
-    animation: review 1.5s cubic-bezier(0.175, 0.1, 0.32, 1.275);
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-
 }
 
-.line {
-  animation: line-expand 3s cubic-bezier(0.175, 0.1, 0.32, 2.2) !important;
-  animation-iteration-count: 1 !important;
-  animation-fill-mode: forwards !important;
-  width: 0px;
-  border: none; 
-  height: 3px; 
-  background-color: white;
+
+
+
+/* ============== DONT TOUCH THIS PART ============== */
+.container {
+    position: fixed;
+    animation: moveshape 20s cubic-bezier(0.4, 0.1, 0.4, 0.95) infinite alternate;
+    z-index: -1;
 }
 
-/*
-.fade-overlay {
-    inset: 0;
-    position: absolute;
-    mask-image: linear-gradient(to top, black 0%, transparent 5%);
+.blob {
+    width: 25vw;
+    aspect-ratio: 1/1;
+    background: linear-gradient(
+        var(--main-color) 50%,
+        var(--fourth-color)100%
+    );
+    border-radius: 30% 70% 70% 40% / 30% 40% 70% 70%;
+    filter: blur(75px);
+    animation: changeshape 6s cubic-bezier(0.455, 0.3, 0.515, 0.955) infinite, cubic-bezier(0.455, 0.3, 0.515, 0.955) 12s cu infinite;
+}
+/* ============== OK now you can edit the codes ============== */
+
+
+
+
+/* ========== MODAL POPUP HERE ===============*/
+
+.modal::backdrop {
+    background-color: rgba(0,0,0,0.5);
     backdrop-filter: blur(10px);
-    background: linear-gradient(to top, var(--background-color) 0%, transparent 100%);
 }
 
 
-/* the body part */
-
-.main-part {
-    position: sticky;
+.modal {
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 9px 9px 30px rgba(0, 0, 0, 0.7);
+    z-index: 10;
+    background-color: var(--widget-color);
+    border: 1px solid var(--widget-border);
     color: white;
-    display: grid;
-    grid-template-columns: repeat(3, 250px);
-    grid-auto-rows: 250px;
-    margin-bottom: 100px;
-    grid-gap: 15px;
-
-    grid-template-areas:
-        "info info pfp"
-        "info info smallerinfo"
-        "social gamesinfo gamesinfo"
-        " - - -"
-        "lorem title title"
-        "lorem pissmaninfo pissmaninfo"
-        "pissmanpfp pissmaninfo pissmaninfo"
-        "vivaldicss vivaldicss lorem1"
-        "a a a"
-        "qandalink qanda qanda"
-        "qandalink qanda qanda";
+    margin: auto;
+    width: 10%;
+  
 }
 
-footer {
+.modal div {
     display: flex;
-    flex-direction: row;
-    align-items: center; 
+    flex-direction: column;
 }
 
-/* wigets and stuff */
 
-.widget {
-    background-color: var(--background-color);
-    box-shadow:5px 5px 0 rgba(0, 0, 0, 0.5);
 
-    padding: 10px;
-    transition: all 0.6s ease-out;
-    border: 5px solid var(--main-color);
-    min-height: 00px;
-    min-width: 00px;
-    margin: 0px;
 
-    text-align: center;
-}
-.widget:hover {
-    transition: 0.3s ease-out;
-    scale: 1.04 1.04;
-}
 
-.row {
-    text-align: right;
+
+
+
+
+
+
+
+/* ======== diffrent content margins =========*/
+.main-content {
     display: flex;
-    justify-content: baseline;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-/* animate on shown */
-.not-in-view-right {
-    opacity: 0;
-    transform: translateX(50);
-}
-
-.not-in-view-left {
-    opacity: 0;
-    transform: translateX(-50);
-}
-
-
-.is-in-view {
-  opacity: 1 !important;
-  transform: translateX(0) !important;
-}
-
-/* a bunch of widgets */
-
-.info {
+.inside-content {
     text-align: left;
-    grid-area: info;
-    border: 5px solid var(--third-color);
-}
-
-.pfpbox {
-    background-color: var(--main-color);
-    padding: 0;
-    grid-area: pfp;
-}
-
-.smaller-info {
-    font-weight: 800;
-    color: var(--second-color);
-    font-size: 50px;
-    grid-area: smallerinfo;
-    border: 5px solid var(--second-color);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.social {
-    display:flex;
+    justify-content: space-between;
     flex-direction: column;
-    grid-area: social;
 }
 
-.gamesinfo {
-    border: 5px solid var(--fourth-color);
-    line-height: 15px;
-    grid-area: gamesinfo;
-}
 
-.lorem {
-    border: 5px solid var(--greyed-out-color);
-    color: rgba(128, 128, 128, 0.75);
-    grid-area: lorem;
-}
 
-.lorem1 {
-    border: 5px solid var(--greyed-out-color);
-    color: rgba(128, 128, 128, 0.75);
-    grid-area: lorem1;
-}
 
-.title {
-    border: 5px solid var(--third-color);
+/* ======== Widget and stuff =============*/
+.widget {
+    padding: 20px;
+    text-align: center;
+    width: 40vw;
+    min-width: 450px;
+    height: 40vh;
+    max-height: 500px;
+    min-height: 275px;
+    background-color: var(--widget-color);
+    border: 1px solid var(--widget-border);
+    border-radius: 20px;
+    box-shadow: 9px 9px 30px rgba(0, 0, 0, 0.7);
+
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    grid-area: title;
+
+    line-height: 1.4;
+    color: white;
+    font-family: "Roboto Flex", sans-serif;
+
 }
-
-.pissmaninfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 5px solid var(--second-color);
-    grid-area: pissmaninfo;
-    text-align: center;
-}
-
-.pissmanpfp {
-    display:flex;
-    align-items: end;
-    flex-shrink: 10px;
-    border: 5px solid var(--second-color);
-    grid-area: pissmanpfp;
-}
-
-.pissmanpfp .pfp {
-    width: 100px;
-    scale: 1.7 1.7;
-    translate: 10px -30px;
-}
-
-.pissmanpfp .pfp.pfpsmall {
-    width: 85px;
-    scale: 1 1;
-    translate: 10px 0px;
-}
-
-
-.vivaldicss {
-    grid-area: vivaldicss;
-    border: 5px solid var(--fourth-color);
-}
-
-
-
-
-.qandalink {
-    border: 5px solid var(--third-color);
-    grid-area: qandalink;
-    text-align: center;
-}
-
-.qanda {
-    border: 5px solid var(--main-color);
-    grid-area: qanda;
-    text-align: center;
-}
-
-/* buttons */
-
-a, button {
-    background-color: var(--more-greyed-color);
-    transition: all 0.5s ease-out;
-    border: 2px solid var(--greyed-out-color);
-    color: rgb(63, 178, 255);
-    padding: 5px;
-    margin: 3px;
-
-    &:hover {
-        border: inherit;
-        padding: 3px;
-        box-shadow:5px 5px 0 rgba(0, 0, 0, 0.5);
-    }
-}
-
-/* texts types */
-.title-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 500px;
-    font-size: 64px;
-}
-
-.title-mega {
-  animation: glowing-text 3s infinite alternate;
-
-  font-weight: 400;
-  font-style: normal;
-  transform: translate(0px, 10px);
-  font-size: 128px;
-  scale: 2.5 2.5;
-  font-variation-settings:
-    "wdth" 25;
-}
-
-
-
-
-/* images like pfp and art */
-.dropdown {
-    width: 50px;
-    filter: invert(100%);
-    animation: dropdown 3s infinite alternate ease-in-out;
+.top-widget {
+    animation: dropfade 3s cubic-bezier(0.175, 0.885, 0.32, 1);
+    display: grid;
+    grid-template-columns: 75% 25%;
+    margin-right: 50px;
 }
 
 .pfp {
-    object-fit: contain;
+    transition: scale 0.5s ease-out, box-shadow 0.5s ease-out;
+    display: flex;
+    align-self: center;
+    transform: translateX(3.25vw);
+    border-radius: 50%;
+    box-shadow: 9px 9px 30px rgba(0, 0, 0, 0.7);
+    animation: pfpdrop 3s cubic-bezier(0.175, 0.885, 0.32, 1);
+
+    &:hover {
+        scale: 1.05;
+        box-shadow: 0px 0px 50px var(--main-color);
+    }
+}
+
+.row {
+    display: flex;
+    justify-self: end;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.same-length {
+    gap: 2vw;
+}
+
+.row div {
+    flex: 1;
+}
+
+
+
+
+/* buttons, links and texts*/
+
+h1, h3 {
+    text-shadow: 2px 2px 20px rgba(255, 255, 255, 0.5);
+}
+
+hr {
+    
+    animation: expand 3s cubic-bezier(0.175, 0.50, 0.32, 1);
+
+    border: none;
+    height: 1px;
+    background-color: white;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+
     width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
+a, button {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: 0.5s ease-out;
+    color: white;
+    margin: 0 10px;
+    padding: 7px;
+    background-color: var(--button-background);
+    border: 1px solid var(--button-background);
+    border-radius: var(--radius);
 
-.bug-background {
-    background-image: url("images/bug_report_32dp_E3E3E3_FILL0_wght400_GRAD0_opsz40.svg") !important;
-    background-color: red !important;
-}
-
-/* Animations */
-
-@keyframes glowing-text {
-    from {
-        text-shadow: 0px 0px 10px rgba(255,255,255,0);
+    &:hover {
+        box-shadow: 4px 4px 15px rgba(255, 255, 255, 0.5);
+        margin: 0 2px;
+        padding: 7px 15px;
+        transition: 0.2s ease-out;
+        color: black;
+        background-color: white;
     }
-    to {
-        text-shadow: 0px 0px 10px rgba(255,255,255,0.4);
-  }
+    &:active {
+        scale: 0.9;
+    }
+
+    &:focus {
+          outline: none; 
+    }
+
 }
 
-@keyframes dropdown {
-    from {
-        translate: 0 -20px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================ Animations ================== */
+
+
+.animated {
+    animation: dropdown 0.5s ease-out forwards;
+}
+
+
+@keyframes dropfade {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+        filter: blur(5px);
     }
-    to {
-        translate: 0 -10px;
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+        filter: blur(0px);
     }
     
 }
 
-
-@keyframes review {
-    from {
-        translate: 0 -300px;
+@keyframes dropdown {
+    0% {
         opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes expand {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+    
+}
+
+@keyframes pfpdrop {
+    from {
+        opacity: 0;
+        transform: translate(3.25vw, -200px);
     }
     to {
-        translate: 0 0px;
+        transform: translate(3.25vw, 0);
         opacity: 1;
     }
     
 }
 
-@keyframes line-expand {
-    from {
-        width: 0;
+
+
+
+
+
+
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
     }
-    to {
-        width: 500px;
+    100% {
+        transform: rotate(360deg);
     }
+}
+
+@keyframes moveshape {
+    0%, 100% {
+        transform: translate(28vw, 30vh);
+    }
+    25% {
+        transform: translate(40vw, 40vh);
+    }
+    50% {
+        transform: translate(45vw, 20vh);
+    }
+    75% {
+        transform: translate(35vw, 25vh);
+    }
+    
+}
+
+@keyframes changeshape {
+    0%, 100% {
+        border-radius: 30% 70% 70% 40% / 30% 40% 70% 70%;
+        scale: 1 1;
+    }
+    20% {
+        border-radius: 40% 65% 50% 50% / 40% 35% 20% 40%;
+        scale: 1.1 1.1;
+    }
+    40% {
+        border-radius: 40% 65% 65% 30% / 40% 35% 20% 40%;
+        scale: 1.2 1.2;
+    }
+    60% {
+        border-radius: 40% 65% 50% 50% / 40% 35% 70% 75%;
+        scale: 1.1 1.1;
+    }
+    80% {
+        border-radius: 30% 50% 40% 40% / 50% 50% 50% 60%;
+        scale: 0.9 1.2;
+    }
+    
 }
