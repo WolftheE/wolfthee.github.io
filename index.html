@@ -27,7 +27,7 @@
     <script src="javascript.js"></script>
 
     <div class="container">
-        <div class="blob"></div>
+        <div id="blob" class="blob"></div>
     </div>
     
     <section>
@@ -56,7 +56,7 @@
                         <button onclick="showmodal('Discord username: @wolfthee')">Discord</button>
                     </div>
                 </div>
-                    <img class="pfp" alt="test" src="imagess/proto.jpg" width="225vw" height="225vw" onclick="showmodal('boop >w<')">
+                    <img class="pfp" alt="test" id="pfp" src="images/proto.jpg" width="225vw" height="225vw" onclick="showmodal('boop >w<')">
             
 
             </div>
@@ -115,7 +115,10 @@
     </section>
 
     <footer>
-        <button onclick="showmodal('Hia ^w^')"> ^w^ more comming soon....</button>
+        <div class="row">
+            <button onclick="showmodal('Hia ^w^')"> ^w^ more comming soon....</button>
+            <button onclick="bug()"> 𖢥 </button>
+        </div>
     </footer>
 
 

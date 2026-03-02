@@ -54,8 +54,13 @@ section, footer {
     );
     border-radius: 30% 70% 70% 40% / 30% 40% 70% 70%;
     filter: blur(75px);
-    animation: changeshape 6s cubic-bezier(0.455, 0.3, 0.515, 0.955) infinite, cubic-bezier(0.455, 0.3, 0.515, 0.955) 12s cu infinite;
+    animation: changeshape 6s cubic-bezier(0.455, 0.3, 0.515, 0.955) infinite, cubic-bezier(0.455, 0.3, 0.515, 0.955) 12s infinite;
 }
+
+.blob_bug {
+    background: linear-gradient(red 50%, rgb(247, 145, 145) 100%) !important;
+}
+
 /* ============== OK now you can edit the codes ============== */
 
 
