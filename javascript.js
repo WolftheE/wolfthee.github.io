@@ -8,6 +8,3 @@ function closemodal() {
   document.getElementById('modal').close()
   document.getElementById('modal').classList.remove('animated')
 }
-
-
-
