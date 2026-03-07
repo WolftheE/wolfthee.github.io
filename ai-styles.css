@@ -1,0 +1,598 @@
+:root {
+    --background-color: rgb(, 21, 33);
+
+    --radius: 8px;
+
+    --widget-color: rgba(10, 10, 10, 0.5);
+    --widget-border: rgb(255, 255, 255, 0.1);
+
+    --button-background: rgba(255, 255, 255, 0.15);
+
+
+    --main-color: #a86b11;
+    --second-color: #C19512;
+    --third-color: #12C195;
+    --fourth-color: #123EC1;
+
+    --greyed-out-color: rgba(128, 128, 128, 0.65);
+    --more-greyed-color: rgba(128, 128, 128, 0.15);
+}
+
+* {
+    font-family: "Roboto Flex", sans-serif;
+}
+
+body {
+
+    background-color: rgb(18,14,10);
+    
+    color: white;
+
+}
+
+
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+  scrollbar-width: thin;
+}
+
+
+
+@media screen and (max-width: 1400px) {
+    .sidebar {
+        position: fixed !important;
+        
+    }
+    .main {
+        margin-left: 0 !important;
+    }
+    .message_pfp_home {
+        display: none;
+    }
+    
+}
+
+.background {
+    position: fixed;
+    animation: moveshape 20s cubic-bezier(0.4, 0.1, 0.4, 0.95) infinite alternate;
+    z-index: -1;
+}
+
+.blob {
+    width: 25vw;
+    aspect-ratio: 1/1;
+    background: linear-gradient(
+        var(--main-color) 50%,
+        var(--fourth-color)100%
+    );
+    border-radius: 30% 70% 70% 40% / 30% 40% 70% 70%;
+    filter: blur(75px);
+    animation: changeshape 6s cubic-bezier(0.455, 0.3, 0.515, 0.955) infinite, cubic-bezier(0.455, 0.3, 0.515, 0.955) 12s infinite;
+}
+
+
+
+.sidebar {
+
+    border-right: 1px solid var(--widget-border);
+
+
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background: var(--widget-color);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    transition: 0.5s cubic-bezier(0.075, 0.2, 0.4, 1);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.sidebar a {
+    display: block;
+    overflow: hidden;
+    width: 215px;
+    
+    text-decoration: none;
+
+}
+
+.sidebar > p {
+    display: block;
+    overflow: hidden;
+    width: 250px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.5) !important;
+    font-size: 0.5em;
+}
+
+.sidebar div {
+    line-height: 0.6;
+    width: 250px;
+}
+
+.pfp {
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+
+
+.close_button {
+    float: right;
+    position:absolute;
+    top: 0;
+    
+
+    box-shadow: none;
+    color: white;
+    margin: none;
+    padding: none;
+
+}
+
+#main {
+    transition: margin-left .5s ease-out;
+    padding: 20px;
+}
+
+.main {
+    margin-left: 250px;
+    margin-top: 20px;
+    line-height: 0px;
+    height: 75vh;
+
+}
+
+.chatmessage {
+    margin-top: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.main h3 {
+    font-size: 36px;
+    font-weight: 400;
+    transform: translateY(10px);
+}
+
+.main h5 {
+    transform: translateY(10px);
+    font-weight: 400;
+}
+
+
+.widget {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: var(--widget-color);
+    min-height: 10vh;
+    padding: 20px;
+    border-radius: 20px;
+    line-height: 1.1;
+    transition: all 0.5s;
+}
+
+.content {
+    width: 30vw;
+    min-width: 250px;
+}
+
+.content > .row {
+    justify-content: space-between;
+}
+.message_pfp_home {
+    width: 3.5em;
+    border-radius: 50% 50% 50% 50%;
+}
+
+input, textarea {
+    field-sizing: content;
+    width: 28vw;
+    max-height: 200px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: white;
+    height: fit-content;
+}
+
+
+.row {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.chat {
+    height: 100vh;
+}
+
+.big-widget {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    margin: auto;
+    width: 80vw;
+    height: 85vh;
+    background-color: var(--widget-color);
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border: 1px solid var(--widget-border);
+    border-radius: 10px;
+    
+}
+
+.type_area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--widget-color);
+    border-top: 1px solid var(--widget-border);
+    height: fit-content;
+
+    & hr {
+        width: 50%;
+    }
+}
+
+.type_area > .row {
+    height: fit-content;
+    min-height: 42px;
+}
+
+
+.message {
+    align-self: flex-end;
+}
+
+
+/* buttons, links and texts*/
+
+.close_button {
+    float: right !important;
+    position: absolute !important;
+    top: 0 !important;
+
+    margin: 10px;
+
+    
+
+    box-shadow: none;
+    color: white;
+
+}
+
+h1, h3 {
+    text-shadow: 2px 2px 20px rgba(255, 255, 255, 0.5);
+}
+
+hr {
+    
+    animation: expand 3s cubic-bezier(0.175, 0.50, 0.32, 1);
+
+    border: none;
+    height: 1px;
+    background-color: white;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+a, button {
+    font-size: 1rem;
+
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: 0.5s ease-out;
+    color: white;
+    margin: 5px 10px;
+    padding: 7px;
+    background-color: var(--button-background);
+    border: 1px solid var(--button-background);
+    border-radius: var(--radius);
+
+    &:hover {
+        box-shadow: 4px 4px 15px rgba(255, 255, 255, 0.5);
+        margin: 5px 2px;
+        padding: 7px 15px;
+        transition: 0.2s ease-out;
+        color: black;
+        background-color: white;
+    }
+    &:active {
+        scale: 0.9;
+    }
+
+    &:focus {
+          outline: none; 
+    }
+
+}
+
+.send_button {
+    transition: all 0.2s ease-out;
+    border-radius: 50%;
+
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    cursor: pointer;
+    display: block !important;
+    padding: 1px;
+    
+    font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+
+
+
+
+    &:hover {
+        background-color: white;
+        scale: 1.2;
+        color: black;
+        box-shadow: 0px 0px 10px white;
+    }
+    &:active {
+        scale: 0.9;
+    }
+
+    &:focus {
+          outline: none; 
+    }
+}
+
+/* ============== DONT TOUCH THIS PART ============== */
+.container {
+    top:0;
+    left: 0;
+    position: fixed;
+    width: 100vw;
+    /*animation: moveshape 20s cubic-bezier(0.4, 0.1, 0.4, 0.95) infinite alternate;*/
+    z-index: -1;
+    filter: blur(50px);
+}
+
+
+
+/* ======== Chat message bubbles =============== */
+
+.chat_area {
+    word-wrap: break-word;
+    overflow: auto;
+    line-height: 1.1 !important;
+    height: 100%;
+}
+
+.scroll {
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.message_user {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    animation: dropdown 0.5s cubic-bezier(0.075, 0.15, 0.4, 1);
+    margin-left: auto;
+    width: fit-content;
+    max-width: 50%;
+    padding: 1px 15px !important;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50px  5px 50px 50px;
+}
+
+.message_ai{
+    max-width: 60vw;
+    min-height: 42px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: dropdown 1s ease-out forwards;
+    margin-right: auto;
+    width: fit-content;
+    padding: 1px 15px !important;
+    background-color: rgba(255, 207, 95, 0.2);
+    border-radius: 5px  50px 50px 50px;
+    margin-bottom: 25px;
+}
+
+.message_pfp {
+    animation: dropdown 1s cubic-bezier(0.075, 0.15, 0.4, 1);
+    border-radius: 50px  50px 50px 5px; 
+    max-width: 40px;
+}
+
+
+
+/* ========== MODAL POPUP HERE ===============*/
+
+.modal::backdrop {
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+}
+
+
+.modal {
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 9px 9px 30px rgba(0, 0, 0, 0.7);
+    z-index: 10;
+    background-color: var(--widget-color);
+    border: 1px solid var(--widget-border);
+    color: white;
+    margin: auto;
+    width: 40%;
+    min-width: 125px;
+
+    max-height: 90%;
+  
+}
+
+.modal div {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+
+.animated {
+    animation: dropdown 0.5s ease-out forwards;
+}
+
+.message_ai_thinking  {
+  height: 24px;
+  width: 256px;
+}
+.message_ai_thinking::after {
+  content: "";
+  animation: loading 10s steps(1, end) infinite, text_glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes loading {
+  0% {
+    content: " Analysing the Database";
+  }
+  5% {
+    content: ". Analysing the Database";
+  }
+  10% {
+    content: ".. Analysing the Database";
+  }
+  15% {
+    content: "... Looking";
+  }
+  20% {
+    content: "... Thinking";
+  }
+  25% {
+    content: ".. Thinking";
+  }
+  30% {
+    content: ". Procrastinating";
+  }
+  35% {
+    content: " Thinking";
+  }
+  40% {
+    content: " Generating";
+  }
+  45% {
+    content: ". Generating";
+  }
+  50% {
+    content: ".. Generating";
+  }
+  55% {
+    content: "... Generating";
+  }
+  60% {
+    content: "... Crashing Out";
+  }
+  65% {
+    content: ".. Writing";
+  }
+  70% {
+    content: ". Writing";
+  }
+  75% {
+    content: " Procrastinating";
+  }
+  80% {
+    content: " Procrastinating";
+  }
+  85% {
+    content: ". Procrastinating";
+  }
+  90% {
+    content: ".. Looking at the files";
+  }
+  95% {
+    content: "... Looking at the files";
+  }
+  100% {
+    content: "Almost Done";
+  }
+}
+
+@keyframes text_glow {
+    0% {
+        text-shadow: 1px 1px 10px white;
+    }
+    100% {
+        text-shadow: 1px 1px 10px transparent;
+    }
+    
+}
+
+@keyframes dropdown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes moveshape {
+    0%, 100% {
+        transform: translate(28vw, 30vh);
+    }
+    25% {
+        transform: translate(40vw, 40vh);
+    }
+    50% {
+        transform: translate(45vw, 20vh);
+    }
+    75% {
+        transform: translate(35vw, 25vh);
+    }
+    
+}
+
+@keyframes changeshape {
+    0%, 100% {
+        border-radius: 30% 70% 70% 40% / 30% 40% 70% 70%;
+        scale: 1 1;
+    }
+    20% {
+        border-radius: 40% 65% 50% 50% / 40% 35% 20% 40%;
+        scale: 1.1 1.1;
+    }
+    40% {
+        border-radius: 40% 65% 65% 30% / 40% 35% 20% 40%;
+        scale: 1.2 1.2;
+    }
+    60% {
+        border-radius: 40% 65% 50% 50% / 40% 35% 70% 75%;
+        scale: 1.1 1.1;
+    }
+    80% {
+        border-radius: 30% 50% 40% 40% / 50% 50% 50% 60%;
+        scale: 0.9 1.2;
+    }
+    
+}

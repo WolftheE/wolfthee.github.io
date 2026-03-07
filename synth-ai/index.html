@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,25,100..1000,96,468,79,-203,738,514,712&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="/ai-styles.css">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add_2,attachment,left_panel_close,left_panel_open,open_in_new,send" />
+    
+     <title>Synth AI</title>
+     <link rel="icon" type="image/x-icon" href="/images/synth.png">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+</head>
+<body>
+
+    <dialog id="modaloptions" class="modal">
+        <h2>Options</h2>
+        <hr>
+
+        <button onclick="closemodaloptions()">Close</button>
+    </dialog>
+
+    <dialog id="modalabout" class="modal">
+        <h2>About me!</h2>
+        <hr>
+        <p>Hello! I'm a Synth (Another robot furry, not a protogen)</p>
+        <p>I am a AI that is designed to be helpful in making you use your brain more often while providing useful infomation and instructions.</p>
+        <br>
+        <p>Coded by WolftheE ^w^</p>
+        <p>Contact on discord: @wolfthee</p>
+
+        <button onclick="closemodalabout()">Close</button>
+    </dialog>
+
+    <dialog id="modalwarning" class="modal">
+        <p>Please type somthing into the text box</p>
+
+        <button onclick="closemodalwarning()">Close</button>
+    </dialog>
+
+    <dialog id="modaltermsofuse" class="modal">
+        <h1>Terms of Service</h1>
+        <hr>
+        <h4>A. Definitions</h4>
+        <p>So umm idk but somthing about when we mention US, WE or idk, any first person language we are probaly refring to WOLFTHEE's Products (aka synth ai or smth)</p>
+        <br>
+        <h4>B. Acceptable Use</h4>
+        <p>ummm anything that wont get me into trouble?</p>
+        <br>
+        <h4>C. Generated Content</h4>
+        <p>Do i really have to mention this? Uhh fine</p>
+        <p>So like this AI is dumb and dont listen to it ok...</p>
+        <br>
+        <h4>D. Copyright Infringement and DMCA Policy</h4>
+        <p>too many big words ummmm so somthing about copyright stuff? I think you are not ment to put copyright protected stuff here</p>
+        <br>
+        <h4>E. Ummm what else can I drag this terms of services list to make it look big and scary?</h4>
+        <p>Any ideas?</p>
+        <hr>
+        <button onclick="closetermsofuse()">Close</button>
+    </dialog>
+
+    <script src="/javascript-ai.js"></script>
+
+    <span onclick="openSidebar()" class="material-symbols-rounded send_button">left_panel_open</span>
+
+    <div class="background">
+        <div id="blob" class="blob"></div>
+    </div>
+
+
+    <div class="main" id="main">
+        <div class="chatmessage" id="chatmessage">
+            <div class="content">
+
+                <div class="row">
+                    <div>
+                        <h5>Hello there!</h5>
+                        <h3>Where should we Start?</h3>
+                    </div>
+                    <img class="message_pfp_home" src="/images/synth.png">
+                </div>
+
+                
+                <div class="widget">
+                    <div class="row">
+                        <textarea class="first_question" id="first_question" placeholder="Type your Question here!" ></textarea>
+                        <span class="material-symbols-rounded send_button" onclick="send_message_home()">add_2</span>
+                        <span class="material-symbols-rounded send_button" onclick="send_message_home()">open_in_new</span>
+                        <span class="material-symbols-rounded send_button" onclick="send_message_home()">attachment</span>
+                        <span id="send_button" class="material-symbols-rounded send_button" onclick="send_message_home()">send</span>
+                        
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <div class="big-widget" id="mainchatmessage">
+
+            <div class="chat_area">
+
+                <div class="scroll" id="chat">
+            
+
+
+                </div> 
+
+            </div>
+
+
+            <div class="type_area">
+                <div class="row">
+                    <textarea style="resize: none;" id="chat_box" placeholder="Type your Question here!"></textarea>
+                    <span class="material-symbols-rounded send_button" onclick="send_message()">add_2</span>
+                    <span class="material-symbols-rounded send_button" onclick="send_message()">open_in_new</span>
+                    <span class="material-symbols-rounded send_button" onclick="send_message()">attachment</span>                     
+                    <span id="send_button" class="material-symbols-rounded send_button" onclick="send_message()">send</span>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="sidebar" id="sidebar">
+        <span class="material-symbols-rounded send_button close_button" onclick="closeSidebar()">left_panel_close</span>
+        <div>
+            <img class="pfp" src="/images/synth.png" width="50%">
+            <h1>Synth AI</h1>
+            <p>Your Furry AI helper</p>
+        </div>
+        <hr>
+        <a href="/">Created by Wolfthee</a>
+        <a onclick="showmodalabout()">About me!</a>
+        <a onclick="showtermsofuse()">Terms of Service</a>       
+        <a onclick="showmodaloptions()">Options</a>
+        <br>
+        <p>Disclaimer: This website is a joke.</p>
+    </div>
+
+
+
+</body>
+</html>

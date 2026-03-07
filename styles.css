@@ -1,5 +1,5 @@
 :root {
-    --background-color: rgb(21, 21, 33);
+    --background-color: rgb(12, 12, 23);
 
     --radius: 8px;
 
@@ -66,18 +66,43 @@ section, footer {
 
 /* =========== Check and change to mobile layout ================ */
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1100px) {
     .top-widget {
         display: flex !important;
         flex-direction: column-reverse !important;
+        margin-right: 0 !important;
+        max-height: 100%  !important;
+        height: fit-content !important;
     }
+
+    .widget {
+        max-height: 100%  !important;
+        height: fit-content !important;
+    }
+
+    .top-widget .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+
+    }
+
+
     .pfp {
         transform: translateX(0vh) !important;
+        width: 50%;
+        height: 50%;
     }
     .inside-content {
         text-align: center !important;
         align-items: center !important;
     }
+
+    .blob {
+        filter: blur(50px);
+        scale: 2 !important;
+    }
+
 }
 
 
@@ -102,13 +127,14 @@ section, footer {
     margin: auto;
     width: 15%;
     min-width: 125px;
-  
+    height: fit-content;
 }
 
 .modal div {
     display: flex;
     gap: 15px;
     flex-direction: column;
+
 }
 
 
@@ -145,7 +171,7 @@ section, footer {
     padding: 20px;
     text-align: center;
     width: 40vw;
-    min-width: 450px;
+    min-width: 300px;
     height: 40vh;
     max-height: 500px;
     min-height: 275px;
@@ -168,6 +194,11 @@ section, footer {
     display: grid;
     grid-template-columns: 75% 25%;
     margin-right: 50px;
+}
+.widget-short {
+    height: fit-content !important;
+    max-height: fit-content !important;
+    min-height: fit-content !important;
 }
 
 .pfp {
@@ -382,3 +413,4 @@ a, button {
     }
     
 }
+
