@@ -23,6 +23,7 @@
 }
 
 body {
+    margin: 0;
 
     background-color: rgb(18,14,10);
     
@@ -52,6 +53,39 @@ html {
         display: none;
     }
     
+}
+
+@media screen and (max-width: 600px) {
+    .big-widget {
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+        margin: auto;
+        width: 100% !important;
+        height: 100% !important;
+        background-color: var(--widget-color);
+        overflow: hidden;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+
+        border: 1px solid var(--widget-border);
+        border-radius: 10px;
+
+    }
+
+    .main {
+        padding: 0 !important;
+        height: 100vh !important;
+    }
+
+    body > .send_button {
+        top: 0;
+        position: fixed !important;
+        z-index: 1;
+    }
+
+    body {
+        overflow:visible;
+    }
 }
 
 .background {
@@ -184,7 +218,7 @@ html {
 
 .content {
     width: 30vw;
-    min-width: 250px;
+    min-width: 350px;
 }
 
 .content > .row {
@@ -197,7 +231,8 @@ html {
 
 input, textarea {
     field-sizing: content;
-    width: 28vw;
+    width: 85%;
+    min-width: 15vw;
     max-height: 200px;
     background-color: transparent;
     outline: none;
