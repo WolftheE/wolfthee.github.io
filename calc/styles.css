@@ -1,0 +1,279 @@
+html {
+    --main_bg: #1F363D;
+    --second_bg: #284750;
+    --invert: #365a64;
+    --dark_accent: #339989ff;
+    --light_accent: #7de2d1ff;
+    --snow: #fffafbff;
+}
+
+body > h1, body > p {
+    display: none;
+}
+
+h4 {
+    line-height: 0;
+}
+
+
+body {
+
+    background-color: #17282e;
+    
+    background-size: cover;
+    display: flex;
+    justify-content: center; /* Centers horizontally (main axis) */
+    align-items: center;     /* Centers vertically (cross axis) */
+    height: 100vh;      
+    overflow: hidden;
+
+    margin: 0;
+
+    font-family: "Google Sans", sans-serif;
+}
+
+.main {
+    background-color: var(--main_bg);
+    height: fit-content;
+    width: 400px;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.3);
+}
+
+
+.cookies {
+    background-color: var(--main_bg);
+    color: white;
+    padding: 16px;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    position: fixed;
+    bottom: 8px;
+    right: 8px;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.3);
+}
+
+.ad_1 {
+    background-color: var(--main_bg);
+    color: white;
+    padding: 16px;
+    position: fixed;
+    bottom: 8px;
+    left: 8px;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.3);
+}
+
+.ad_3 {
+    background-color: var(--main_bg);
+    color: white;
+    padding: 16px;
+    position: fixed;
+    top: 8px;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.3);
+}
+
+.ad_2 {
+    background-color: var(--main_bg);
+    color: white;
+    position: fixed;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.3);
+    width: 50%;
+    height: 50%;
+    animation: showad 10s forwards;
+}
+
+
+.popup {
+    box-shadow: 0 0 1000px black;
+    padding: 0;
+    color: white;
+
+    background-color: var(--main_bg);
+    height: fit-content;
+    width: 1020px;
+    height: 520px;
+    border: none;
+}
+
+.ad {
+    animation: showad 5s ease-out forwards;
+    position: fixed;
+}
+.ad > .close {
+    position: absolute;
+    right: 0;
+}
+
+#one {
+    top: 0;
+    left: 0;
+}
+#two {
+    bottom: 0;
+}
+
+#three {
+    right: 0;
+}
+
+#four {
+    top: 0;
+    right: 0;
+}
+
+#five {
+    right: 500px;
+}
+
+#six {
+    bottom: 200px;
+    left: 0;
+}
+
+iframe {
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+
+
+
+.content {
+    display: contents;
+    position: relative;
+}
+
+.side-images {
+    background-color: var(--main_bg);
+    width: 275px;
+}
+
+.side-text {
+    margin: 8px;
+}
+
+.premium {
+    display: flex;
+    position: absolute;
+    background-color: var(--second_bg);
+    margin: 8px;
+    padding: 8px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 32px;
+}
+
+
+img {
+    width: 275px;
+}
+
+
+.navbar {
+    background-color: var(--second_bg);
+    margin: 8px;
+    padding-bottom: 2px;
+}
+
+
+.grid {
+    gap: 2px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 400px;
+}
+
+.row > button {
+    margin-top: 16px;
+    background-color: rgb(167, 64, 0);
+    padding: 16px;
+
+    &:hover {
+        background-color: rgb(194, 86, 19);
+    }
+}
+
+.row > .alt {
+    margin-top: 16px;
+    background-color: rgb(9, 145, 2);
+    padding: 16px;
+
+    &:hover {
+        background-color: rgb(18, 159, 11);
+    } 
+}
+
+
+.calc-screen {
+    height: 124px;
+    padding: 1rem;
+}
+#calc-operation {
+    font-size: 1.3rem;
+    text-align: right;
+    color: #727B86;
+    padding-bottom: .5rem;
+}
+#calc-typed {
+    font-size: 2rem;
+    text-align: right;
+    color: #fff;
+    background-color: transparent;
+    width: 100%;
+    border: none;
+}
+
+
+button {
+    background-color: var(--second_bg);
+    color: var(--snow);
+    border: none;
+
+    &:hover {
+        background-color: var(--invert);
+    }
+}
+
+.action {
+    color: #999999;
+}
+
+.imporant, .backspace {
+    color: var(--dark_accent)
+}
+
+
+
+
+
+
+
+.animated {
+    animation: dropdown 0.5s ease-out forwards;
+}
+
+
+@keyframes dropdown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+
+@keyframes showad {
+    0% {
+        display: none;
+    }
+    99% {
+        display: none;
+    }
+    100% {
+        display: fixed;
+    }
+}
+
+

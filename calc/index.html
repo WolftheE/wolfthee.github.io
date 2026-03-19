@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="styles.css">
+     <title>WolftheE's Website</title>
+     <link rel="icon" type="image/x-icon" href="images/proto.jpg">
+     <meta name="theme-color" content="#2765F5">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+</head>
+<body>
+    <h1>Best Calc for 2026!</h1>
+    <p>Best calculator to use for 2026!</p>
+
+
+    <script src="javascript_calc.js"></script>
+    <div class="main">
+        <div class="calc-screen">
+            <div id="calc-operation">12345679 * 8</div>
+            <input id="calc-typed">
+        </div>
+        <div class="grid">
+            <button class="action" onclick="showabout()">About</button>
+            <button class="action" onclick="showmodal()">Help</button>
+            <button class="action" onclick="showmodal()">Functions</button>
+            <button class="action" onclick="showmodal()">Ask AI</button>
+            <button class="action" onclick="showmodal()">(</button>
+            <button class="action" onclick="showmodal()">)</button>
+            <button class="action" onclick="showmodal()">%</button>
+            <button class="backspace" onclick="document.getElementById('calc-typed').value = '';">&#9003;</button>
+            <button onclick="document.getElementById('calc-typed').value += '7';">7</button>
+            <button onclick="document.getElementById('calc-typed').value += '8';">8</button>
+            <button onclick="document.getElementById('calc-typed').value += '9';">9</button>
+            <button class="action" onclick="document.getElementById('calc-typed').value += '÷';">÷</button>
+            <button onclick="document.getElementById('calc-typed').value += '4';">4</button>
+            <button onclick="document.getElementById('calc-typed').value += '5';">5</button>
+            <button onclick="document.getElementById('calc-typed').value += '6';">6</button>
+            <button class="action" onclick="document.getElementById('calc-typed').value += '×';">×</button>
+            <button onclick="document.getElementById('calc-typed').value += '1';">1</button>
+            <button onclick="document.getElementById('calc-typed').value += '2';">2</button>
+            <button onclick="document.getElementById('calc-typed').value += '3';">3</button>
+            <button class="action" onclick="document.getElementById('calc-typed').value += '-';">-</button>
+            <button onclick="document.getElementById('calc-typed').value += '0';">0</button>
+            <button class="action" onclick="showmodal()">.</button>
+            <button class="imporant" onclick="showmodal()">=</button>
+            <button class="action" onclick="document.getElementById('calc-typed').value += '+';">+</button>
+        </div>
+    </div>
+
+    <div class="ad_1" id="ad">
+        <h3>Are you enjoying this calc?</h3>
+        <p>Upgrade to premium to support us then!</p>
+        <button onclick="closebutton('ad')">Close</button>
+    </div>
+
+    <div class="cookies" id="cookie">
+        <h3>Hello there!</h3>
+        <p>By clicking the "Accept" button below, you agree to our Cookies Policy</p>
+        <button onclick="closebutton('cookie')">Accept</button>
+        <button onclick="closebutton('cookie')">Reject</button>
+    </div>
+
+    <div class="ad" id="one">
+        <button class="close" onclick="closebutton('one')">x</button>
+        <iframe src="fake_ads/fakefemobyshop.html"></iframe>
+    </div>
+
+    <div class="ad" id="two">
+        <button class="close" onclick="closebutton('two')">x</button>
+        <iframe src="fake_ads/fakeappleadlol.html"></iframe>
+    </div>
+
+    <div class="ad" id="three">
+        <button class="close" onclick="closebutton('three')">x</button>
+        <iframe src="fake_ads/fakeappleadlol.html"></iframe>
+    </div>
+
+    <div class="ad" id="four">
+        <button class="close" onclick="closebutton('four')">x</button>
+        <iframe src="fake_ads/fakeshewantstotalk.html"></iframe>
+    </div>
+
+    <div class="ad" id="five">
+        <button class="close" onclick="closebutton('five')">x</button>
+        <iframe src="fake_ads/furryvidx.html"></iframe>
+    </div>
+
+    <div class="ad" id="six">
+        <button class="close" onclick="closebutton('six')">x</button>
+        <iframe src="fake_ads/fakegaytest.html"></iframe>
+    </div>
+
+    <div class="ad ad_3" id="seven">
+        <button class="close" onclick="closebutton('seven')">x</button>
+        <h3>Upgrade to Pro for no Ads!</h3>
+    </div>
+
+    <div class="ad_2" id="ate">
+        <button class="close" onclick="closebutton('ate')">x</button>
+        <h3>Get Calc Plus Today!</h3>
+        <button onclick="showmodal()">Get Pro</button>
+    </div>
+
+    <dialog class="popup" id="modal">
+        <div class="content">
+            <div class="navbar">
+                <button onclick="closemodal()">X</button>
+            </div>
+
+            <div class="premium">
+                <div class="side-images">
+                    <img src="/images/premium.png">
+                </div>
+                <div class="side-text">
+                    <h2>Oh you found a premium feature.....</h2>
+                    <h3>Get Premium to unlock for the Best Calc Ever!</h3>
+                    <h4>Unlock the following features</h5>
+                    <p>- Advance functions</p>
+                    <p>- Get Synth AI plus built in!</p>
+                    <p>- Solve Questions</p>
+                    <p>- Get detailed help with math!</p>
+                    <p>- Support the poor dev (plz i'm lowkey broke)</p>
+                    <p>So what are you waiting for?</p>
+                    <div class="row">
+                        <button class="alt" onclick="showpayment()">$9.99/Month</button>
+                        <button onclick="showpayment()">7 Day Free Trial</button>
+                    </div>
+                    <small>By subscribling you agree to our terms and conditions</small>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog class="popup" id="about">
+        <div class="content">
+            <div class="navbar">
+                <button onclick="closeabout()">X</button>
+            </div>
+
+            <div class="premium">
+                <div>
+                    <h1>Calc By WolftheE!</h1>
+                    <p>Version 0.2 pre</p>
+                    <small>Warning: This website is a joke. The ads are fake and the ad blocker detector is just for a joke. Check the source code if unsure!</small>
+                    <small>No data is sent through the payment menu as well.</small>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog class="popup" id="payment">
+        <div class="content">
+            <div class="navbar">
+                <button onclick="closepayment()">X</button>
+            </div>
+
+            <div class="premium">
+                <div class="side-images">
+                    <img src="/images/premium.png">
+                </div>
+                <div class="side-text">
+                    <h1>Get 7 Days Free!</h1>
+                    <p>Cancel at any time</p>
+                    <h4>Credit Card Number*</h4>
+                    <input>
+                    <h4>Phone Number*</h4>
+                    <input>
+                    <h4>Email</h4>
+                    <input>
+                    <div class="row">
+                        <button class="alt" onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');">Submit</button>
+                    </div>
+                    <small>By subscribling you agree to our terms and conditions</small>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+
+    <dialog class="popup" id="adblocker">
+        <div class="content">
+            <div class="navbar">
+                <button onclick="closeadblocker()">X</button>
+            </div>
+
+            <div class="premium">
+                <div>
+                    <h1>Ad blocker detected!</h1>
+                    <p>Disable your ad blocker to use this website</p>
+                    <p>Or click the close button in the top left corner if you dont want to support me :(</p>
+                </div>
+
+            </div>
+
+        </div>
+    </dialog>
+
+</body>
+</html>
