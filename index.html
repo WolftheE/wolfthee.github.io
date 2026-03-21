@@ -4,6 +4,7 @@
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,25,100..1000,96,468,79,-203,738,514,712&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0&icon_names=open_in_new" />
      <link rel="stylesheet" href="styles.css">
      <title>WolftheE's Website</title>
      <link rel="icon" type="image/x-icon" href="images/proto.jpg">
@@ -64,46 +65,61 @@
 
     </section>
 
-    <section>
+    <section class="grid">
 
-        <div class="widget widget-short">
-            <h2>Check out my AI, Synth-AI!</h2>
-            <hr>
-            <br>
-            <a href="/synth-ai/">Synth-AI</a>
-        </div>
-
-        <br>
-        <br>
-
-        <div class="widget">
-            <div class="simple">
-                <h2>Some of the Stuff I've made! >w<</h2>
-                <hr>
-                <div class="row same-length">
-                    <div class="column" align="left">
-                        <h3>Pissman!</h3>
-                        <p>A stupid game that I had to make back when I was in year 9 (2024)</p>
-                        <p>Its a 2d platformer (or 3d) with some kind of story and lore</p>
-                        <br>
-                        <a href="https://wolfthee.itch.io/pissman-legacy">Play it here! (please don't)</a>
-                        
-                    </div>
-                    <div class="column" align="right">
-                        <h3>Wolf-Vivaldi</h3>
-                        <p>I use the Vivaldi Web browser!</p>
-                        <p>While I love it, there are many parts of the UI that I hate so I created a css theme to make it to my liking!</p>
-                        <br>
-                        <a href="https://github.com/WolftheE/Wolf-Vivaldi">Get it here!</a>
-                    </div>
-                </div>
+        <div class="widget calc">
+            <span class="material-symbols-rounded" onclick="window.open('https://wolfthee.github.io/calc');">open_in_new</span>
+            <img src="images/calc_ss.png">
+            <div class="overlay" onclick="window.open('https://wolfthee.github.io/calc');">
+                <h2>Calc</h2>
+                <p class="normal">A very advance Calc</p>
+                <p class="hidden">Power with Synth AI, this calc can solve all types of questions!</p>
             </div>
         </div>
 
-        <br>
-        <br>
-        <div class="widget">
-            <div class="simple">
+        <div class="widget synth">
+            <span class="material-symbols-rounded" onclick="window.open('https://wolfthee.github.io/synth-ai');">open_in_new</span>
+            <img src="images/synth_ss.png">
+            <div class="overlay" onclick="window.open('https://wolfthee.github.io/synth-ai');">
+                <h2>Synth AI - Your personal AI</h2>
+                <p class="normal">Synth AI, a AI chatbot I made!</p>
+                <p class="hidden">Power by a custom AI model built from scrach, Synth AI is ready for all the tasks you give it!</p>
+            </div>
+        </div>
+
+        <div class="widget better-ytm">
+            <span class="material-symbols-rounded" onclick="window.open('https://github.com/WolftheE/better-ytm');">open_in_new</span>
+            <img src="images/better-ytm.png">
+            <div class="overlay" onclick="window.open('https://github.com/WolftheE/better-ytm');">
+                <h2>Better-YTM</h2>
+                <p class="normal">A theme for Youtube music and better lyrics!</p>
+                <p class="hidden">A small CSS theme that makes Youtube Music so much more modern without changing the whole layout!</p>
+            </div>
+        </div>
+
+        <div class="widget pissman">
+            <span class="material-symbols-rounded" onclick="window.open('https://wolfthee.itch.io/pissman-legacy');">open_in_new</span>
+            <img src="images/pissman_ss.png">
+            <div class="overlay" onclick="window.open('https://wolfthee.itch.io/pissman-legacy');">
+                <h2>Pissman</h2>
+                <p class="normal">A 2d Platformer Game Made by me ^w^</p>
+                <p class="hidden">A stupid game that I had to make in year 9. Its a 2d platfomer game with some kind of lore. You got corupted and went into an unknown world and you need to try to get home!</p>
+            </div>
+        </div>
+
+        <div class="widget vivaldi">
+            <span class="material-symbols-rounded" onclick="window.open('https://github.com/WolftheE/Wolf-Vivaldi');">open_in_new</span>
+            <img src="images/vivaldi_ss.jpg">
+            <div class="overlay" onclick="window.open('https://github.com/WolftheE/Wolf-Vivaldi');">
+                <h2>Wolf Vivaldi</h2>
+                <p class="normal">A theme for Vivaldi</p>
+                <p class="hidden">A theme that makes Vivaldi to my liking.</p>
+            </div>
+        </div>
+
+        <div class="widget question">
+            <img src="images/wallpaper.png">
+            <div class="overlay_static">
                 <h2>Common Questions I get asked about me!</h2>
                 <hr>
                 <div align="left">
@@ -122,7 +138,7 @@
     <footer>
         <div class="row">
             <button onclick="showmodal('Hia ^w^')"> ^w^ more comming soon....</button>
-            <button onclick="bug()"> 𖢥 </button>
+            <button onclick="bug()"> 𖢥 Im a bug</button>
         </div>
     </footer>
 

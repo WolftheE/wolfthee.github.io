@@ -59,6 +59,7 @@ section, footer {
 
 .blob_bug {
     background: linear-gradient(red 50%, rgb(247, 145, 145) 100%) !important;
+    scale: 5 !important;
 }
 
 /* ============== OK now you can edit the codes ============== */
@@ -76,7 +77,6 @@ section, footer {
     }
 
     .widget {
-        max-height: 100%  !important;
         height: fit-content !important;
     }
 
@@ -102,6 +102,45 @@ section, footer {
         filter: blur(50px);
         scale: 2 !important;
     }
+
+    .grid {
+        padding: 8px;
+        display: flex !important;
+        flex-direction: column;
+    }
+
+    .widget:hover {
+        scale: 1 !important;
+    }
+
+    .widget > span:active {
+        scale: 1 !important;
+    }
+
+
+    .overlay {
+        height: 100% !important;
+    }
+
+    .hidden {
+        height: 100px !important;
+    }
+
+
+    .widget > span {
+        opacity: 1 !important;
+    }
+
+    .vivaldi {
+        max-height: 124px !important;
+    }
+
+    .question {
+        display: none !important;
+    }
+
+
+
 
 }
 
@@ -168,38 +207,44 @@ section, footer {
 
 /* ======== Widget and stuff =============*/
 .widget {
-    padding: 20px;
+    height: 100%;
+    width: 100%;
     text-align: center;
-    width: 40vw;
-    min-width: 300px;
-    height: 40vh;
-    max-height: 500px;
-    min-height: 275px;
     background-color: var(--widget-color);
     border: 1px solid var(--widget-border);
     border-radius: 20px;
     box-shadow: 9px 9px 30px rgba(0, 0, 0, 0.7);
 
     display: flex;
+    position: relative;
     flex-direction: column;
+
+    overflow: hidden;
 
     line-height: 1.4;
     color: white;
     font-family: "Roboto Flex", sans-serif;
     font-size: 1rem;
 
+
+    transition: all 0.5s ease-out;
+
 }
 .top-widget {
+    padding: 16px;
+    width: 40vw;
+    min-width: 300px;
+    height: 40vh;
+    max-height: 500px;
+    min-height: 275px;
     animation: dropfade 3s cubic-bezier(0.175, 0.885, 0.32, 1);
     display: grid;
     grid-template-columns: 75% 25%;
     margin-right: 50px;
+
+     overflow: visible;
 }
-.widget-short {
-    height: fit-content !important;
-    max-height: fit-content !important;
-    min-height: fit-content !important;
-}
+
 
 .pfp {
     transition: scale 0.5s ease-out, box-shadow 0.5s ease-out;
@@ -271,7 +316,7 @@ a, button {
     border-radius: var(--radius);
 
     &:hover {
-        box-shadow: 4px 4px 15px rgba(255, 255, 255, 0.5);
+        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
         margin: 0 2px;
         padding: 7px 15px;
         transition: 0.2s ease-out;
@@ -290,12 +335,127 @@ a, button {
 
 
 
+/* ================ Grid stuff ================== */
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-content: center;
+    max-width: 720px;
+    grid-auto-rows: 296px;
+    align-self: center;
+
+    grid-template-areas:
+    "calc synth synth"
+    "better-ytm better-ytm vivaldi"
+    "pissman pissman vivaldi"
+    "question question question";
 
 
+    margin: 0 auto;
+    gap: 16px;
+}
+
+.synth {
+    grid-area: synth;
+}
+
+.better-ytm {
+    grid-area: better-ytm;
+}
+
+.vivaldi {
+    grid-area: vivaldi;
+}
+
+.pissman {
+    grid-area: pissman;
+}
+
+.question {
+    grid-area: question;
+}
+
+.calc {
+    grid-area: calc;
+}
+
+.vivaldi:hover, .better-ytm:hover, .synth:hover, .pissman:hover, .question:hover, .calc:hover {
+    scale: 1.05;
+}
+
+.grid > img {
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+}
 
 
+.overlay {
+    width: 100%;
+    height: 25%;
+    padding: 8px;
+    text-align: left;
+    position: absolute;
+    background: linear-gradient( rgba(0,0,0,1) 1%, rgba(0,0,0,0) 100%);
+    transition: all 0.5s ease-out;
+}
+
+.overlay_static {
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    text-align: left;
+    position: absolute;
+    background: linear-gradient( rgba(0,0,0,1) 1%, rgba(0,0,0,0) 100%);
+}
+
+.overlay_static > * {
+    width: 90%;
+}
 
 
+.widget:hover > .overlay {
+    height: 100%;
+}
+
+.hidden {
+    height: 0px;
+    overflow: hidden;
+    transition: all 1s ease-out;
+    width: 90%;
+}
+
+.widget:hover > .overlay > .hidden {
+    height: 100px;
+}
+
+
+.widget > span {
+    position: absolute;
+    z-index: 10;
+    right: 8px;
+    top: 8px;
+    opacity: 0;
+    transition: all 0.5s ease-out;
+    padding: 4px;
+    border-radius: 50px;
+    cursor: default;
+}
+
+.widget:hover > span {
+    opacity: 1;
+}
+
+.widget > span:hover {
+    background-color: white;
+    color: black;
+    scale: 1.2;
+}
+
+.widget > span:active {
+    scale: 0.9;
+}
 
 
 
