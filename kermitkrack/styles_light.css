@@ -1,0 +1,89 @@
+body {
+    background-color: white;
+    margin-top: 64px;
+    margin-left: 0;
+    margin-right: 0;
+    font-family: "Noto Sans", sans-serif;
+
+
+    --highlight-color: #b32c2c;
+    --background: #333;
+}
+
+section {
+    margin: 8px;
+}
+
+
+.navbar {
+    color: white;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+  position: fixed;
+  background: #333; 
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--highlight-color);
+}
+
+.navbaralt {
+    top: 0;
+    left: 0;
+    right: 0;
+
+  position: fixed;
+  background: #333; 
+  height: 25px;
+}
+
+.navbar > div > img {
+    height: 52px;
+    border-radius: 50%;
+}
+
+.navbar > div {
+    display: flex;
+    gap: 2px;
+}
+
+.navbar > div > a {
+    display: block;
+    background-color: rgba(255,255,255,0.1);
+    padding: 16px;
+    text-decoration: none;
+    color: white;
+    &:hover {
+        background-color: var(--highlight-color);
+    }
+}
+
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+li > button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color:blue;
+    text-decoration: underline;
+    font-size: 1em;
+}
+
+ul > h4 {
+    line-height: 0;
+}
+
+iframe {
+    border: solid 2px #333;
+    height: 90vh;
+    width: 50vw;
+}
+.document {
+    align: center;
+}
