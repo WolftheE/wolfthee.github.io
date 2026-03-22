@@ -44,6 +44,15 @@ section, footer {
     animation: moveshape 20s cubic-bezier(0.4, 0.1, 0.4, 0.95) infinite alternate;
     z-index: -1;
 }
+.particles-cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            overflow: hidden;
+} 
 
 .blob {
     width: 25vw;
@@ -57,17 +66,37 @@ section, footer {
     animation: changeshape 6s cubic-bezier(0.455, 0.3, 0.515, 0.955) infinite, cubic-bezier(0.455, 0.3, 0.515, 0.955) 12s infinite;
 }
 
+.particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background: var(--main-color);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
 .blob_bug {
     background: linear-gradient(red 50%, rgb(247, 145, 145) 100%) !important;
     scale: 5 !important;
 }
+
+
 
 /* ============== OK now you can edit the codes ============== */
 
 
 /* =========== Check and change to mobile layout ================ */
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 900px) {
     .top-widget {
         display: flex !important;
         flex-direction: column-reverse !important;
@@ -131,7 +160,7 @@ section, footer {
         opacity: 1 !important;
     }
 
-    .vivaldi {
+    .vivaldi, .calc {
         max-height: 124px !important;
     }
 
@@ -233,7 +262,7 @@ section, footer {
 .top-widget {
     padding: 16px;
     width: 40vw;
-    min-width: 300px;
+    min-width: 500px;
     height: 40vh;
     max-height: 500px;
     min-height: 275px;
@@ -424,6 +453,7 @@ a, button {
     overflow: hidden;
     transition: all 1s ease-out;
     width: 90%;
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
 }
 
 .widget:hover > .overlay > .hidden {
@@ -517,6 +547,28 @@ a, button {
     
 }
 
+@keyframes leftfade {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes rightfade {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
 
 
 
@@ -573,4 +625,14 @@ a, button {
     }
     
 }
+
+
+
+
+
+
+
+
+
+
 
