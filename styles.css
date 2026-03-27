@@ -256,7 +256,7 @@ section, footer {
     font-size: 1rem;
 
 
-    transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out, transform 1s ease-in-out, opacity 1s ease-in-out;
 
 }
 .top-widget {
@@ -288,7 +288,11 @@ section, footer {
         scale: 1.05;
         box-shadow: 0px 0px 50px var(--main-color);
     }
+    &:active {
+        scale: 0.9;
+    }
 }
+
 
 .row {
     display: flex;
@@ -489,7 +493,20 @@ a, button {
 
 
 
+.widget_left {
+    transform: translateX(-70px);
+    opacity: 0;
+}
 
+.widget_right {
+    transform: translateX(75px);
+    opacity: 0;
+}
+
+.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
 
 
 /* ================ Animations ================== */
@@ -546,36 +563,6 @@ a, button {
     }
     
 }
-
-@keyframes leftfade {
-    0% {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0px);
-    }
-}
-
-@keyframes rightfade {
-    0% {
-        opacity: 0;
-        transform: translateX(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0px);
-    }
-}
-
-
-
-
-
-
-
-
 
 @keyframes rotate {
     0% {
