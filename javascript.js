@@ -18,24 +18,26 @@ function bug() {
 }
 
 // Make thing move into view
-
 const elements = document.querySelectorAll('.widget');
 
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible'); // Add the class to start CSS animation
-      observer.unobserve(entry.target); // Stop observing after animation runs once (optional)
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
     }
   });
 }, {
-  root: null, // observe against the viewport
-  threshold: 0.5 // trigger when 50% of the element is visible
+  root: null, 
+  threshold: 0.5
 });
 
 elements.forEach(el => {
   observer.observe(el);
 });
+
+
+
 
 // Idk I just stole this code from somewhere but I forgot
 
