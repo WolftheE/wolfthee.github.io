@@ -33,8 +33,29 @@ section, footer {
     display: flex;
     align-items: center;
     flex-direction: column;
+    overflow-x: visible;
+
+    & > small {
+        color: rgba(255,255,255,0.5);
+        margin-top: 24px;
+    }
 }
 
+
+.scroll {
+    animation: scrolldropfade 4s forwards;
+    animation-delay: 3s;
+    transform: translateY(-200px);
+    opacity: 0;
+    color: white;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    & > svg {
+        animation: bobupanddown 5s ease-in-out infinite;
+    }
+}
 
 
 
@@ -89,6 +110,33 @@ section, footer {
     scale: 5 !important;
 }
 
+/* for the joke/easter egg*/
+
+.bug-widget {
+    width: 70vw !important;
+    height: 70vh !important;
+    margin-top: 128px !important;
+
+}
+
+.bug-widget > iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+
+.bug-widget > div {
+    margin: 25%;
+}
+
+.easter-egg {
+    display: none !important;
+}
+.show-bug-widget {
+    display: unset !important;
+}
+
 
 
 /* ============== OK now you can edit the codes ============== */
@@ -104,6 +152,8 @@ section, footer {
         max-height: 100%  !important;
         min-width: 250px !important;
         height: fit-content !important;
+        width: 80% !important;
+        max-width: 500px !important;
     }
 
     .widget {
@@ -169,6 +219,20 @@ section, footer {
         display: none !important;
     }
 
+    .art {
+        min-height: 420px;
+        flex-direction: column !important;
+
+        & > .side {
+            width: 95% !important;
+        }
+
+        & > .main {
+            height: 275px !important;
+            width: 100% !important;
+        }
+    }
+
 
 
 
@@ -203,6 +267,8 @@ section, footer {
     display: flex;
     gap: 15px;
     flex-direction: column;
+    max-width: 128px;
+    margin: 16px auto auto auto;
 
 }
 
@@ -257,7 +323,7 @@ section, footer {
     font-size: 1rem;
 
 
-    transition: all 0.5s ease-out, transform 1s ease-in-out, opacity 1s ease-in-out;
+    transition: scale 0.5s ease-out, transform 1s ease-in-out, opacity 1s ease-in-out;
 
 }
 .top-widget {
@@ -271,6 +337,7 @@ section, footer {
     display: grid;
     grid-template-columns: 75% 25%;
     margin-right: 50px;
+    backdrop-filter: blur(75px);
 
      overflow: visible;
 }
@@ -341,7 +408,7 @@ a, button {
 
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
     text-align: center;
-    transition: 0.5s ease-out;
+    transition:scale 0.3s ease-out, box-shadow 0.5s ease-out, color 0.5s ease-out, background-color 0.5s ease-out, margin 0.5s ease-out, padding 0.5s ease-out, color 0.5s ease-out;
     color: white;
     margin: 0 10px;
     padding: 7px;
@@ -353,7 +420,7 @@ a, button {
         box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
         margin: 0 2px;
         padding: 7px 15px;
-        transition: 0.2s ease-out;
+        transition:scale 0.3s ease-out, box-shadow 0.2s ease-out, color 0.2s ease-out, background-color 0.2s ease-out, margin 0.2s ease-out, padding 0.2s ease-out, color 0.2s ease-out;
         color: black;
         background-color: white;
     }
@@ -380,6 +447,7 @@ a, button {
     align-self: center;
 
     grid-template-areas:
+    "art art art"
     "calc synth synth"
     "better-ytm better-ytm vivaldi"
     "pissman pissman vivaldi"
@@ -388,6 +456,63 @@ a, button {
 
     margin: 0 auto;
     gap: 16px;
+}
+
+.art {
+    grid-area: art;
+    flex-direction: row ;
+    backdrop-filter: blur(75px);
+    & > .side {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        border-right: 1px solid var(--widget-border);
+        
+        width: 25%;
+        text-align: left;
+        padding: 8px;
+        & > .row {
+            background-color: rgba(255,255,255,0.05);
+            border-radius: var(--radius);
+            padding: 4px;
+            gap: 8px;
+
+            & > span {
+                cursor: pointer;
+                border-radius: 50%;
+                transition: background-color 0.5s ease-out, color 0.5s ease-out, scale 0.5s ease-out;
+
+                &:hover {
+                    background-color: white;
+                    color: black;
+                    scale: 1.2;
+                }
+
+                &:active {
+                    scale: 0.9;
+                }
+            }
+        }
+    }
+
+    & > .main {
+        width: 75%;
+        transition: background 0.3s ease-in-out;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background: url('images/artwork/fiat_500_on_track.jpg');
+    }
+}
+.artpreview {
+    width: 90vw !important;
+    min-width: 90vw !important;
+
+    & > img {
+        width: 75%;
+        height: 75%;
+    }
 }
 
 .synth {
@@ -432,7 +557,7 @@ a, button {
     text-align: left;
     position: absolute;
     background: linear-gradient( rgba(0,0,0,1) 1%, rgba(0,0,0,0) 100%);
-    transition: all 0.5s ease-out;
+    transition: height 0.5s ease-out;
 }
 
 .overlay_static {
@@ -456,7 +581,7 @@ a, button {
 .hidden {
     height: 0px;
     overflow: hidden;
-    transition: all 1s ease-out;
+    transition: height 1s ease-out;
     width: 90%;
     mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
 }
@@ -472,7 +597,7 @@ a, button {
     right: 8px;
     top: 8px;
     opacity: 0;
-    transition: all 0.5s ease-out;
+    transition:opacity 0.3s ease-in-out, background-color 0.5s ease-out, color 0.5s ease-out, scale 0.5s ease-out;
     padding: 4px;
     border-radius: 50px;
     cursor: default;
@@ -531,6 +656,32 @@ a, button {
     }
     
 }
+
+@keyframes bobupanddown {
+    0% {
+        transform: translateY(-5px);
+    }
+    50% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes scrolldropfade {
+    0% {
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateY(-200px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translateY(-100px);
+    }
+}
+
 
 @keyframes dropdown {
     0% {

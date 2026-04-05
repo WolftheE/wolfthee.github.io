@@ -4,7 +4,7 @@
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,25,100..1000,96,468,79,-203,738,514,712&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0&icon_names=open_in_new" />
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0&icon_names=chevron_left,chevron_right,open_in_full,open_in_new" />
      <link rel="stylesheet" href="styles.css">
      <title>WolftheE's Website</title>
      <link rel="icon" type="image/x-icon" href="images/proto.jpg">
@@ -16,9 +16,16 @@
 <body>
 
     <dialog id="modal" class="modal">
+        <p id="modaltext">Some text here that will change</p>
         <div>
-            <p id="modaltext">Some text here that will change</p>
             <button class="close_button" onclick="closemodal()"> Ok </button>
+        </div>
+    </dialog>
+
+    <dialog id="art_popup" class="modal artpreview">
+        <img src="/images/artwork/fiat_500_on_track.jpg" id="artworkimg_popup" >
+        <div>
+            <button class="close_button" onclick="document.getElementById('art_popup').close();"> Ok </button>
         </div>
     </dialog>
 
@@ -36,7 +43,7 @@
     
     <section>
 
-        <div class="main-content">
+        <div class="main-content" id="main-info-page">
             <div class="widget top-widget">
 
                 <div class="inside-content">
@@ -61,19 +68,48 @@
                     </div>
                 </div>
                     <img class="pfp" alt="test" id="pfp" src="images/proto.jpg" width="225vw" height="225vw" onclick="showmodal('boop >w<')">
-            
-
             </div>
+        </div>
+        <div class="main-content easter-egg" id="easter-eggs">
+            <div class="widget bug-widget" id="bug-widget">
+                <div id="launch_game">
+                    <button onclick="showgame()">???</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll">
+            <p>Scroll Down</p>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M468.08-386.96q-5.46-2.12-10.7-7.35L281.85-569.85q-5.62-5.61-6-13.77-.39-8.15 6-14.53 6.38-6.39 14.15-6.39 7.77 0 14.15 6.39L480-428.31l169.85-169.84q5.61-5.62 13.77-6 8.15-.39 14.53 6 6.39 6.38 6.39 14.15 0 7.77-6.39 14.15L502.62-394.31q-5.24 5.23-10.7 7.35-5.46 2.11-11.92 2.11t-11.92-2.11Z"/></svg>
         </div>
 
     </section>
 
     <section class="grid">
 
+        <div class="widget art widget_left" id="widget">
+            <div class="side">
+                <div>
+                    <h2>My Artwork</h2>
+                    <p class="normal">Some of my artwork which was made in blender!</p>
+                    <hr>
+                    <p id="artworktext">Probaly one of the best ones I've made. It is a close up image of a realstic road with a fiat driving in the background.</p>
+                </div>
+                <div class="row">
+                    <span class="material-symbols-rounded toolbar_button" onclick="imagepreview()">open_in_full</span>
+                    <span class="material-symbols-rounded toolbar_button" onclick="imageslide(-1)">chevron_left</span>
+                    <span class="material-symbols-rounded toolbar_button" onclick="imageslide(1)">chevron_right</span>
+                </div>
+            </div>
+            <div class="main" id="artworkimg">
+
+            </div>
+        </div>
+
         <div class="widget calc widget_left" id="widget">
-            <span class="material-symbols-rounded" onclick="window.open('https://wolfthee.github.io/calc');">open_in_new</span>
+            <span class="material-symbols-rounded" onclick="window.open('/calc');">open_in_new</span>
             <img src="images/calc_ss.png">
-            <div class="overlay" onclick="window.open('https://wolfthee.github.io/calc');">
+            <div class="overlay" onclick="window.open('/calc');">
                 <h2>Calc</h2>
                 <p class="normal">A very advance Calc</p>
                 <p class="hidden">Power with Synth AI, this calc can solve all types of questions!</p>
@@ -81,9 +117,9 @@
         </div>
 
         <div class="widget synth widget_right" id="widget">
-            <span class="material-symbols-rounded" onclick="window.open('https://wolfthee.github.io/synth-ai');">open_in_new</span>
+            <span class="material-symbols-rounded" onclick="window.open('/synth-ai');">open_in_new</span>
             <img src="images/synth_ss.png">
-            <div class="overlay" onclick="window.open('https://wolfthee.github.io/synth-ai');">
+            <div class="overlay" onclick="window.open('/synth-ai');">
                 <h2>Synth AI - Your personal AI</h2>
                 <p class="normal">Synth AI, a AI chatbot I made!</p>
                 <p class="hidden">Power by a custom AI model built from scrach, Synth AI is ready for all the tasks you give it!</p>
@@ -143,6 +179,7 @@
             <button onclick="showmodal('Hia ^w^')"> ^w^ more comming soon....</button>
             <button onclick="bug()"> 𖢥 Im a bug</button>
         </div>
+        <small>“Do to others as you would have them do to you.” — Luke 6:31</small>
     </footer>
 
 

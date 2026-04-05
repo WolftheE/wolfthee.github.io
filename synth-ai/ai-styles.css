@@ -1,12 +1,12 @@
 :root {
-    --background-color: rgb(, 21, 33);
+    --background-color: rgb(0, 5, 13);
 
     --radius: 8px;
 
-    --widget-color: rgba(10, 10, 10, 0.5);
-    --widget-border: rgb(255, 255, 255, 0.1);
+    --widget-color: rgba(255, 255, 255, 0.01);
+    --widget-border: rgb(255, 255, 255, 0.05);
 
-    --button-background: rgba(255, 255, 255, 0.15);
+    --button-background: rgba(255, 255, 255, 0.05);
 
 
     --main-color: #a86b11;
@@ -23,12 +23,29 @@
 }
 
 body {
+    background: radial-gradient(125% 125% at 50% 90%, var(--background-color) 65%, var(--main-color) 150%);
     margin: 0;
+    height: 100vh;
+    width: 100vw;
 
-    background-color: rgb(14,12,10);
+    background-color: var(--background-color);
     
     color: white;
 
+
+
+}
+
+.bg {
+    background-color: transparent;
+    opacity: 0.5;
+    background-image:  radial-gradient(var(--button-background) 1.5px, transparent 0.9px), radial-gradient(var(--button-background) 0.9500000000000001px, transparent 0.9500000000000001px);
+    background-size: 32px 32px;
+    background-position: 0 0,19px 19px;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: -10;
 }
 
 
@@ -51,6 +68,7 @@ html {
     }
     .message_pfp_home {
         display: none;
+
     }
     
 }
@@ -90,7 +108,7 @@ html {
 
 .background {
     position: fixed;
-    animation: moveshape 20s cubic-bezier(0.4, 0.1, 0.4, 0.95) infinite alternate;
+    animation: moveshape 40s cubic-bezier(0.4, 0.1, 0.4, 0.95) infinite alternate;
     z-index: -1;
 }
 
@@ -102,8 +120,10 @@ html {
         var(--fourth-color)100%
     );
     border-radius: 30% 70% 70% 40% / 30% 40% 70% 70%;
-    filter: blur(75px);
-    animation: changeshape 6s cubic-bezier(0.455, 0.3, 0.515, 0.955) infinite, cubic-bezier(0.455, 0.3, 0.515, 0.955) 12s infinite;
+    filter: blur(100px);
+    opacity: 0.2;
+    scale: 2;
+    animation: changeshape 15s cubic-bezier(0.455, 0.3, 0.515, 0.955) infinite, rotate cubic-bezier(0.455, 0.3, 0.515, 0.955) 120s infinite;
 }
 
 
@@ -207,13 +227,21 @@ html {
 
 
 .widget {
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 10px rgba(255, 166, 0, 0.3);
     background-color: var(--widget-color);
-    min-height: 10vh;
+    border-top: 1px solid var(--widget-border);
+    outline: 1px solid var(--main-color);
+    min-height: 5vh;
     padding: 20px;
     border-radius: 20px;
     line-height: 1.1;
-    transition: all 0.5s;
+    transition: all 0.5s ease-out;
+    backdrop-filter: blur(15px) brightness(0.9);
+
+    &:hover {
+        scale: 1.1;
+    }
+    
 }
 
 .content {
@@ -225,8 +253,14 @@ html {
     justify-content: space-between;
 }
 .message_pfp_home {
-    width: 3.5em;
-    border-radius: 50% 50% 50% 50%;
+    width: 4em;
+    border-radius: 50% 50% 50% 5%;
+    transition: all 0.5s ease-out;
+
+    &:hover {
+        scale: 1.2;
+        border-radius: 50% 50% 5% 50%;
+    }
 }
 
 input, textarea {
@@ -255,14 +289,17 @@ input, textarea {
 
 .big-widget {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px) brightness(0.9);
     margin: auto;
     width: 80vw;
     height: 85vh;
-    background-color: var(--widget-color);
+    background: linear-gradient( rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.1) 50%);
     overflow: hidden;
     display: none;
     flex-direction: column;
     justify-content: space-between;
+
+    border-top: 1px solid rgba(255,255,255,0.1) !important;
 
     border: 1px solid var(--widget-border);
     border-radius: 10px;
@@ -285,6 +322,12 @@ input, textarea {
 .type_area > .row {
     height: fit-content;
     min-height: 42px;
+
+    transition: scale 0.4s ease-out;
+
+    &:hover {
+        scale: 1.05;
+    }
 }
 
 
@@ -311,6 +354,12 @@ input, textarea {
 
 h1, h3 {
     text-shadow: 2px 2px 20px rgba(255, 255, 255, 0.5);
+    transition: scale 0.4s ease-out, text-shadow 0.4s ease-out;
+
+    &:hover {
+        text-shadow: 2px 2px 25px rgba(255, 255, 255, 0.7);
+        scale: 1.1;
+    }
 }
 
 hr {
@@ -341,7 +390,7 @@ a, button {
     border-radius: var(--radius);
 
     &:hover {
-        box-shadow: 4px 4px 15px rgba(255, 255, 255, 0.5);
+        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
         margin: 5px 2px;
         padding: 7px 15px;
         transition: 0.2s ease-out;
@@ -485,6 +534,10 @@ a, button {
     animation: dropdown 0.5s ease-out forwards;
 }
 
+.animatedchat {
+    animation: dropdownchat 0.5s ease-out forwards;
+}
+
 .message_ai_thinking  {
   height: 24px;
   width: 256px;
@@ -573,7 +626,18 @@ a, button {
 @keyframes dropdown {
     0% {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes dropdownchat {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
     }
     100% {
         opacity: 1;
@@ -611,23 +675,18 @@ a, button {
 @keyframes changeshape {
     0%, 100% {
         border-radius: 30% 70% 70% 40% / 30% 40% 70% 70%;
-        scale: 1 1;
     }
     20% {
         border-radius: 40% 65% 50% 50% / 40% 35% 20% 40%;
-        scale: 1.1 1.1;
     }
     40% {
         border-radius: 40% 65% 65% 30% / 40% 35% 20% 40%;
-        scale: 1.2 1.2;
     }
     60% {
         border-radius: 40% 65% 50% 50% / 40% 35% 70% 75%;
-        scale: 1.1 1.1;
     }
     80% {
         border-radius: 30% 50% 40% 40% / 50% 50% 50% 60%;
-        scale: 0.9 1.2;
     }
     
 }

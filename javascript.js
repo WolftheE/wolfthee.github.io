@@ -9,15 +9,71 @@ function closemodal() {
   document.getElementById('modal').classList.remove('animated')
 }
 
+
+// Image slideshow for my artwork showcase
+const imagesList = ['images/artwork/fiat_500_on_track.jpg', 
+    'images/artwork/kermit_krack_season_9_compressed.jpg', 
+    'images/artwork/protogen_looking_out_the_window_compressed.jpg', 
+    'images/artwork/fiat_upclose.jpg',
+    'images/artwork/Minecraft_but_in_eevee_next.jpg',
+    'images/artwork/ram_sticks.jpg',
+    'images/artwork/portal_radio_render.jpg']
+
+const imagesInfo = ["Probaly one of the best ones I've made. It's a close up image of a realistic road with a fiat driving in the background.", 
+    'A Minecraft render that I made for my friend! (Yes I have friends)', 
+    'An unfinshed attempt of me making a realistic looking protogen looking out a window.', 
+    'A close up render of a Fiat 500.',
+    "One of my early renders I've made when I was new to blender. It was me simply using Mineways to import my world into blender.", 
+    "give me it plz, im broke :(",
+    "Another early render I made, Portal themed!"]
+
+let slideindex = 0
+
+function imageslide(direction) {
+    slideindex += direction
+    console.log(imagesList.length )
+
+    if (slideindex > (imagesList.length - 1)) {
+        slideindex = 0;
+    } else if (slideindex < 0) {
+        slideindex = (imagesList.length -1);
+    }
+
+    console.log(imagesList[slideindex])
+    document.getElementById('artworkimg').style.backgroundImage = "url(" + imagesList[slideindex] + ")";
+    document.getElementById('artworktext').innerText = imagesInfo[slideindex];
+    document.getElementById('artworkimg_popup').src = imagesList[slideindex];
+}
+function imagepreview() {
+    document.getElementById('art_popup').showModal();
+    document.getElementById('art_popup').classList.add('animated')
+}
+
+// Easter Egg game - Pissman Jump
 function bug() {
   document.getElementById('modal').showModal();
   document.getElementById('modal').classList.add('animated')
   document.getElementById('modaltext').innerText = 'Why did you click on me? Well too late to change now, I WILL infect everything!';
   document.getElementById('blob').classList.add('blob_bug')
-  document.getElementById('pfp').src = "images/null.png";
+  document.getElementById('easter-eggs').classList.add('show-bug-widget')
+  document.getElementById('main-info-page').remove();
 }
 
-// Make thing move into view
+function showgame() {
+    if (window.matchMedia("(max-width: 900px)").matches) {
+        window.open('godot_game_build/');
+    } else {
+    document.getElementById('launch_game').remove();
+    const iframe = document.createElement('iframe')
+    iframe.src = "godot_game_build/"
+    iframe.append
+    document.getElementById('bug-widget').appendChild(iframe)
+    }
+}
+
+
+
+// Make Wigets move into view
 const elements = document.querySelectorAll('.widget');
 
 const observer = new IntersectionObserver((entries, observer) => {
@@ -39,11 +95,12 @@ elements.forEach(el => {
 
 
 
+
 // Idk I just stole this code from somewhere but I forgot
 
  // Create particle effect
 const particlesContainer = document.getElementById('particles-container');
-const particleCount = 80;
+const particleCount = 60;
 
 // Create particles
 for (let i = 0; i < particleCount; i++) {
@@ -134,7 +191,7 @@ document.addEventListener('mousemove', (e) => {
     
     // Animate outward
     setTimeout(() => {
-        particle.style.transition = 'all 2s ease-out';
+        particle.style.transition = 'all 1.5s ease-out';
         particle.style.left = `${mouseX + (Math.random() * 10 - 5)}%`;
         particle.style.top = `${mouseY + (Math.random() * 10 - 5)}%`;
         particle.style.opacity = '0';
@@ -142,7 +199,7 @@ document.addEventListener('mousemove', (e) => {
         // Remove after animation
         setTimeout(() => {
             particle.remove();
-        }, 2000);
+        }, 1500);
     }, 10);
     
     // Subtle movement of gradient spheres
