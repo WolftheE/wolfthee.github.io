@@ -9,6 +9,21 @@ function closemodal() {
   document.getElementById('modal').classList.remove('animated')
 }
 
+const menu = document.getElementById('context_menu');
+
+document.addEventListener('contextmenu', (e) => {
+    e.preventDefault(); // Stop default menu
+    //menu.style.visibility = 'visible';
+    menu.classList.add('visible-context-menu');
+    menu.style.left = `${e.pageX}px`;
+    menu.style.top = `${e.pageY}px`;
+});
+
+document.addEventListener('click', () => {
+    //menu.style.visibility = 'hidden'; // Hide on left click
+    menu.classList.remove('visible-context-menu');
+});
+
 
 // Image slideshow for my artwork showcase
 const imagesList = ['images/artwork/fiat_500_on_track.jpg', 
@@ -60,15 +75,7 @@ function bug() {
 }
 
 function showgame() {
-    if (window.matchMedia("(max-width: 900px)").matches) {
-        window.open('godot_game_build/');
-    } else {
-    document.getElementById('launch_game').remove();
-    const iframe = document.createElement('iframe')
-    iframe.src = "godot_game_build/"
-    iframe.append
-    document.getElementById('bug-widget').appendChild(iframe)
-    }
+    window.open('godot_game_build/');
 }
 
 
