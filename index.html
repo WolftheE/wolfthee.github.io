@@ -30,7 +30,9 @@
     </dialog>
 
     <context-menu id="context_menu">
-        <button onclick="showgame()">???</button>
+        <small>Hey you found my secret menu. Oh well don't expect these things to work right!</small>
+        <button onclick="showgamepanel()">???</button>
+        <button onclick="changetolighttheme()">Enable Light Theme (Beta!!!)</button>
     </context-menu>
 
 
@@ -47,6 +49,7 @@
     </div>
 
 
+
     
     <section>
 
@@ -55,15 +58,16 @@
 
                 <div class="inside-content">
                     <div class="Text-content">
-                        <h1>Hi I'm WolftheE</h1>
-                        <h3>Hello there! Welcome to my website QwQ</h3>
+                        <h1 id="welcome_message">Hia, I'm WolftheE</h1>
+                        <h3>Hello there! Welcome to my website >w<</h3>
                         <hr>
-                        <p>As you can see I'm a furry (protogen ^w^)</p>
+                        <p id="furry_message">As you can see I'm a furry (protogen ^w^)</p>
                         <p>I love computers and everything about how they work!</p>
-                        <p>I also love to code!</p>
-                        <p>I code in HTML, python and gdscript but I am learning flutter/dart</p>
-                        <p>I love Half-life and Portal</p>
+                        <p>I love to code!</p>
+                        <p>Plays an unhealthy amount of BTD6</p>
+                        <p>I love Half-life, Portal, Mc and other peak games</p>
                         <p>I love my Blåhaj</p>
+                        <small class="spoiler-text">may or may not be a femboy >w<</small>
                         <br>
                     </div>
 
@@ -157,7 +161,7 @@
             <span class="material-symbols-rounded" onclick="window.open('https://github.com/WolftheE/Wolf-Vivaldi');">open_in_new</span>
             <img src="images/vivaldi_ss.jpg">
             <div class="overlay" onclick="window.open('https://github.com/WolftheE/Wolf-Vivaldi');">
-                <h2>Wolf Vivaldi</h2>
+                <h2>Wolfe's Vivaldi</h2>
                 <p class="normal">A theme for Vivaldi</p>
                 <p class="hidden">A theme that makes Vivaldi to my liking.</p>
             </div>
@@ -166,25 +170,19 @@
         <div class="widget question widget_left" id="widget">
             <img src="images/wallpaper.png">
             <div class="overlay_static">
-                <h2>Common Questions I get asked about me!</h2>
-                <hr>
-                <div align="left">
-                    <p>Q: Why are you a furry?</p>
-                    <p>A: Well at the time, I liked wolves and technology. I learned that protogens are a thing and yeah....</p>
-                    <p>---------------------------------------------------------</p>
-                    <p>Q: Why do you use Linux?</p>
-                    <p>A: For me Linux just works better and the way I want it to. It runs so much faster on my old pc and most of the games I like works with proton anyways.</p>
-                    <p>---------------------------------------------------------</p>
-                    <p>(You can just ask me anything on discord lol)</p>
+                <div class="row">
+                    <h2>But the real question is: </h2>
+                    <h2 class="spoiler-text">When is Half-Life 3?</h2>
                 </div>
+                <hr>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="row">
-            <button onclick="showmodal('Hia ^w^')"> ^w^ more comming soon....</button>
-            <button onclick="bug()"> 𖢥 Im a bug</button>
+            <button onclick="showmodal('Hia ^w^')"> ^w^ </button>
+            <button onclick="bug()"> ??? </button>
         </div>
         <small>“Do to others as you would have them do to you.” — Luke 6:31</small>
     </footer>

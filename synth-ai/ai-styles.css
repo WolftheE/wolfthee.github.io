@@ -113,7 +113,7 @@ html {
 }
 
 .blob {
-    width: 25vw;
+    width: 34vw;
     aspect-ratio: 1/1;
     background: linear-gradient(
         var(--main-color) 50%,
@@ -122,7 +122,6 @@ html {
     border-radius: 30% 70% 70% 40% / 30% 40% 70% 70%;
     filter: blur(100px);
     opacity: 0.2;
-    scale: 2;
     animation: changeshape 15s cubic-bezier(0.455, 0.3, 0.515, 0.955) infinite, rotate cubic-bezier(0.455, 0.3, 0.515, 0.955) 120s infinite;
 }
 

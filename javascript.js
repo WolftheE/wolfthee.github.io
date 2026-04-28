@@ -64,11 +64,35 @@ function imagepreview() {
     document.getElementById('art_popup').classList.add('animated')
 }
 
+// light theme lol
+function changetolighttheme() {
+    document.getElementById('pfp').src = '/images/synth.png';
+    document.getElementById('welcome_message').innerText = "Hi, I'm Celeron"
+    document.getElementById('furry_message').innerText = "As you can see I'm a furry (Synth, Beep Boop)"
+
+    //first get the root scene
+    var root = document.querySelector(':root');
+    root.style.setProperty('--background-color', 'rgb(250, 240, 220)');
+    root.style.setProperty('--widget-background', 'rgba(134, 134, 134, 0.2)');
+    root.style.setProperty('--button-background', 'rgba(200, 200, 200, 0.2)');
+    root.style.setProperty('--font-color', 'black');
+    root.style.setProperty('--font-background', 'white');
+
+    root.style.setProperty('--main-color', '#c1951250');
+    
+}
+
 // Easter Egg game - Pissman Jump
 function bug() {
   document.getElementById('modal').showModal();
   document.getElementById('modal').classList.add('animated')
-  document.getElementById('modaltext').innerText = 'Why did you click on me? Well too late to change now, I WILL infect everything!';
+  document.getElementById('modaltext').innerText = 'Click click click, I like to click buttons that idk what it does. Maybe I should scroll up.';
+  document.getElementById('blob').classList.add('blob_bug')
+  document.getElementById('easter-eggs').classList.add('show-bug-widget')
+  document.getElementById('main-info-page').remove();
+}
+
+function showgamepanel() {
   document.getElementById('blob').classList.add('blob_bug')
   document.getElementById('easter-eggs').classList.add('show-bug-widget')
   document.getElementById('main-info-page').remove();
