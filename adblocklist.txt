@@ -2,8 +2,6 @@
 ! Title: Allow some trackers from some sources to attempt to fix problems for myself (WolftheE)
 ! Last modified: 5 May 2026 9:27 UTC
 ! Expires: 7 days (update frequency)
-! Homepage: https://vivaldi.com/
-! Licence: Copyright (c) 2020 - 2025 Vivaldi Technologies AS. All rights reserved
 
 ! Cloudflare trackers (fixes some senstive websites)
 @@||cloudflareinsights.com^$third-party
