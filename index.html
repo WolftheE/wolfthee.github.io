@@ -1,190 +1,197 @@
 <!DOCTYPE html>
 <html>
 <head>
+     <meta name="theme-color" content="#2765F5">
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,25,100..1000,96,468,79,-203,738,514,712&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0&icon_names=chevron_left,chevron_right,open_in_full,open_in_new" />
      <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" href="https://www.nerdfonts.com/assets/css/webfont.css" />
      <title>WolftheE's Website</title>
      <link rel="icon" type="image/x-icon" href="images/proto.jpg">
-     <meta name="theme-color" content="#2765F5">
+
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
 </head>
 <body>
 
-    <dialog id="modal" class="modal">
-        <p id="modaltext">Some text here that will change</p>
-        <div>
-            <button class="close_button" onclick="closemodal()"> Ok </button>
-        </div>
-    </dialog>
+    <popup id="popup">
+        <titlebar>
+            <img src="resources/go-up.svg">
+            <img src="resources/go-down.svg">
+            <img class="close" src="resources/window-close.svg" onclick="hidepopup()">
+        </titlebar>
+        <p id="popuptext">Hey there, right now this website is a work in progress so stuff will be unfinshed!</p>
+        <button onclick="hidepopup()">Close</button>
+    </popup>
 
-    <dialog id="art_popup" class="modal artpreview">
-        <img src="/images/artwork/fiat_500_on_track.jpg" id="artworkimg_popup" >
-        <div>
-            <button class="close_button" onclick="document.getElementById('art_popup').close();"> Ok </button>
-        </div>
-    </dialog>
+    <popup id="artpopup">
+        <titlebar>
+            <img src="resources/go-up.svg">
+            <img src="resources/go-down.svg">
+            <img class="close" src="resources/window-close.svg" onclick="closeartwork()">
+        </titlebar>
+        <row class="artworkcontain">
+            <div>
+                <h1>Some of my art</h1>
+                <hr>
+                <p id="artworktext">Probaly one of the best ones I've made. It's a close up image of a realistic road with a fiat driving in the background.</p>
+                <row class="toolbar">
+                    <button onclick="imageslide(-1)"><</button>
+                    <button onclick="imageslide(1)">></button>
+                    <button onclick="fullscreenart()">Fullscreen</button>
+                    <button onclick="closeartwork()">Close</button>
+                </row>
+            </div>
+            <div id="artworkimg"></div>
+        </row>
+    
+    </popup>
 
     <context-menu id="context_menu">
-        <small>Hey you found my secret menu. Oh well don't expect these things to work right!</small>
-        <button onclick="showgamepanel()">???</button>
-        <button onclick="changetolighttheme()">Enable Light Theme (Beta!!!)</button>
+        <small>Hia there ~w~</small>
+        <button onclick="window.open('/godot_game_build');">???</button>
+        <button onclick="changetolighttheme()">Enable Light Theme</button>
     </context-menu>
 
+    <background id="background"></background>
 
-
-
-
-    <div class="particles-cover">
-        <div class="particles-container" id="particles-container"> </div>
-    </div>
-
-
-    <div class="container">
-        <div id="blob" class="blob"></div>
-    </div>
-
-
-
-    
-    <section>
-
-        <div class="main-content" id="main-info-page">
-            <div class="widget top-widget">
-
-                <div class="inside-content">
-                    <div class="Text-content">
-                        <h1 id="welcome_message">Hia, I'm WolftheE</h1>
-                        <h3>Hello there! Welcome to my website >w<</h3>
-                        <hr>
-                        <p id="furry_message">As you can see I'm a furry (protogen ^w^)</p>
-                        <p>I love computers and everything about how they work!</p>
-                        <p>I love to code!</p>
-                        <p>Plays an unhealthy amount of BTD6</p>
-                        <p>I love Half-life, Portal, Mc and other peak games</p>
-                        <p>I love my Blåhaj</p>
+    <section class="top">
+        <widget class="window">
+            <div>
+                <img src="images/proto.jpg" id="pfp" onclick="showpopup('Boop >w<')">
+            </div>
+            <div id="bio">
+                <h1 style="color: var(--main-color)">Hello there ^w^</h1>
+                <hr>
+                <row style="gap:4px;">
+                    <div style="color: var(--main-color); opacity: 1;">
+                        <p class="nf nf-fa-paw"></p>
+                        <p class="nf nf-linux-tux"></p>
+                        <p class="nf nf-fa-code"></p>
+                        <p class="nf nf-md-balloon"></p>
+                        <p class="nf nf-md-shark" onclick="window.open('/kk_images/blahaj.jpg')"></p>
+                        <p class="nf nf-fa-question"></p>
+                    </div>
+                    <div style="opacity: 0.65;">
+                        <p>: As you can see I'm a furry (protogen ^w^)</p>
+                        <p>: I love computers and Linux</p>
+                        <p>: I love coding</p>
+                        <p>: Plays an unhealthy amount of BTD6</p>
+                        <p>: I love my Blåhaj</p>
                         <small class="spoiler-text">may or may not be a femboy >w<</small>
-                        <br>
                     </div>
-
-                    <div class="row">
-                        <a class="start" href="https://github.com/WolftheE">Github</a>
-                        <a href="https://youtube.com/@wolfthee">Youtube</a>
-                        <a href="https://wolfthee.itch.io">My Itch.io</a>
-                        <button onclick="showmodal('Discord username: @wolfthee')">Discord</button>
-                    </div>
-                </div>
-                    <img class="pfp" alt="test" id="pfp" src="images/proto.jpg" width="225vw" height="225vw" onclick="showmodal('boop >w<')">
+                </row>
+                <row style="gap: 8px; opacity: 0.75;">
+                    <div class="square" style="background-color: var(--red);"></div>
+                    <div class="square" style="background-color: var(--orange);"></div>
+                    <div class="square" style="background-color: var(--yellow);"></div>
+                    <div class="square" style="background-color: var(--green);"></div>
+                    <div class="square" style="background-color: var(--cyan);"></div>
+                    <div class="square" style="background-color: var(--blue);"></div>
+                    <div class="square" style="background-color: var(--purple);"></div>
+                    <div class="square" style="background-color: var(--font-color);"></div>
+                    <div class="square" style="background-color: var(--background-color);"></div>
+                </row>
+                <br>
             </div>
-        </div>
-        <div class="main-content easter-egg" id="easter-eggs">
-            <div class="widget bug-widget" id="bug-widget">
-                <div id="launch_game">
-                    <button onclick="showgame()">???</button>
-                </div>
-            </div>
-        </div>
+            <titlebar>
+                <img src="resources/go-up.svg">
+                <img src="resources/go-down.svg">
+                <img class="close" src="resources/window-close.svg">
+            </titlebar>
 
-        <div class="scroll">
-            <p>Scroll Down</p>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M468.08-386.96q-5.46-2.12-10.7-7.35L281.85-569.85q-5.62-5.61-6-13.77-.39-8.15 6-14.53 6.38-6.39 14.15-6.39 7.77 0 14.15 6.39L480-428.31l169.85-169.84q5.61-5.62 13.77-6 8.15-.39 14.53 6 6.39 6.38 6.39 14.15 0 7.77-6.39 14.15L502.62-394.31q-5.24 5.23-10.7 7.35-5.46 2.11-11.92 2.11t-11.92-2.11Z"/></svg>
-        </div>
-
+            <terminal-text>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 77" xmlns:bx="https://boxy-svg.com">
+                    <rect width="77" height="77" style="fill: rgb(216, 216, 216);"/>
+                    <rect width="77" height="77" style="fill: var(--main-color);" x="77"/>
+                    <path d="M 132.574 4.704 L 171.074 43.206 L 94.074 43.206 L 132.574 4.704 Z" bx:shape="triangle 94.074 4.704 77 38.502 0.5 0 1@7e436958" style="fill: rgb(216, 216, 216); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0, 1, -1, 0, -38.5, 14)"/>
+                    <rect width="77" height="77" style="fill: var(--main-color);" x="150"/>
+                    <path d="M 132.574 4.704 L 171.074 43.206 L 94.074 43.206 L 132.574 4.704 Z" bx:shape="triangle 94.0 4.704 77 38.502 0.5 0 1@7e436958" style="transform-origin: 132.574px 23.955px; fill: var(--main-color);" transform="matrix(0, 1, -1, 0, 112, 15)"/>
+                </svg>
+                <row style="gap: 20px;">
+                    <p class="nf nf-linux-tux"></p>
+                    <p class="nf nf-fa-home" style="color: var(--font-color)"> ~</p>
+                </row>
+                <p style="color: var(--green);">❯</p>
+            </terminal-text>
+        </widget>
     </section>
 
-    <section class="grid">
-
-        <div class="widget art widget_left" id="widget">
-            <div class="side">
-                <div>
-                    <h2>My Artwork</h2>
-                    <p class="normal">Some of my artwork which was made in blender!</p>
-                    <hr>
-                    <p id="artworktext">Probaly one of the best ones I've made. It is a close up image of a realstic road with a fiat driving in the background.</p>
-                </div>
-                <div class="row">
-                    <span class="material-symbols-rounded toolbar_button" onclick="imagepreview()">open_in_full</span>
-                    <span class="material-symbols-rounded toolbar_button" onclick="imageslide(-1)">chevron_left</span>
-                    <span class="material-symbols-rounded toolbar_button" onclick="imageslide(1)">chevron_right</span>
-                </div>
-            </div>
-            <div class="main" id="artworkimg">
-
-            </div>
-        </div>
-
-        <div class="widget calc widget_left" id="widget">
+    <section class="grids">
+        <widget class="details">
+            <div class="background_details"></div>
+            <h1>Quick Links</h1>
+            <hr>
+            <br>
+            <row style="gap: 16px;">
+                <a href="https://github.com/WolftheE">Github</a>
+                <a href="https://wolfthee.itch.io">Itch.io</a>
+                <a href="https://www.youtube.com/@WolftheE">Youtube</a>
+                <button onclick="showpopup('Discord username: @wolfthee')">Discord</button>
+                <button style="border: 1px solid var(--main-color);" onclick="artworkpopup()">Artworks >w<</button>
+            </row>
+        </widget>
+        <widget class="calc">
             <span class="material-symbols-rounded" onclick="window.open('/calc');">open_in_new</span>
-            <img src="images/calc_ss.png">
-            <div class="overlay" onclick="window.open('/calc');">
+            <overlay>
                 <h2>Calc</h2>
-                <p class="normal">A very advance Calc</p>
-                <p class="hidden">Power with Synth AI, this calc can solve all types of questions!</p>
-            </div>
-        </div>
-
-        <div class="widget synth widget_right" id="widget">
+                <p>A Calc</p>
+            </overlay>
+        </widget>
+        <widget class="synth">
             <span class="material-symbols-rounded" onclick="window.open('/synth-ai');">open_in_new</span>
-            <img src="images/synth_ss.png">
-            <div class="overlay" onclick="window.open('/synth-ai');">
-                <h2>Synth AI - Your personal AI</h2>
-                <p class="normal">Synth AI, a AI chatbot I made!</p>
-                <p class="hidden">Power by a custom AI model built from scrach, Synth AI is ready for all the tasks you give it!</p>
-            </div>
-        </div>
-
-        <div class="widget better-ytm widget_left" id="widget">
+            <overlay>
+                <h2>Synth AI</h2>
+                <p>A powerful custom AI chatbot built from scratch!</p>
+                <p class="discription">Power by a custom AI model built from scrach, Synth AI is ready for all the tasks you give it!</p>
+            </overlay>
+        </widget>
+        <widget class="better-ytm">
             <span class="material-symbols-rounded" onclick="window.open('https://github.com/WolftheE/better-ytm');">open_in_new</span>
-            <img src="images/better-ytm.png">
-            <div class="overlay" onclick="window.open('https://github.com/WolftheE/better-ytm');">
+            <overlay>
                 <h2>Better-YTM</h2>
-                <p class="normal">A theme for Youtube music and better lyrics!</p>
-                <p class="hidden">A small CSS theme that makes Youtube Music so much more modern without changing the whole layout!</p>
-            </div>
-        </div>
-
-        <div class="widget pissman widget_left" id="widget">
+                <p>A custom YTM theme that makes YTM more modern!</p>
+                <p class="discription">A small CSS theme that makes Youtube Music so much more modern without changing the whole layout!</p>
+            </overlay>
+        </widget>
+        <widget class="pissman">
             <span class="material-symbols-rounded" onclick="window.open('https://wolfthee.itch.io/pissman-legacy');">open_in_new</span>
-            <img src="images/pissman_ss.png">
-            <div class="overlay" onclick="window.open('https://wolfthee.itch.io/pissman-legacy');">
+            <overlay>
                 <h2>Pissman</h2>
-                <p class="normal">A 2d Platformer Game Made by me ^w^</p>
-                <p class="hidden">A stupid game that I had to make in year 9. Its a 2d platfomer game with some kind of lore. You got corupted and went into an unknown world and you need to try to get home!</p>
-            </div>
-        </div>
-
-        <div class="widget vivaldi widget_right" id="widget">
+                <p>A 2d Platformer Game Made by me ^w^</p>
+                <p class="discription">A stupid game that I had to make in year 9. Its a 2d platfomer game with some kind of lore. You got corupted and went into an unknown world and you need to try to get home!</p>
+            </overlay>
+        </widget>
+        <widget class="vivaldi">
             <span class="material-symbols-rounded" onclick="window.open('https://github.com/WolftheE/Wolf-Vivaldi');">open_in_new</span>
-            <img src="images/vivaldi_ss.jpg">
-            <div class="overlay" onclick="window.open('https://github.com/WolftheE/Wolf-Vivaldi');">
+            <overlay>
                 <h2>Wolfe's Vivaldi</h2>
-                <p class="normal">A theme for Vivaldi</p>
-                <p class="hidden">A theme that makes Vivaldi to my liking.</p>
+                <p>A theme that makes Vivaldi to my liking.</p>
+            </overlay>
+        </widget>
+        <widget class="question">
+            <div>
+                <row style="gap: 8px;">
+                    <h1>But the real question is</h1>
+                    <h1 class="spoiler-text">When is Half-Life 3?</h1>
+                </row>
             </div>
-        </div>
-
-        <div class="widget question widget_left" id="widget">
-            <img src="images/wallpaper.png">
-            <div class="overlay_static">
-                <div class="row">
-                    <h2>But the real question is: </h2>
-                    <h2 class="spoiler-text">When is Half-Life 3?</h2>
-                </div>
-                <hr>
-            </div>
-        </div>
+        </widget>
     </section>
 
     <footer>
-        <div class="row">
-            <button onclick="showmodal('Hia ^w^')"> ^w^ </button>
-            <button onclick="bug()"> ??? </button>
-        </div>
-        <small>“Do to others as you would have them do to you.” — Luke 6:31</small>
+        <row style="gap: 16px;">
+            <button onclick="window.open('/godot_game_build');">???</button>
+            <button onclick="changetolighttheme()" id="flashbangbutton">Flashbang mode</button>
+            <button onclick="showpopup('Hey there >w<')">Hia ^w^</button>
+        </row>
+        <row style="gap: 8px; opacity: 0.5;">
+            <i class="nf nf-md-shark" onclick="window.open('/kk_images/blahaj.jpg')"></i>
+            <small >“Do to others as you would have them do to you.” — Luke 6:31</small>
+            <i class="nf nf-fa-cross" onclick="window.open('https://bible.com')"></i>
+        </row>
     </footer>
 
 
