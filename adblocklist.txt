@@ -1,0 +1,10 @@
+! Version: 1.0
+! Title: Allow some trackers from some sources to attempt to fix problems for myself (WolftheE)
+! Last modified: 5 May 2026 9:27 UTC
+! Expires: 7 days (update frequency)
+
+! Cloudflare trackers (fixes some senstive websites)
+@@||cloudflareinsights.com^$third-party
+
+! Google stuff
+@@||accounts.google.com/gsi/log
