@@ -4,7 +4,7 @@
     --font-background: rgb(0,0,0);
 
     --radius: 6px;
-    --blur: blur(32px);
+    --blur: blur(16px);
 
     --widget-background: rgba(10, 10, 10, 0.2);
     --widget-border: rgb(255, 255, 255, 0.1);
@@ -102,7 +102,6 @@ widget {
     background-color: var(--widget-background);
     border-radius: var(--radius);
     outline: 1px solid var(--widget-border);
-    backdrop-filter: var(--blur);
     display: block;
     position: relative;
     box-shadow: var(--shadow);
@@ -125,6 +124,7 @@ column {
 .window {
     width: 30vw;
     height: 30vh;
+    backdrop-filter: var(--blur);
 
     min-width: 600px;
     min-height: 350px;
@@ -528,7 +528,7 @@ popup {
     min-height: 150px;
 
     background-color: var(--widget-background);
-    border: 1px solid var(--widget-border);
+    outline: 1px solid var(--widget-border);
     border-radius: var(--radius);
     z-index: 100;
 
@@ -583,14 +583,23 @@ popup {
     }
 
     .question {
-        font-size: 0.75em;
+        font-size: 0.65em;
     }
 
-    .overlay {
+
+    widget > overlay {
         height: 100%;
+
+        & > .discription {
+            height: 100%;
+        }
     }
-    .discription {
-        height: 100%;
+
+    .grids > widget {
+        background-size: cover;
+        &:hover {
+            background-size: cover;
+        }
     }
 
     
@@ -656,3 +665,5 @@ popup {
         gap: 16px;
     }
 }
+
+

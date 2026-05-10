@@ -144,14 +144,14 @@ window.addEventListener('scroll', function() {
   
   // Calculate new scale: start at 1.5 and decrease as scroll increases
   // Adjust the divisor (1000) to control the speed of the zoom
-  let newScale = 1.1 - (scrollPos / 3000);
+  let newScale = 1.1 - (scrollPos / 3500);
   let opacity = 1 - (scrollPos / 500)
-  let blur = ((scrollPos / 100) * 10)
+  let blur = ((scrollPos / 200) * 10)
   
   // Ensure the image doesn't zoom out past its original size (scale 1)
-  if (newScale < 0.9) newScale = 0.9;
+  if (newScale < 0.95) newScale = 0.95;
   if (opacity < 0) opacity = 0;
-  if (blur > 50) blur = 50;
+  if (blur > 32) blur = 0;
   
   img.style.transform = `scale(${newScale})`;
   img.style.opacity =  `${opacity}`
