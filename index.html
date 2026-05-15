@@ -55,10 +55,14 @@
         <button onclick="changetolighttheme()">Enable Light Theme</button>
     </context-menu>
 
-    <background id="background"></background>
+    <!--<background id="background"></background> -->
+
+    <div id="particles-js"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
     <section class="top">
-        <widget class="window">
+        <widget class="window" id="topwidget">
             <div>
                 <img src="images/proto.jpg" id="pfp" onclick="showpopup('Boop >w<')">
             </div>
@@ -117,6 +121,11 @@
                 <p style="color: var(--green);">❯</p>
             </terminal-text>
         </widget>
+
+        <scroll-tooltip id="scroll">
+            <small>Scroll Down</small>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M468.08-386.96q-5.46-2.12-10.7-7.35L281.85-569.85q-5.62-5.61-6-13.77-.39-8.15 6-14.53 6.38-6.39 14.15-6.39 7.77 0 14.15 6.39L480-428.31l169.85-169.84q5.61-5.62 13.77-6 8.15-.39 14.53 6 6.39 6.38 6.39 14.15 0 7.77-6.39 14.15L502.62-394.31q-5.24 5.23-10.7 7.35-5.46 2.11-11.92 2.11t-11.92-2.11Z"/></svg>
+        </scroll-tooltip>
     </section>
 
     <section class="grids">
@@ -133,46 +142,46 @@
                 <button style="border: 1px solid var(--main-color);" onclick="artworkpopup()">Artworks >w<</button>
             </row>
         </widget>
-        <widget class="calc">
-            <span class="material-symbols-rounded" onclick="window.open('/calc');">open_in_new</span>
+        <widget class="calc widget-left" onclick="window.open('/calc');">
+            <span class="material-symbols-rounded">open_in_new</span>
             <overlay>
                 <h2>Calc</h2>
                 <p>A Calc</p>
             </overlay>
         </widget>
-        <widget class="synth">
-            <span class="material-symbols-rounded" onclick="window.open('/synth-ai');">open_in_new</span>
+        <widget class="synth widget-right" onclick="window.open('/synth-ai');">
+            <span class="material-symbols-rounded">open_in_new</span>
             <overlay>
                 <h2>Synth AI</h2>
                 <p>A powerful custom AI chatbot built from scratch!</p>
                 <p class="discription">Power by a custom AI model built from scrach, Synth AI is ready for all the tasks you give it!</p>
             </overlay>
         </widget>
-        <widget class="better-ytm">
-            <span class="material-symbols-rounded" onclick="window.open('https://github.com/WolftheE/better-ytm');">open_in_new</span>
+        <widget class="better-ytm widget-left" onclick="window.open('https://github.com/WolftheE/better-ytm');">
+            <span class="material-symbols-rounded">open_in_new</span>
             <overlay>
                 <h2>Better-YTM</h2>
                 <p>A custom YTM theme that makes YTM more modern!</p>
                 <p class="discription">A small CSS theme that makes Youtube Music so much more modern without changing the whole layout!</p>
             </overlay>
         </widget>
-        <widget class="pissman">
-            <span class="material-symbols-rounded" onclick="window.open('https://wolfthee.itch.io/pissman-legacy');">open_in_new</span>
+        <widget class="pissman widget-left" onclick="window.open('https://wolfthee.itch.io/pissman-legacy');">
+            <span class="material-symbols-rounded">open_in_new</span>
             <overlay>
                 <h2>Pissman</h2>
                 <p>A 2d Platformer Game Made by me ^w^</p>
                 <p class="discription">A stupid game that I had to make in year 9. Its a 2d platfomer game with some kind of lore. You got corupted and went into an unknown world and you need to try to get home!</p>
             </overlay>
         </widget>
-        <widget class="vivaldi">
-            <span class="material-symbols-rounded" onclick="window.open('https://github.com/WolftheE/Wolf-Vivaldi');">open_in_new</span>
+        <widget class="vivaldi widget-right" onclick="window.open('https://github.com/WolftheE/Wolf-Vivaldi');">
+            <span class="material-symbols-rounded">open_in_new</span>
             <overlay>
                 <h2>Wolfe's Vivaldi</h2>
                 <p>A theme that makes Vivaldi to my liking.</p>
             </overlay>
         </widget>
-        <widget class="question">
-            <div>
+        <widget class="question widget-right">
+            <div style="height: 100%;">
                 <row style="gap: 8px;">
                     <h1>But the real question is</h1>
                     <h1 class="spoiler-text">When is Half-Life 3?</h1>
@@ -196,6 +205,7 @@
 
 
     <script src="javascript.js"></script>
+
 
 
 

@@ -49,7 +49,7 @@ function closebutton(numbers) {
 
 function checkAdBlock() {
   setTimeout(function() {
-  fetch('https://www3.doubleclick.net', {
+  fetch('https://ad.doubleclick.net', {
   method: "HEAD",
   mode: "no-cors",
   cache: "no-store",

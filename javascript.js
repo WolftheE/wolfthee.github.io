@@ -81,17 +81,136 @@ function changetolighttheme() {
 
     //first get the root scene
     var root = document.querySelector(':root');
-    root.style.setProperty('--background-color', 'rgb(250, 240, 220)');
+    root.style.setProperty('--background-color', 'rgb(255, 255, 255)');
     root.style.setProperty('--widget-background', 'rgba(225, 225, 225, 0.5)');
     root.style.setProperty('--button-background', 'rgba(255, 255, 255, 0.5)');
+    root.style.setProperty('--popup-background', 'rgba(227, 220, 195, 0.747)');
     root.style.setProperty('--font-color', 'black');
     root.style.setProperty('--font-background', 'white');
+
+    root.style.setProperty('--is-dark', '0');
+    root.style.setProperty('--tilebar-bright', '1');
+
 
     root.style.setProperty('--widget-border', 'rgba(0,0,0,0.1)');
 
     root.style.setProperty('--main-color', '#c19512');
 
     root.style.setProperty('--background-img', "url('/images/wallpaperlightmode.jpeg')");
+
+
+    particlesJS(
+{
+  "particles": {
+    "number": {
+      "value": 60,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
+    },
+    "color": {
+      "value": "#000000"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 4
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 0.4,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 124,
+      "color": "#000000",
+      "opacity": 0.4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "top-right",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": false,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+}
+)
     
 }
 
@@ -118,7 +237,7 @@ function showgame() {
 
 
 // Make Wigets move into view
-const elements = document.querySelectorAll('.widget');
+const elements = document.querySelectorAll('.grids > widget');
 
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
@@ -139,22 +258,147 @@ elements.forEach(el => {
 
 
 window.addEventListener('scroll', function() {
-  const img = document.getElementById('background');
-  let scrollPos = window.scrollY;
+  //const img = document.getElementById('background');
+  //let scrollPos = window.scrollY;
   
   // Calculate new scale: start at 1.5 and decrease as scroll increases
   // Adjust the divisor (1000) to control the speed of the zoom
-  let newScale = 1.1 - (scrollPos / 3500);
-  let opacity = 1 - (scrollPos / 500)
-  let blur = ((scrollPos / 200) * 10)
+  //let newScale = 1.05 - (scrollPos / 3500);
+  //let opacity = 1 - (scrollPos / 500)
+  //let blur = ((scrollPos / 200) * 10)
   
   // Ensure the image doesn't zoom out past its original size (scale 1)
-  if (newScale < 0.95) newScale = 0.95;
-  if (opacity < 0) opacity = 0;
-  if (blur > 32) blur = 0;
+  //if (newScale < 0.95) newScale = 0.95;
+  //if (opacity < 0) opacity = 0;
+  //if (blur > 32) blur = 0;
   
-  img.style.transform = `scale(${newScale})`;
-  img.style.opacity =  `${opacity}`
-  img.style.filter = `blur(${blur}px)`;
+  //img.style.transform = `scale(${newScale})`;
+  //img.style.opacity =  `${opacity}`
+  //img.style.filter = `blur(${blur}px)`;
+
+  const topwidget = document.getElementById('topwidget');
+  const scroll = document.getElementById('scroll');
+  let scrollPos = window.scrollY;
+
+  let transformpos = -(scrollPos / 2 );
+
+  if (transformpos < -200) transformpos = -200;
+
+  if (scrollPos != 0) scroll.style.display = `none`;
+
+  topwidget.style.transform = `translateY(${transformpos}px)`;
   
 });
+
+particlesJS(
+{
+  "particles": {
+    "number": {
+      "value": 60,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 4
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 0.08818766334760375,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 164,
+      "color": "#ffffff",
+      "opacity": 0.06,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "top-right",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": false,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+}
+)
