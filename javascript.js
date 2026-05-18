@@ -8,6 +8,9 @@ function hidepopup() {
 }
 
 
+function closenotification() {
+  document.getElementById('sidepopup').style.transform = 'translateX(500px)';
+}
 
 // context menu
 const menu = document.getElementById('context_menu');
@@ -149,7 +152,7 @@ function changetolighttheme() {
     },
     "line_linked": {
       "enable": true,
-      "distance": 124,
+      "distance": 116,
       "color": "#000000",
       "opacity": 0.4,
       "width": 1
@@ -319,7 +322,7 @@ particlesJS(
       }
     },
     "opacity": {
-      "value": 0.08818766334760375,
+      "value": 0.1,
       "random": true,
       "anim": {
         "enable": false,
@@ -340,7 +343,7 @@ particlesJS(
     },
     "line_linked": {
       "enable": true,
-      "distance": 164,
+      "distance": 116,
       "color": "#ffffff",
       "opacity": 0.06,
       "width": 1

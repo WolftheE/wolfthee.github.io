@@ -610,6 +610,20 @@ popup {
 }
 
 
+
+sidepopup {
+    position: fixed;
+    background-color: var(--widget-background);
+    padding: 16px;
+    outline: 1px solid var(--widget-border);
+    border-radius: var(--radius);
+    right: 16px;
+    top: 16px;
+
+    transition: transform 0.5s cubic-bezier(0.2, 0.1, 0.5, 1);
+}
+
+
 /* mobile ui */
 
 
@@ -644,7 +658,7 @@ popup {
         height: 100%;
 
         & > .discription {
-            height: 100%;
+            opacity: 1;
         }
     }
 
@@ -653,6 +667,10 @@ popup {
         &:hover {
             background-size: cover;
         }
+    }
+
+    sidepopup {
+        display: none;
     }
 
     

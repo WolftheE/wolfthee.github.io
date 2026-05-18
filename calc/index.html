@@ -5,9 +5,9 @@
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="styles.css">
-     <title>WolftheE's Website</title>
-     <link rel="icon" type="image/x-icon" href="images/proto.jpg">
-     <meta name="theme-color" content="#2765F5">
+     <title>Calc</title>
+     <link rel="icon" type="image/x-icon" href="/images/calc_icon.png">
+     <meta name="theme-color" content="#f8d262">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -16,188 +16,217 @@
     <h1>Best Calc for 2026!</h1>
     <p>Best calculator to use for 2026!</p>
 
+    <popup id="mobilewarning">
+        <h1>Note: This website will not work on mobile, sorry :(</h1>
+        <button onclick="document.getElementById('mobilewarning').style.display = 'none'" style="height: 64px;">Close</button>
+    </popup>
 
+    <navbar>
+        <img src="/images/calc_icon.png" width="44px" style="margin-left: 8px;">
+        <h2>Calc</h2>
+        <p style="margin-right: auto; opacity: 0;" id="prowatermark">Pro user</p>
+
+        <button onclick="showinfo()">Q&A / Support</button>
+        <button class="ai-button" onclick="launchai()">
+            <img class="ai-spark" src="/resources/ai-spark.svg" width="26px">
+            <p>Ask AI</p>
+        </button>
+        <button class="pro-button" id="probutton" onclick="showpropopup('Support Us By Unlocking Pro today!')">Get Pro</button>
+        <button onclick="showabout()">About</button>
+    </navbar>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
+		integrity="sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"
+		integrity="sha512-iphNRh6dPbeuPGIrQbCdbBF/qcqadKWLa35YPVfMZMHBSI6PLJh1om2xCTWhpVpmUyb4IvVS9iYnnYMkleVXLA=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"></script>
     <script src="javascript_calc.js"></script>
     <div class="main">
         <div class="calc-screen">
-            <div id="calc-operation"></div>
+            <br>
             <input id="calc-typed">
         </div>
         <div class="grid">
             <button class="action" onclick="showabout()">About</button>
-            <button class="action" onclick="showmodal()">Help</button>
-            <button class="action" onclick="showmodal()">Functions</button>
-            <button class="action" onclick="showmodal()">Ask AI</button>
-            <button class="action" onclick="showmodal()">(</button>
-            <button class="action" onclick="showmodal()">)</button>
-            <button class="action" onclick="showmodal()">%</button>
-            <button class="backspace" onclick="document.getElementById('calc-typed').value = '';">&#9003;</button>
+            <button class="action" onclick="showinfo()">Help</button>
+            <button class="action" onclick="showfunctionlist()">Functions</button>
+            <button class="ai-button" onclick="launchai()">
+                <img class="ai-spark" src="/resources/ai-spark.svg" width="26px">
+                <p>AI</p>
+            </button>
+            <button class="action" onclick="document.getElementById('calc-typed').value += '(';">(</button>
+            <button class="action" onclick="document.getElementById('calc-typed').value += ')';">)</button>
+            <button class="action" onclick="document.getElementById('calc-typed').value = '';">&#9003;</button>
+            <button class="action" onclick="document.getElementById('calc-typed').value += '/';">÷</button>
             <button onclick="document.getElementById('calc-typed').value += '7';">7</button>
             <button onclick="document.getElementById('calc-typed').value += '8';">8</button>
             <button onclick="document.getElementById('calc-typed').value += '9';">9</button>
-            <button class="action" onclick="document.getElementById('calc-typed').value += '÷';">÷</button>
+            <button class="action" onclick="document.getElementById('calc-typed').value += '*';">×</button>
             <button onclick="document.getElementById('calc-typed').value += '4';">4</button>
             <button onclick="document.getElementById('calc-typed').value += '5';">5</button>
             <button onclick="document.getElementById('calc-typed').value += '6';">6</button>
-            <button class="action" onclick="document.getElementById('calc-typed').value += '×';">×</button>
+            <button class="action" onclick="document.getElementById('calc-typed').value += '-';">-</button>
             <button onclick="document.getElementById('calc-typed').value += '1';">1</button>
             <button onclick="document.getElementById('calc-typed').value += '2';">2</button>
             <button onclick="document.getElementById('calc-typed').value += '3';">3</button>
-            <button class="action" onclick="document.getElementById('calc-typed').value += '-';">-</button>
-            <button onclick="document.getElementById('calc-typed').value += '0';">0</button>
-            <button class="action" onclick="showmodal()">.</button>
-            <button class="imporant" onclick="showmodal()">=</button>
             <button class="action" onclick="document.getElementById('calc-typed').value += '+';">+</button>
+            <button onclick="document.getElementById('calc-typed').value += '0';">0</button>
+            <button class="action" onclick="document.getElementById('calc-typed').value += '.';">.</button>
+            <button class="action" onclick="document.getElementById('calc-typed').value += '%';">%</button>
+            <button class="important" onclick="solve()">=</button>
         </div>
     </div>
 
-    <div class="ad_1" id="ad">
-        <h3>Are you enjoying this calc?</h3>
-        <p>Upgrade to premium to support us then!</p>
-        <button onclick="closebutton('ad')">Close</button>
-    </div>
+    <popup id="functionlist">
 
-    <div class="cookies" id="cookie">
-        <h3>Hello there!</h3>
-        <p>By clicking the "Accept" button below, you agree to our Cookies Policy</p>
-        <button onclick="closebutton('cookie')">Accept</button>
-        <button onclick="closebutton('cookie')">Reject</button>
-    </div>
-
-    <div class="ad" id="one">
-        <button class="close" onclick="closebutton('one')">x</button>
-        <iframe src="fake_ads/fakefemobyshop.html"></iframe>
-    </div>
-
-    <div class="ad" id="two">
-        <button class="close" onclick="closebutton('two')">x</button>
-        <iframe src="fake_ads/fakeappleadlol.html"></iframe>
-    </div>
-
-    <div class="ad" id="three">
-        <button class="close" onclick="closebutton('three')">x</button>
-        <iframe src="fake_ads/fakeappleadlol.html"></iframe>
-    </div>
-
-    <div class="ad" id="four">
-        <button class="close" onclick="closebutton('four')">x</button>
-        <iframe src="fake_ads/fakeshewantstotalk.html"></iframe>
-    </div>
-
-    <div class="ad" id="five">
-        <button class="close" onclick="closebutton('five')">x</button>
-        <iframe src="fake_ads/furryvidx.html"></iframe>
-    </div>
-
-    <div class="ad" id="six">
-        <button class="close" onclick="closebutton('six')">x</button>
-        <iframe src="fake_ads/fakegaytest.html"></iframe>
-    </div>
-
-    <div class="ad ad_3" id="seven">
-        <button class="close" onclick="closebutton('seven')">x</button>
-        <h3>Upgrade to Pro for no Ads!</h3>
-    </div>
-
-    <div class="ad_2" id="ate">
-        <button class="close" onclick="closebutton('ate')">x</button>
-        <h3>Get Calc Plus Today!</h3>
-        <button onclick="showmodal()">Get Pro</button>
-    </div>
-
-    <dialog class="popup" id="modal">
-        <div class="content">
-            <div class="navbar">
-                <button onclick="closemodal()">X</button>
-            </div>
-
-            <div class="premium">
-                <div class="side-images">
-                    <img src="/calc/img/premium.png">
-                </div>
-                <div class="side-text">
-                    <h2>Oh you found a premium feature.....</h2>
-                    <h3>Get Premium to unlock for the Best Calc Ever!</h3>
-                    <h4>Unlock the following features</h5>
-                    <p>- Advance functions</p>
-                    <p>- Get Synth AI plus built in!</p>
-                    <p>- Solve Questions</p>
-                    <p>- Get detailed help with math!</p>
-                    <p>- Support the poor dev (plz i'm lowkey broke)</p>
-                    <p>So what are you waiting for?</p>
-                    <div class="row">
-                        <button class="alt" onclick="showpayment()">$9.99/Month</button>
-                        <button onclick="showpayment()">7 Day Free Trial</button>
-                    </div>
-                    <small>By subscribling you agree to our terms and conditions</small>
-                </div>
+        <button class="close" onclick="hidefunctionlist()">x</button>
+        <div>
+            <p>Functions</p>
+            <div class="grid">
+                <button onclick="document.getElementById('calc-typed').value += '(x+y)';">(x+y)</button>
+                <button onclick="document.getElementById('calc-typed').value += 'x^2';">x^2</button>
+                <button onclick="document.getElementById('calc-typed').value += 'x';">x</button>
+                <button onclick="document.getElementById('calc-typed').value += 'y';">y</button>
+                <button onclick="document.getElementById('calc-typed').value += 'a^2+b^2=c^2';">a^2+b^2=c^2</button>
+                <button onclick="document.getElementById('calc-typed').value += '!';">!</button>
             </div>
         </div>
-    </dialog>
 
-    <dialog class="popup" id="about">
-        <div class="content">
-            <div class="navbar">
-                <button onclick="closeabout()">X</button>
-            </div>
+    </popup>
 
-            <div class="premium">
-                <div>
-                    <h1>Calc By WolftheE!</h1>
-                    <p>Version 0.2 pre</p>
-                    <small>Warning: This website is a joke. The ads are fake and the ad blocker detector is just for a joke. Check the source code if unsure!</small>
-                    <small>No data is sent through the payment menu as well.</small>
-                </div>
-            </div>
+
+    <popup id="propopup">
+        <button class="close" onclick="closepropopup()">x</button>
+        <img src="https://st4.depositphotos.com/10614052/29461/i/450/depositphotos_294613454-stock-photo-handsome-math-teacher-near-blackboard.jpg">
+        <sidebar>
+            <h1 id="titletext">You've discovered a Premium Feature</h1>
+            <h3>Upgrade now to unlock!</h3>
+            <hr>
+            <ul>
+                <li>Unlock Synth AI's help</li>
+                <li>Solve questions</li>
+                <li>Use advance functions</li>
+                <li>Save your equations</li>
+                <li>No more anoying popups!</li>
+            </ul>
+
+            <span>So what are you waiting for?</span>
+            <br>
+            <span>These things won't unlock by it self!</span>
+            <br>
+            <button class="freetiral" onclick="showpurchasepopup()">$0 for 7 days!</button>
+            <button class="subscribe" onclick="showpurchasepopup()">$16.99 a month</button>
+            <button class="onetimebuy" onclick="showpurchasepopup()">$0.99 for 1 hour</button>
+        </sidebar>
+    </popup>
+
+    <popup id="purchasepopup">
+        <div id="payment_successful">
+            <svg width="256" height="256" viewBox="0 0 100 100" class="checkmark-svg check"><path d="M20 55 L40 75 L80 30" fill="none" stroke="green" stroke-width="7" stroke-dasharray="100" stroke-dashoffset="100"><animate id="tickpayment" attributeName="stroke-dashoffset" from="100" to="0" dur="0.4s" fill="freeze" begin="indefinite"></animate></path></svg>
+            <h3 style="color: white;">Payment sucessful!</h3>
+            <p style="color: white;">Thank you for your support :)</p>
+            <button style="height: 32px; width: 128px;" onclick="closepurchasepopup()">Close</button>
         </div>
-    </dialog>
-
-    <dialog class="popup" id="payment">
-        <div class="content">
-            <div class="navbar">
-                <button onclick="closepayment()">X</button>
-            </div>
-
-            <div class="premium">
-                <div class="side-images">
-                    <img src="/calc/img/premium.png">
-                </div>
-                <div class="side-text">
-                    <h1>Get 7 Days Free!</h1>
-                    <p>Cancel at any time</p>
-                    <h4>Credit Card Number*</h4>
+        <button class="close" onclick="closepurchasepopup()">x</button>
+        <pay>
+            <h1>Please Enter a Valid Payment Source</h1>
+            <img>
+            <payment>
+                <row>
                     <input>
-                    <h4>Phone Number*</h4>
+                    <span>Credit Card</span>
+                </row>
+                <br>
+                <row>
                     <input>
-                    <h4>Email</h4>
-                    <input>
-                    <div class="row">
-                        <button class="alt" onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');">Submit</button>
-                    </div>
-                    <small>By subscribling you agree to our terms and conditions</small>
-                </div>
-            </div>
+                    <span>Email</span>
+                </row>
+                <br>
+                <small>By subscribing, you agree to our terms and conditions</small>
+                <br>
+                <capcha id="capcha">
+                        <div id="verifiy-robot" onclick="verifiyimnotarobot()"></div>
+                        <div class="spinner">
+                            <div class="checkmark-spinner" id="spinner"></div>
+                        </div>
+                        <div class="tick">
+                            <svg width="42" height="42" viewBox="0 0 100 100" class="checkmark-svg check"><path d="M20 55 L40 75 L80 30" fill="none" stroke="green" stroke-width="7" stroke-dasharray="100" stroke-dashoffset="100"><animate id="tick" attributeName="stroke-dashoffset" from="100" to="0" dur="0.4s" fill="freeze" begin="indefinite"></animate></path></svg>
+                        </div>
+                        <span>I'm not a robot</span>
+                        <div class="logo">
+                            <img src="https://embed.neal.fun/not-a-robot/recaptcha.png" width="32px">
+                            <div>reCAPTCHA</div>
+                        </div>
+                </capcha>
+                <br>
+                <button class="freetiral" onclick="paymentsuccess()">Submit</button>
+            </payment>
+        </pay>
+    </popup>
+
+    <popup id="areyouarobot">
+        <div>
+            <button class="close" onclick="closeareyouarobot()">x</button>
+            <h1>Please Solve</h1>
+            <iframe id="frame" src="" width="400" height="545" frameborder="0" scrolling="no" style="border-radius: 8px;"></iframe>
         </div>
-    </dialog>
+    </popup>
+
+    <popup id="banuser">
+        <h1>You have been permanently banned from calc</h1>
+        <p>You will not be refunded</p>
+        <button onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')" style="width: 128px; height: 32px;">Exit Calc</button>
+    </popup>
 
 
-    <dialog class="popup" id="adblocker">
-        <div class="content">
-            <div class="navbar">
-                <button onclick="closeadblocker()">X</button>
-            </div>
-
-            <div class="premium">
-                <div>
-                    <h1>Ad blocker detected!</h1>
-                    <p>Disable your ad blocker to use this website</p>
-                    <p>Or click the close button in the top left corner if you dont want to support me :(</p>
-                </div>
-
-            </div>
-
+    <popup id="info">
+        <button class="close" onclick="hideinfo()">x</button>
+        <div>
+            <h1>Q&A</h1>
+            <hr>
+            <ul>
+                <li>Q: Why do I need pro to use the calc?</li>
+                <span>A: First of all, you do not need pro to use the calc, you only need it to solve the question and second, I need money</span>
+                <p> </p>
+                <li>Q: Help, I refreshed my page and now my pro plan is gone, what do I do?</li>
+                <span>A: Well maybe don't refresh your page next time?</span>
+                <p> </p>
+                <li>Q: Why is it when I click the AI button it takes me to a new tab?</li>
+                <span>A: I'm too lazy to intergrate Synth AI into this calc, tho if you want a useful ai,</span>
+                <a href="https://chatgpt.com">ChatGPT</a>
+                <span>Is always an option</span>
+                <p> </p>
+                <li>Q: Rauf Rauf Rauf ^w^</li>
+                <span>A: ???</span>
+                <p> </p>
+                <li>Q: Can I get banned?</li>
+                <span>A: Just don't try to divide by 0 and you will be fine :)</span>
+                <p> </p>
+                <li>Q: Ok all jokes aside, is this a real website or not?</li>
+                <span>A: Yeah nah this is 100% a real website</span>
+                <small>Ok but like in all serious, this website is a joke</small>
+            </ul>
         </div>
-    </dialog>
+    </popup>
+
+    <popup id="about">
+        <button class="close" onclick="hideabout()">x</button>
+        <div>
+            <h1>About & Options</h1>
+            <hr>
+            <span>Dark theme? Comming soon!</span>
+            <br>
+            <hr>
+            <h3>Calc, Ver 2.0</h3>
+            <span>Created by</span>
+            <a href="/">WolftheE</a>
+            <br>
+            <span>Note: This website is a joke, nothing is sent to outside servers!</span>
+        </div>
+    </popup>
 
 </body>
 </html>

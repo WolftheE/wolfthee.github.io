@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <meta name="theme-color" content="#2765F5">
+     <meta name="theme-color" content="#1295c1">
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0&icon_names=chevron_left,chevron_right,open_in_full,open_in_new" />
@@ -48,6 +48,17 @@
         </row>
     
     </popup>
+
+    <sidepopup id="sidepopup" style="display: none;">
+        <titlebar>
+            <img src="resources/go-up.svg">
+            <img src="resources/go-down.svg">
+            <img class="close" src="resources/window-close.svg" onclick="closenotification()">
+        </titlebar>
+        <h1>Update 2.0 for Calc!</h1>
+        <p>Only the best Calc for 2026</p>
+        <button onclick="window.open('/calc')">Take me there!</button>
+    </sidepopup>
 
     <context-menu id="context_menu">
         <small>Hia there ~w~</small>
