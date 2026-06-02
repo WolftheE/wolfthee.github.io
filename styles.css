@@ -61,6 +61,18 @@
     }
 }
 
+@keyframes notificationslidein {
+    0% {
+        transform: translateX(300px);
+    }
+
+    80% {
+        transform: translateX(300px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 
 /* important stuff */
 
@@ -314,7 +326,7 @@ span {
     padding: 8px;
 
     grid-template-areas:
-    "details details details"
+    "angled details details"
     "calc synth synth"
     "better-ytm better-ytm vivaldi"
     "pissman pissman vivaldi"
@@ -414,6 +426,11 @@ widget:hover > overlay {
 
         transition: opacity 0.4s ease, scale 0.6s var(--popup);
     }
+}
+
+.angled {
+    grid-area: angled;
+    background: url("images/angled_ss.png") no-repeat;    
 }
 
 .calc {
@@ -619,14 +636,15 @@ sidepopup {
     border-radius: var(--radius);
     right: 16px;
     top: 16px;
+    backdrop-filter: var(--blur);
 
-    transition: transform 0.5s cubic-bezier(0.2, 0.1, 0.5, 1);
+    animation: notificationslidein 3.5s cubic-bezier(0.2, 0.1, 0.5, 1);
+
+    transition: transform 0.9s cubic-bezier(0.55, -0.3, 0.4, 1);
 }
 
 
 /* mobile ui */
-
-
 @media screen and (max-width: 760px) {
     .grids {
         display: grid;
@@ -639,6 +657,7 @@ sidepopup {
         grid-template-areas:
         "details details"
         "synth synth"
+        "angled angled"
         "calc vivaldi"
         "better-ytm better-ytm"
         "pissman pissman"

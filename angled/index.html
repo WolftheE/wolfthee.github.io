@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Guess the Angle</title>
+        <link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+
+        <popup id="popup">
+            <div>
+                <h1>About</h1>
+                <span>Game Created by <a href="/">WolftheE</a></span>
+                <hr>
+                <h2>How to play</h2>
+                <p>Simply type in the input box or press the numbered buttons to change your guess.</p>
+                <p>You have a total of 6 attemps to get it right</p>
+                <p>You are given hints, it can be higher or lower!</p>
+
+                <button onclick="popup(false)">Close</button>
+            </div>
+        </popup>
+        
+        <div id="particles-js"></div>
+        
+        <navbar>
+            <h1>Angled.</h1>
+            <p>Guess the Angle</p>
+            <button id="dailyButton" onclick="dailyTab()">Daily</button>
+            <button id="unlimitedButton" onclick="unlimitedTab()">Unlimited</button>
+            <button onclick="popup(true)">Info</button>
+        </navbar>
+
+        <section id="unlimited">
+            <widget id="window" algin="center">
+
+                <h2 id="widgetTitle">Daily Angle. No NaN</h2>
+                <span id="guessamountText">0/6 Guesses</span>
+
+                <svg width="300" height="300" id="angleSvg">
+                  <path id="anglePath" d="" fill="none" stroke="var(--main-color)" stroke-width="3" />
+                  <path id="arcPath" fill="rgba(255, 255, 255, 0.2)" stroke="var(--font-color)" stroke-width="1" />
+                </svg>
+
+                <div id="toolbar">
+                    <div>
+                        <button onclick="changeinputvalue(-30)" class="angle-button" onmousedown="event.preventDefault()">-30</button>
+                        <button  onclick="changeinputvalue(-10)" class="angle-button" onmousedown="event.preventDefault()">-10</button>
+                        <button  onclick="changeinputvalue(-1)" class="angle-button" onmousedown="event.preventDefault()">-1</button>
+                        <input id="inputGuess" max="359" min="1" inputmode="numeric" placeholder="1-359" type="number">
+                        <button  onclick="changeinputvalue(1)" class="angle-button" onmousedown="event.preventDefault()">+1</button>
+                        <button  onclick="changeinputvalue(10)" class="angle-button" onmousedown="event.preventDefault()">+10</button>
+                        <button  onclick="changeinputvalue(30)" class="angle-button" onmousedown="event.preventDefault()">+30</button>
+                    </div>
+                    <br>
+                    <button id="guessButton" onclick="submitGuess()" onmousedown="event.preventDefault()">Guess</button>
+                    <div id="hintspanel">
+                        <p id="hintText">Type your guess!</p>
+                    </div>
+                </div>
+
+                <div id="resaultScreen">
+                    <div>
+                        <h1 id="titleresaultScreen">Good Job!</h1>
+                        <p id="textresaultScreen">You have solved todays Angled.</p>
+                        <div>
+                            <button onclick="copyToClipboard()" id="dailyshareresaultsButton">Share Results</button>
+                            <button onclick="unlimitedTab()" id="playUnlimitedButton">Play Unlimited</button>
+                            <button id="playagainButton" onclick="newGame()">Play Again</button>
+                        </div>
+                    </div>
+                    <div style="border-left: 1px solid var(--font-color); padding-left: 8px;">
+                        <h4 id="finalresultText">5/6 Guesses</h4>
+                        <p id="guessesplayedText"></p>
+                    </div>
+                </div>
+
+                <div id="doneDailyLevelScreen">
+                    <div style="text-align: center;">
+                        <h2>You have already done the daily Angled.</h2>
+                        <p>Come back tommorow!</p>
+                        <button onclick="unlimitedTab()">Play Unlimited</button>
+                    </div>
+                </div>
+
+            </widget>
+        </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@4.1.1/tsparticles.confetti.bundle.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+        <script src="function.js"></script>
+	</body>
+</html>

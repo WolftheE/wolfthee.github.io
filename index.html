@@ -49,15 +49,18 @@
     
     </popup>
 
-    <sidepopup id="sidepopup" style="display: none;">
-        <titlebar>
-            <img src="resources/go-up.svg">
-            <img src="resources/go-down.svg">
-            <img class="close" src="resources/window-close.svg" onclick="closenotification()">
+    <sidepopup id="sidepopup">
+        <titlebar style="width: 42px;">
+            <img src="resources/configure.svg">
+            <img src="resources/window-close.svg" onclick="closenotification()">
         </titlebar>
-        <h1>Update 2.0 for Calc!</h1>
-        <p>Only the best Calc for 2026</p>
-        <button onclick="window.open('/calc')">Take me there!</button>
+        <h1>Angled.</h1>
+        <p>An angle guessing game made by me!</p>
+        <br>
+        <div style="float: right; display: flex; gap: 8px;">
+            <button onclick="window.open('/angled')">Take me there!</button>
+            <button onclick="closenotification()">Dismiss</button>
+        </div>
     </sidepopup>
 
     <context-menu id="context_menu">
@@ -152,7 +155,20 @@
                 <button onclick="showpopup('Discord username: @wolfthee')">Discord</button>
                 <button style="border: 1px solid var(--main-color);" onclick="artworkpopup()">Artworks >w<</button>
             </row>
+
         </widget>
+
+        <widget class="angled" onclick="window.open('/angled');">
+            <div class="background_details"></div>
+            <span class="material-symbols-rounded">open_in_new</span>
+            <overlay>
+                <h2>Angled.</h2>
+                <p>A angle guessing game</p>
+            </overlay>
+
+        </widget>
+
+        
         <widget class="calc widget-left" onclick="window.open('/calc');">
             <span class="material-symbols-rounded">open_in_new</span>
             <overlay>

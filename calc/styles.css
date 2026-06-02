@@ -286,6 +286,7 @@ popup > img {
     object-fit: cover;
     width: 526px;
 }
+
 /* buy popup */
 payment {
     display: flex;
