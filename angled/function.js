@@ -24,6 +24,12 @@ const playagainButton = document.getElementById('playagainButton');
 
 const popUp = document.getElementById('popup');
 
+const settings = document.getElementById('settings');
+const lightthemeToggle = document.getElementById('lightthemeToggle');
+
+
+const statsText = document.getElementById('statsText');
+
 
 const dailyButton = document.getElementById('dailyButton');
 const unlimitedButton = document.getElementById('unlimitedButton');
@@ -31,14 +37,6 @@ const unlimitedButton = document.getElementById('unlimitedButton');
 let angle = 1
 let currentAngle = 1
 let animationId = null;
-
-
-// show the popup
-function popup(visible) {
-  if (visible == true) popUp.classList.add('popupvisible');
-
-  else if (visible == false) popUp.classList.remove('popupvisible');
-}
 
 
 // For getting the Daily Angled. =========================
@@ -148,11 +146,23 @@ let attemps = 0;
 let hintsGiven = ``; // store all the hints given
 let didPlayerLose = false
 let doingDaily = false
+let showScreen = false // flag for when the thing that shows up when you win or lose
 
 // change the input number when you press the buttons
 function changeinputvalue(value) {
     inputAngle.value = Number(inputAngle.value) + Number(value)
 }
+
+// Make it so if you click enter it will submit the guess
+inputAngle.addEventListener("keydown", function(event) {
+    // Check if the pressed key is "Enter"
+    if (event.key === "Enter") {
+      event.preventDefault();
+
+      if (showScreen == true) newGame();
+      else document.getElementById("guessButton").click();
+    }
+});
 
 // when you submit the guess
 
@@ -196,9 +206,11 @@ function win() {
   titleresaultScreen.innerText = `Good Job!`;
   textresaultScreen.innerText = `You have solved this Angled.`;
 
+  showScreen = true
+
 
   confetti("tsparticles", {
-    count: 50,
+    count: 175,
     position: {x: 50, y: 50 },
   });
   attemps += 1
@@ -209,8 +221,15 @@ function win() {
   finalresultText.innerText = `${attemps}/6 Guesses`;
   guessesplayedText.innerText = hintsGiven;
 
+
+  localStorage.setItem('wins', Number(localStorage.getItem("wins"))+1)
+  localStorage.setItem('gamesPlayed', Number(localStorage.getItem("gamesPlayed"))+1)
+
+  if (attemps == 1) localStorage.setItem("singleGuesses", Number(localStorage.getItem("singleGuesses"))+1)
+
   if (doingDaily == true) {
     localStorage.setItem('didDaily', getDaysSince("2026-06-01"))
+    localStorage.setItem('Daily', Number(localStorage.getItem("Daily"))+1)
     doneDaily = true;
   }
 
@@ -227,9 +246,13 @@ function lose() {
   finalresultText.innerText = `x/6 Guesses`;
   guessesplayedText.innerText = hintsGiven;
   didPlayerLose = true
+  showScreen = true
+
+  localStorage.setItem('gamesPlayed', Number(localStorage.getItem("gamesPlayed"))+1)
 
   if (doingDaily == true) {
     localStorage.setItem('didDaily', getDaysSince("2026-06-01"))
+    localStorage.setItem('Daily', Number(localStorage.getItem("Daily"))+1)
     doneDaily = true;
   }
 }
@@ -256,6 +279,7 @@ function dailyGame() {
 
 // Start new Game for unlimited mode
 function newGame() {
+    showScreen = false
     angle = Math.floor(Math.random() * (359 - 1) + 1);
     hintText.innerText = "Type your guess!";
     finalresultText.innerText = (attemps == 6) ? `x/6 Guesses` : `${attemps}/6 Guesses`;
@@ -296,6 +320,7 @@ ${hintsGiven}
         
 Play at: https://wolfthee.github.io/angled`);
     console.log('Text successfully copied!');
+    alert("Copied to clipboard!")
   } catch (err) {
     console.error('Failed to copy text: ', err);
   }
@@ -344,6 +369,301 @@ function unlimitedTab() {
 
 
 dailyTab() // set the page when you load the website
+
+
+// show the popup
+function popup(visible) {
+
+  statsText.innerText = `Total Played Games: ${localStorage.getItem("gamesPlayed")}
+  Total Wins: ${localStorage.getItem("wins")}
+  Perfect Guesses: ${localStorage.getItem("singleGuesses")}
+  Daily played: ${localStorage.getItem("Daily")}`;
+
+  if (visible == true) popUp.classList.add('popupvisible');
+
+  else if (visible == false) popUp.classList.remove('popupvisible');
+}
+
+
+// settings menu
+function popupSettings(visible) {
+  if (visible == true) settings.classList.add('popupvisible');
+
+  else if (visible == false) settings.classList.remove('popupvisible');
+}
+
+function lightthemePressed() {
+  if (lightthemeToggle.checked == true) {
+      localStorage.setItem("lighttheme", true)
+      var root = document.querySelector(':root');
+      root.style.setProperty('--background-color', 'rgb(255, 255, 255)');
+      root.style.setProperty('--widget-background', 'rgba(225, 225, 225, 0.75)');
+      root.style.setProperty('--button-background', 'rgba(255, 255, 255, 0.5)');
+      root.style.setProperty('--button-background', 'rgba(255, 255, 255, 0.5)');
+      root.style.setProperty('--popup-background', 'rgba(227, 220, 195, 0.747)');
+      root.style.setProperty('--font-color', 'black');
+      root.style.setProperty('--font-background', 'white');
+
+      root.style.setProperty('--is-dark', '0');
+      root.style.setProperty('--tilebar-bright', '1');
+
+
+      root.style.setProperty('--widget-border', 'rgba(0,0,0,0.1)');
+
+      root.style.setProperty('--main-color', '#c19512');
+
+      particlesJS(
+{
+  "particles": {
+    "number": {
+      "value": 60,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
+    },
+    "color": {
+      "value": "#000000"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 4
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 0.4,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 116,
+      "color": "#000000",
+      "opacity": 0.4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "top-right",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": false,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+  })}
+  else {
+    localStorage.setItem("lighttheme", false)
+    var root = document.querySelector(':root');
+    root.style.setProperty('--background-color', 'rgb(12, 12, 23)');
+    root.style.setProperty('--widget-background', 'rgba(10, 20, 25, 0.5)');
+    root.style.setProperty('--button-background', 'rgba(177, 177, 177, 0.15)');
+    root.style.setProperty('--popup-background', 'rgba(8, 18, 24, 0.747)');
+    root.style.setProperty('--font-color', 'rgb(255,255,255)');
+    root.style.setProperty('--font-background', 'black');
+
+    root.style.setProperty('--is-dark', '1');
+    root.style.setProperty('--tilebar-bright', '0');
+
+
+    root.style.setProperty('--widget-border', 'rgb(255, 255, 255, 0.1)');
+
+    root.style.setProperty('--main-color', '#1295c1');
+
+    particlesJS(
+{
+  "particles": {
+    "number": {
+      "value": 60,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 4
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 0.1,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 116,
+      "color": "#ffffff",
+      "opacity": 0.06,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "top-right",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": false,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+}
+)
+
+  }
+}
+
+
+// when page loads
+if (localStorage.getItem("lighttheme") == "true") {
+  lightthemeToggle.checked = true;
+  lightthemePressed();
+}
+
 
 
 

@@ -10,15 +10,35 @@
 
         <popup id="popup">
             <div>
-                <h1>About</h1>
-                <span>Game Created by <a href="/">WolftheE</a></span>
+                <h1>Stats</h1>
+                <hr>
+                <p id="statsText"></p>
                 <hr>
                 <h2>How to play</h2>
                 <p>Simply type in the input box or press the numbered buttons to change your guess.</p>
                 <p>You have a total of 6 attemps to get it right</p>
                 <p>You are given hints, it can be higher or lower!</p>
+                <br>
+                <p>Game Created by <a href="/">WolftheE</a></p>
+                <br>
 
                 <button onclick="popup(false)">Close</button>
+            </div>
+        </popup>
+
+        <popup id="settings">
+            <div>
+                <h1>Settings</h1>
+                <div>
+                    <input type="checkbox" id="lightthemeToggle" onclick="lightthemePressed()">
+                    <span>Light theme?</span>
+                </div>
+                <br>
+                <br>
+                <p>Game Created by <a href="/">WolftheE</a></p>
+                <br>
+
+                <button onclick="popupSettings(false)">Close</button>
             </div>
         </popup>
         
@@ -29,8 +49,10 @@
             <p>Guess the Angle</p>
             <button id="dailyButton" onclick="dailyTab()">Daily</button>
             <button id="unlimitedButton" onclick="unlimitedTab()">Unlimited</button>
-            <button onclick="popup(true)">Info</button>
+            <button onclick="popup(true)">Info/Stats</button>
         </navbar>
+
+        <button onclick="popupSettings(true)" class="setting-button">⚙</button>
 
         <section id="unlimited">
             <widget id="window" algin="center">
@@ -39,8 +61,8 @@
                 <span id="guessamountText">0/6 Guesses</span>
 
                 <svg width="300" height="300" id="angleSvg">
-                  <path id="anglePath" d="" fill="none" stroke="var(--main-color)" stroke-width="3" />
                   <path id="arcPath" fill="rgba(255, 255, 255, 0.2)" stroke="var(--font-color)" stroke-width="1" />
+                  <path id="anglePath" d="" fill="none" stroke="var(--main-color)" stroke-width="3" />
                 </svg>
 
                 <div id="toolbar">
