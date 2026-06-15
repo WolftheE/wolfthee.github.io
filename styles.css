@@ -9,16 +9,13 @@
     --blur: blur(10px);
 
     --widget-background: rgba(10, 10, 10, 0.2);
-    --popup-background: rgba(8, 18, 24, 0.747);
+    --popup-background: rgba(10, 10, 10, 0.2);
     --widget-border: rgb(255, 255, 255, 0.1);
 
     --button-background: rgba(177, 177, 177, 0.15);
-    --button-hover: rgba(255,255,255,0.15);
-    --button-border: rgba(255,255,255,0.3);
+    --button-border: rgba(255,255,255,0.15);
 
-    --shadow: 4px 4px 16px rgba(0,0,0,0.5);
-    --background-img: url('/images/wallpaper.webp');
-
+    --shadow: 0px 4px 16px 1px rgba(0,0,0,0.5);
 
     --main-color: #1295c1;
     --second-color: #124fc1;
@@ -43,12 +40,10 @@
 
 @keyframes dropdown {
     from {
-        scale: 0.5;
-        opacity: 0;
+        scale: 0;
     }
     to {
         scale: 1;
-        opacity: 1;
     }
 }
 
@@ -74,6 +69,16 @@
     }
 }
 
+@keyframes hintTextChange {
+    from { 
+        scale: 1.3; 
+        opacity: 0.6;
+    }
+    to { 
+        scale: 1;
+        opacity: 1;
+    }
+}
 /* important stuff */
 
 @font-face {
@@ -94,7 +99,7 @@ body {
     font-size: 0.9em;
 }
 
-p:not(.nf, #bio > * > * > p) { /* yo fix this */
+p { /* Fixed it! */
     margin-block-start: 0.4em;
     margin-block-end: 0.4em;
     line-height: 1.25
@@ -104,6 +109,7 @@ h1, h2 {
 
     margin-block-start: 0.35em;
     margin-block-end: 0.5em;
+
 }
 hr { 
     border: none;
@@ -123,7 +129,7 @@ hr {
 widget {
     background-color: var(--widget-background);
     border-radius: var(--radius);
-    outline: 1px solid var(--widget-border);
+    border-top: 1px solid var(--widget-border);
     display: block;
     position: relative;
     box-shadow: var(--shadow);
@@ -174,8 +180,8 @@ column {
 
     animation: dropdown 2s var(--popup) 1s forwards;
 
-    /* start off like this */
-    opacity: 0;
+    scale: 0;
+
 
 }
 
@@ -185,7 +191,8 @@ scroll-tooltip {
     display: flex;
     flex-direction: column;
     align-items: center;
-    opacity: 0;
+
+    scale: 0;
 
     animation: dropdown 3s var(--popup) 2s forwards;
 
@@ -200,6 +207,7 @@ scroll-tooltip {
     width: 200px;
     border-radius: var(--radius);
     cursor: pointer;
+    border-top: 1px solid var(--widget-border);;
     transition: scale 0.3s var(--bounce);
     &:hover {
         scale: 1.05;
@@ -211,8 +219,11 @@ scroll-tooltip {
 
 #bio {
     flex-grow: 1;
-    font-size: 0.9em;
-    line-height: 0.75em;
+
+    & > p > span {
+        opacity: 0.65;
+        font-size: 0.9em;
+    }
 }
 
 terminal-text {
@@ -227,7 +238,7 @@ terminal-text {
     & > row {
         color: #252525;
         position: absolute;
-        top: -4px;
+        top: 2px;
         left: 6px;
     }
 }
@@ -244,20 +255,15 @@ background {
     background: var(--background-img) center center no-repeat;
 }
 
-/* particles background ^w^ */
-#particles-js {
-    position: fixed; 
-    z-index: -100; 
-    width: 100%;
-    height: 100%;
-
-    filter: brightness(var(--is-dark));
-
+/* TSparticles background ^w^ */
+#tsparticlesbackground {
+    z-index: -10000; 
+    position: relative;
 }
 
 
-
-.top {
+/* layouts */
+.top, .algned-top {
     height: 100vh;
 
     display: flex;
@@ -293,62 +299,24 @@ titlebar {
     }
 }
 
-span {
-    position: absolute;
-    display: flex;
-    top: 4px;
-    right: 4px;
-    padding: 4px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10;
+/* the header bar */
+navbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
 
-    transition: background-color 0.4s ease-out, color 0.4s ease-out, scale 0.5s var(--bounce);
-
-    &:hover {
-        background-color: white;
-        color: black;
-        scale: 1.1;
-    }
-
-    &:active {
-        scale: 0.9;
-    }
+    line-height: 0.7;
 }
 
-.grids {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    place-content: center;
-    max-width: 720px;
-    grid-auto-rows: 208px;
-    align-self: center;
-    padding: 8px;
-
-    grid-template-areas:
-    "angled details details"
-    "calc synth synth"
-    "better-ytm better-ytm vivaldi"
-    "pissman pissman vivaldi"
-    "question question question";
-
-
-    margin: 0 auto;
-    gap: 16px;
-}
 
 footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     margin: 32px;
     gap: 16px;
 }
 
-/* grid stuff */
-
-overlay {
+overlay { /* Darkening effect over widget */
     width: 98%;
     height: 35%;
     padding: 8px;
@@ -373,23 +341,19 @@ widget:hover > overlay {
     }
 }
 
-.grids > widget {
-    background-position: center;
-    background-size: 100%;
-    color: white;
-
-    transition: background-size 0.6s var(--popup), opacity 0.5s, transform 0.5s;
-
-    &:hover {
-        background-size: 105%;
-    }
-}
-
-.details {
+/* the bottom part of my website */
+.more-details {
     grid-area: details;
     padding: 8px 16px;
     backdrop-filter: var(--blur);
     text-align: center;
+
+    max-width: 688px;
+    height: 208px;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8px;
 
     & > row {
         justify-content: center;
@@ -428,9 +392,46 @@ widget:hover > overlay {
     }
 }
 
+
+/* projects view */
+
+.grids-project {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-content: center;
+    max-width: 720px;
+    grid-auto-rows: 208px;
+    align-self: center;
+    padding: 8px;
+
+    grid-template-areas:
+    "angled synth synth"
+    "better-ytm better-ytm calc"
+    "pissman pissman vivaldi"
+    "question question vivaldi";
+
+
+    margin: 0 auto;
+    gap: 16px;
+}
+
+.grids-project > widget {
+    background-position: center;
+    background-size: 100%;
+    color: white;
+
+    transition: background-size 0.6s var(--popup), opacity 0.5s, transform 0.5s;
+
+    &:hover {
+        background-size: 105%;
+    }
+}
+
+
 .angled {
     grid-area: angled;
-    background: url("images/angled_ss.png") no-repeat;    
+    background: url("images/angled_ss.png") no-repeat;
+
 }
 
 .calc {
@@ -461,7 +462,17 @@ widget:hover > overlay {
 
 .question {
     grid-area: question;
-    background: var(--background-img) no-repeat;
+    position: relative;
+
+    & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: blur(64px) brightness(0.75);
+        z-index: -1;
+
+        position: absolute
+    }
 
     & > div {
         display: flex;
@@ -473,6 +484,43 @@ widget:hover > overlay {
         color: var(--font-color);
     } 
 }
+
+/* personal page */
+
+.grids-personal-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-content: center;
+    max-width: 720px;
+    grid-auto-rows: 208px;
+    align-self: center;
+    padding: 8px;
+
+    grid-template-areas:
+    "commingsoon commingsoon commingsoon"
+    "commingsoon commingsoon commingsoon";
+
+
+    margin: 0 auto;
+    gap: 16px;
+}
+.grids-personal-info > widget {
+    background-position: center;
+    background-size: 100%;
+    color: white;
+
+    transition: background-size 0.6s var(--popup), opacity 0.5s, transform 0.5s;
+
+    &:hover {
+        background-size: 105%;
+    }
+}
+
+.commingsoon {
+    grid-area: commingsoon;
+}
+
+
 
 /* text formats */
 .spoiler-text {
@@ -497,33 +545,240 @@ widget:hover > overlay {
   background-color: #555;
 }
 
-/* buttons */
+/* buttons and inputs */
 button, a {
     cursor: pointer;
-    display: block;
     background-color: var(--button-background);
-    border: 1px solid var(--button-border);
+    border: none;
+    border-top: 1px solid var(--button-border);
     color: var(--font-color);
     border-radius: var(--radius);
     padding: 8px;
     font-size: 1em;
     line-height: normal;
 
-    transition: border 0.4s, background-color 0.4s, scale 0.3s var(--bounce);
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+
+    margin: 0 3px;
+
+    transition: border 0.4s, background-color 0.25s, scale 0.3s var(--bounce);
 
     &:hover {
-        border: 1px solid var(--main-color);
-        background-color: var(--button-hover);
+        background-color: color-mix(var(--button-background) 93%, var(--font-color));
+    }
+
+    &:active {
+        scale: 0.9;
+        background-color: var(--main-color);
+    }
+}
+
+/* open in new tab button for widgets */
+.openinnewtab {
+    position: absolute;
+    display: flex;
+    top: 4px;
+    right: 4px;
+    padding: 4px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+
+    transition: background-color 0.4s ease-out, color 0.4s ease-out, scale 0.5s var(--bounce);
+
+    &:hover {
+        background-color: white;
+        color: black;
+        scale: 1.1;
     }
 
     &:active {
         scale: 0.9;
     }
 }
+
+.setting-button {
+    position: fixed;
+    right: 6px;
+    top: 6px;
+    z-index: 100;
+
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 1.75em;
+    padding: 0;
+}
+
+input {
+    border: none;
+    outline: 1px solid transparent;
+    background-color: color-mix(var(--button-background), transparent);
+    height: 36px;
+    width: 36px;
+    color: var(--font-color);
+    border-radius: var(--radius);
+
+    text-align: center;
+
+    transition: outline 0.5s ease-out;
+
+    &:hover {
+        outline: 1px solid var(--main-color);
+    }
+
+    &:focus {
+        outline: 1px solid color-mix(var(--main-color), transparent);
+    }
+
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="checkbox" i] {
+    accent-color: var(--main-color); /* Replace with your desired color */
+    color: var(--font-color);
+
+    height: 22px;
+    width: 22px;
+}
+
+
+/* angled styles */
+.angled-widget {
+    width: 80vw;
+    height: 50vh;
+
+    min-width: 316px;
+    min-height: 500px;
+
+    max-width: 520px;
+    padding: 4px 16px 16px 16px !important;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    backdrop-filter: var(--blur);
+
+}
+
+
+#resaultScreen, #doneDailyLevelScreen {
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(transparent, color-mix(var(--font-background), transparent));
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    padding-bottom: 32px;
+    gap: 8px;
+
+
+    transform: translateY(100%);
+
+    transition: transform 0.7s ease-out;
+
+
+    & > div {
+        margin: 8px;
+    }
+
+}
+
+#guessamountText {
+    font-size: 0.8em;
+    opacity: 0.5;
+    text-align: center;
+}
+
+
+#toolbar {
+    text-align: center;
+
+    transition: opacity 0.6s ease-out;
+}
+
+#angleSvg {
+    transition: transform 0.4s ease-out;
+    border-radius: 50%;
+
+    min-height: 300px;
+    min-width: 300px;
+}
+
+.angle-button {
+    height: 32px;
+    width: 32px;
+    padding: 0;
+}
+
+.hinttextscale {
+    animation: hintTextChange 0.4s ease-out;
+}
+navbar > button, .navbar > button {
+    background-color: transparent;
+    outline: none !important;
+    border: none;
+    border-radius: 0;
+    width: 128px;
+    box-shadow: none;
+
+    border-bottom: 1px solid color-mix( var(--font-color), transparent);
+
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.2));
+
+    position: relative;
+
+    &:hover {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid var(--font-color);
+    }
+}
+
+/* mobile view for angled */
+@media screen and (max-height: 720px) {
+    .algned-top {
+        align-items: end !important;
+    }
+
+    navbar > p {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 445px) {
+    navbar > button {
+        width: 72px;
+    }
+}
+
+
+
 /* artwork popup */
-#artpopup {
+#artpopupContent {
     height: 90vh;
     width: 90vw;
+    text-align: left;
 
     & > .artworkcontain {
         height: 80vh;
@@ -560,9 +815,9 @@ context-menu {
     flex-direction: column;
     position: absolute;
     background-color: var(--widget-background);
-    border: 1px solid var(--widget-border);
+    border-top: 1px solid var(--widget-border);
     padding: 8px;
-    box-shadow: 8px 8px 16px rgba(0,0,0,0.5);
+    box-shadow: 0px 4px 16px rgba(0,0,0,0.5);
     gap: 8px;
     border-radius: var(--radius);
     width: 128px;
@@ -584,69 +839,99 @@ context-menu {
 }
 
 
-popup {
+popup-parent {
     visibility: hidden;
     position:fixed;
+    z-index: 100;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background-color: rgba(0,0,0,0.5);
+    
+
+    transition: opacity 0.4s, visibility 0.6s;
+
+    opacity: 0;
+
+}
+
+popup-content {
+
+    position:fixed;
+    z-index: 100;
 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.5);
-    box-shadow: 0px 0px 0px 100vw rgba(0,0,0,0.5);
-    height: 30vh;
-    width: 35vw;
-    min-width: 256px;
-    min-height: 150px;
+    min-width: max(276px, 30vw);
+    min-height: max(175px, 35vh);
 
+    box-shadow: var(--shadow);
     background-color: var(--popup-background);
-    outline: 1px solid var(--widget-border);
+    border-top: 1px solid var(--widget-border);
     border-radius: var(--radius);
-    z-index: 100;
+    z-index: 1;
+    padding: 12px;
+
+    min-height: max(175px, 35vh);
+    min-width: max(276px, 30vw);
+
+
 
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    opacity: 0;
-    backdrop-filter: var(--blur) brightness(0.65);
-    
+    text-align: center;
 
-    transition: opacity 0.4s, transform 0.6s var(--popup), visibility 0.6s;
+    backdrop-filter: var(--blur);
+
+    transition: transform 0.6s var(--popup), visibility 0.6s;
 
     & > button {
         position: absolute;
         bottom: 8px;
     }
+}
 
+.popupparentshown {
+    visibility: visible;
+    opacity: 1;
 }
 
 .popupshown {
     visibility: visible;
-    opacity: 1;
     transform: translate(-50%, -50%) scale(1);
 }
 
 
 
-sidepopup {
+notification {
     position: fixed;
     background-color: var(--widget-background);
     padding: 16px;
-    outline: 1px solid var(--widget-border);
+    border-top: 1px solid var(--widget-border);
     border-radius: var(--radius);
     right: 16px;
     top: 16px;
     backdrop-filter: var(--blur);
+
+    box-shadow: var(--shadow);
+
+    z-index: 1000;
 
     animation: notificationslidein 3.5s cubic-bezier(0.2, 0.1, 0.5, 1);
 
     transition: transform 0.9s cubic-bezier(0.55, -0.3, 0.4, 1);
 }
 
-
 /* mobile ui */
 @media screen and (max-width: 760px) {
-    .grids {
+    .grids-project {
         display: grid;
         grid-template-columns: 1fr 1fr;
         place-content: center;
@@ -655,7 +940,6 @@ sidepopup {
         align-self: center;
 
         grid-template-areas:
-        "details details"
         "synth synth"
         "angled angled"
         "calc vivaldi"
@@ -681,7 +965,7 @@ sidepopup {
         }
     }
 
-    .grids > widget {
+    .grids-project > widget {
         background-size: cover;
         &:hover {
             background-size: cover;
@@ -704,7 +988,7 @@ sidepopup {
 
 
 
-    .details {
+    .more-details {
 
         & > * {
             opacity: 1;
@@ -721,39 +1005,35 @@ sidepopup {
 }
 
 
-@media screen and (max-width: 1570px) {
-    #artpopup {
-        & > .artworkcontain {
+@media screen and (max-width: 1170px) {
+    .artworkcontain {
             height: 87vh;
             width: 85vw;
             gap: 16px;
-            flex-direction: column;
+            flex-direction: column !important;
 
             & > div:not(#artworkimg) {
-                width: 100%;
-                min-width: 256px;
-                height: 25%;
-                position: relative;
+                width: 100% !important;
+                min-width: 256px !important;
+                height: 25% !important;
+                position: relative !important;
 
                 & > hr {
-                    scale: 0.7 1;
-                    transform-origin: left;
+                    scale: 0.7 1  !important;
+                    transform-origin: left  !important;
                 }
             }
         }
-    }
 
     #artworkimg {
         width: 100%;
-        height: 46vw;
+        height: 55vw;
     }
 
     .toolbar {
         position: absolute;
         bottom: 16px;
         right: 16px;
-        gap: 16px;
+        gap: 8px;
     }
 }
-
-

@@ -4,45 +4,44 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<title>Guess the Angle</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/styles.css">
 	</head>
 	<body>
 
-        <popup id="popup">
-            <div>
-                <h1>Stats</h1>
-                <hr>
-                <p id="statsText"></p>
-                <hr>
-                <h2>How to play</h2>
-                <p>Simply type in the input box or press the numbered buttons to change your guess.</p>
-                <p>You have a total of 6 attemps to get it right</p>
-                <p>You are given hints, it can be higher or lower!</p>
-                <br>
-                <p>Game Created by <a href="/">WolftheE</a></p>
-                <br>
-
-                <button onclick="popup(false)">Close</button>
-            </div>
-        </popup>
-
-        <popup id="settings">
-            <div>
-                <h1>Settings</h1>
+        <popup-parent id="popupParent" class="statspopup">
+            <popup-content id="popupContent">
                 <div>
-                    <input type="checkbox" id="lightthemeToggle" onclick="lightthemePressed()">
-                    <span>Light theme?</span>
+                    <h1>Stats</h1>
+                    <hr>
+                    <p id="statsText"></p>
+                    <hr>
+                    <h2>How to play</h2>
+                    <p>Simply type in the input box or press the numbered buttons to change your guess.</p>
+                    <p>You have a total of 6 attemps to get it right</p>
+                    <p>You are given hints, it can be higher or lower!</p>
+                    <br>
+                    <p>Game Created by <a href="/">WolftheE</a></p>
+                    <br>
+                    <button onclick="popup(false)">Close</button>
                 </div>
-                <br>
-                <br>
-                <p>Game Created by <a href="/">WolftheE</a></p>
-                <br>
+            </popup-content>
+        </popup-parent>
 
-                <button onclick="popupSettings(false)">Close</button>
-            </div>
-        </popup>
-        
-        <div id="particles-js"></div>
+        <popup-parent id="settingsParent">
+            <popup-content id="settingsContent">
+                <div>
+                    <h1>Settings</h1>
+                    <span>
+                        <input type="checkbox" id="lightthemeToggle" onclick="lightthemePressed()"> Light theme?
+                    </span>
+                    <br>
+                    <br>
+                    <p>Game Created by <a href="/">WolftheE</a></p>
+                    <br>
+                    <button onclick="popupSettings(false)">Close</button>
+                </div>
+            </popup-content>
+        </popup-parent>
         
         <navbar>
             <h1>Angled.</h1>
@@ -54,8 +53,8 @@
 
         <button onclick="popupSettings(true)" class="setting-button">⚙</button>
 
-        <section id="unlimited">
-            <widget id="window" algin="center">
+        <section class="algned-top">
+            <widget id="window" algin="center" class="angled-widget">
 
                 <h2 id="widgetTitle">Daily Angle. No NaN</h2>
                 <span id="guessamountText">0/6 Guesses</span>
@@ -111,7 +110,12 @@
 
         <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@4.1.1/tsparticles.confetti.bundle.min.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+        <!-- Background -->
+        <script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@4/tsparticles.engine.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tsparticles/slim@4/tsparticles.slim.bundle.min.js"></script>
+
+        <div id="tsparticlesbackground"></div>
+
 
         <script src="function.js"></script>
 	</body>
