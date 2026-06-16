@@ -85,7 +85,6 @@ html {
         flex-direction: column;
         justify-content: space-between;
 
-        border: 1px solid var(--widget-border);
         border-radius: 10px;
 
     }
@@ -299,8 +298,6 @@ input, textarea {
     justify-content: space-between;
 
     border-top: 1px solid rgba(255,255,255,0.1) !important;
-
-    border: 1px solid var(--widget-border);
     border-radius: 10px;
     
 }
