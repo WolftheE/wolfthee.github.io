@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
      <meta name="theme-color" content="#1295c1">
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,61 +16,40 @@
 </head>
 <body>
 
-    <popup-parent id="popupParent">
-        <popup-content id="popupContent">
-            <titlebar>
-                <img src="resources/go-up.svg">
-                <img src="resources/go-down.svg">
-                <img class="close" src="resources/window-close.svg" onclick="hidepopup()">
-            </titlebar>
-            <p id="popuptext">UwU</p>
-            <button onclick="hidepopup()">Close</button>
-        </popup-content>
-    </popup-parent>
+    <popup id="popup">
+        <titlebar>
+            <img src="resources/go-up.svg">
+            <img src="resources/go-down.svg">
+            <img class="close" src="resources/window-close.svg" onclick="hidepopup()">
+        </titlebar>
+        <p id="popuptext">Hey there, right now this website is a work in progress so stuff will be unfinshed!</p>
+        <button onclick="hidepopup()">Close</button>
+    </popup>
 
-
-    <popup-parent id="popupwarningParent">
-        <popup-content id="popupwarningContent">
-            <titlebar>
-                <img src="resources/go-up.svg">
-                <img src="resources/go-down.svg">
-                <img class="close" src="resources/window-close.svg" onclick="resettimeOpened()">
-            </titlebar>
-            <p id="popuptextwarning">Hey there, right now this website is a work in progress so stuff will be unfinshed!</p>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">See Image</a>
-            <row style="position: absolute; bottom: 8px;">
-                <button onclick="showSpoilImages()">Yes</button>
-                <button onclick="resettimeOpened()">No</button>
-            </row>
-        </popup-content>
-    </popup-parent>
-
-    <popup-parent id="artpopupParent">
-        <popup-content id="artpopupContent">
-            <titlebar>
-                <img src="resources/go-up.svg">
-                <img src="resources/go-down.svg">
-                <img class="close" src="resources/window-close.svg" onclick="closeartwork()">
-            </titlebar>
-            <row class="artworkcontain">
-                <div>
-                    <h1>Some of my art</h1>
-                    <hr>
-                    <p id="artworktext">Probaly one of the best ones I've made. It's a close up image of a realistic road with a fiat driving in the background.</p>
-                    <row class="toolbar">
-                        <button onclick="imageslide(-1)"><</button>
-                        <button onclick="imageslide(1)">></button>
-                        <button onclick="fullscreenart()">Fullscreen</button>
-                        <button onclick="closeartwork()">Close</button>
-                    </row>
-                </div>
+    <popup id="artpopup">
+        <titlebar>
+            <img src="resources/go-up.svg">
+            <img src="resources/go-down.svg">
+            <img class="close" src="resources/window-close.svg" onclick="closeartwork()">
+        </titlebar>
+        <row class="artworkcontain">
+            <div>
+                <h1>Some of my art</h1>
+                <hr>
+                <p id="artworktext">Probaly one of the best ones I've made. It's a close up image of a realistic road with a fiat driving in the background.</p>
+                <row class="toolbar">
+                    <button onclick="imageslide(-1)"><</button>
+                    <button onclick="imageslide(1)">></button>
+                    <button onclick="fullscreenart()">Fullscreen</button>
+                    <button onclick="closeartwork()">Close</button>
+                </row>
+            </div>
             <div id="artworkimg"></div>
-        </popup-content>
         </row>
     
-    </popup-parent>
+    </popup>
 
-    <notification id="notification">
+    <sidepopup id="sidepopup">
         <titlebar style="width: 42px;">
             <img src="resources/configure.svg">
             <img src="resources/window-close.svg" onclick="closenotification()">
@@ -78,11 +57,11 @@
         <h1>Angled.</h1>
         <p>An angle guessing game made by me!</p>
         <br>
-        <div style="float: right; display: flex;">
+        <div style="float: right; display: flex; gap: 8px;">
             <button onclick="window.open('/angled')">Take me there!</button>
             <button onclick="closenotification()">Dismiss</button>
         </div>
-    </notification>
+    </sidepopup>
 
     <context-menu id="context_menu">
         <small>Hia there ~w~</small>
@@ -91,11 +70,10 @@
     </context-menu>
 
     <!--<background id="background"></background> -->
-    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@4/tsparticles.engine.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/slim@4/tsparticles.slim.bundle.min.js"></script>
 
-    <div id="tsparticlesbackground"></div>
+    <div id="particles-js"></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
     <section class="top">
         <widget class="window" id="topwidget">
@@ -103,22 +81,9 @@
                 <img src="images/proto.jpg" id="pfp" onclick="showpopup('Boop >w<')">
             </div>
             <div id="bio">
-                <h1 style="color: var(--main-color); line-height: 0.5;">Hello there ^w^</h1>
+                <h1 style="color: var(--main-color)">Hello there ^w^</h1>
                 <hr>
-                <p style="line-height: 1.6;">
-                    <i class="nf nf-fa-paw" style="color: var(--main-color); opacity: 1;"></i> <span>: As you can see I'm a furry (protogen ^w^)</span>
-                    <br>
-                    <i class="nf nf-linux-tux" style="color: var(--main-color); opacity: 1;"></i> <span>: I love computers and Linux</span>
-                    <br>
-                    <i class="nf nf-fa-code" style="color: var(--main-color); opacity: 1;"></i> <span>: I love coding</span>
-                    <br>
-                    <i class="nf nf-md-balloon" style="color: var(--main-color); opacity: 1;"></i> <span>: Plays an unhealthy amount of BTD6</span>
-                    <br>
-                    <i class="nf nf-md-shark" onclick="window.open('/kk_images/blahaj.jpg')" style="color: var(--main-color); opacity: 1;"></i> <span>: I love my Blåhaj</span>
-                    <br>
-                    <i class="nf nf-fa-question" style="color: var(--main-color); opacity: 1;"></i> <small class="spoiler-text">may or may not be a femboy >w<</small>
-                </p>
-                <!--<row style="gap:4px;">
+                <row style="gap:4px;">
                     <div style="color: var(--main-color); opacity: 1;">
                         <p class="nf nf-fa-paw"></p>
                         <p class="nf nf-linux-tux"></p>
@@ -135,7 +100,7 @@
                         <p>: I love my Blåhaj</p>
                         <small class="spoiler-text">may or may not be a femboy >w<</small>
                     </div>
-                </row> -->
+                </row>
                 <row style="gap: 8px; opacity: 0.75;">
                     <div class="square" style="background-color: var(--red);"></div>
                     <div class="square" style="background-color: var(--orange);"></div>
@@ -177,107 +142,99 @@
         </scroll-tooltip>
     </section>
 
-    <widget class="more-details">
-        <div class="background_details"></div>
-        <h1>Quick Links</h1>
-        <hr>
-        <br>
-        <div>
-            <a href="https://github.com/WolftheE">Github</a>
-            <a href="https://wolfthee.itch.io">Itch.io</a>
-            <a href="https://www.youtube.com/@WolftheE">Youtube</a>
-            <button onclick="showpopup('Discord username: @wolfthee')">Discord</button>
-            <button onclick="artworkpopup()">Artworks >w<</button>
-        </div>
-        <br>
-        <br>
-        <br>
-        <div class="navbar">
-            <button style="border-bottom: 1px solid var(--main-color);">My Projects</button>
-            <button style="opacity: 0.75;" onclick="showpopup('Comming Soon!')">More about me</button>
-        </div>
-    </widget>
-
-    <section class="grids-project" id="grid_project">
-        <widget class="angled widget-left" onclick="window.open('/angled');">
+    <section class="grids">
+        <widget class="details">
             <div class="background_details"></div>
-            <span class="material-symbols-rounded openinnewtab">open_in_new</span>
+            <h1>Quick Links</h1>
+            <hr>
+            <br>
+            <row style="gap: 16px;">
+                <a href="https://github.com/WolftheE">Github</a>
+                <a href="https://wolfthee.itch.io">Itch.io</a>
+                <a href="https://www.youtube.com/@WolftheE">Youtube</a>
+                <button onclick="showpopup('Discord username: @wolfthee')">Discord</button>
+                <button style="border: 1px solid var(--main-color);" onclick="artworkpopup()">Artworks >w<</button>
+            </row>
+
+        </widget>
+
+        <widget class="angled" onclick="window.open('/angled');">
+            <div class="background_details"></div>
+            <span class="material-symbols-rounded">open_in_new</span>
             <overlay>
                 <h2>Angled.</h2>
                 <p>An angle guessing game</p>
             </overlay>
+
         </widget>
 
-        <widget class="calc widget-right" onclick="window.open('/calc');">
-            <span class="material-symbols-rounded openinnewtab">open_in_new</span>
+        
+        <widget class="calc widget-left" onclick="window.open('/calc');">
+            <span class="material-symbols-rounded">open_in_new</span>
             <overlay>
                 <h2>Calc</h2>
                 <p>A Calc</p>
             </overlay>
         </widget>
-
         <widget class="synth widget-right" onclick="window.open('/synth-ai');">
-            <span class="material-symbols-rounded openinnewtab">open_in_new</span>
+            <span class="material-symbols-rounded">open_in_new</span>
             <overlay>
                 <h2>Synth AI</h2>
                 <p>A powerful custom AI chatbot built from scratch!</p>
                 <p class="discription">Power by a custom AI model built from scrach, Synth AI is ready for all the tasks you give it!</p>
             </overlay>
         </widget>
-
-
         <widget class="better-ytm widget-left" onclick="window.open('https://github.com/WolftheE/better-ytm');">
-            <span class="material-symbols-rounded openinnewtab">open_in_new</span>
+            <span class="material-symbols-rounded">open_in_new</span>
             <overlay>
                 <h2>Better-YTM</h2>
                 <p>A custom YTM theme that makes YTM more modern!</p>
                 <p class="discription">A small CSS theme that makes Youtube Music so much more modern without changing the whole layout!</p>
             </overlay>
         </widget>
-
         <widget class="pissman widget-left" onclick="window.open('https://wolfthee.itch.io/pissman-legacy');">
-            <span class="material-symbols-rounded openinnewtab">open_in_new</span>
+            <span class="material-symbols-rounded">open_in_new</span>
             <overlay>
                 <h2>Pissman</h2>
                 <p>A 2d Platformer Game Made by me ^w^</p>
                 <p class="discription">A stupid game that I had to make in year 9. Its a 2d platfomer game with some kind of lore. You got corupted and went into an unknown world and you need to try to get home!</p>
             </overlay>
         </widget>
-
         <widget class="vivaldi widget-right" onclick="window.open('https://github.com/WolftheE/Wolf-Vivaldi');">
-            <span class="material-symbols-rounded openinnewtab">open_in_new</span>
+            <span class="material-symbols-rounded">open_in_new</span>
             <overlay>
                 <h2>Wolfe's Vivaldi</h2>
                 <p>A theme that makes Vivaldi to my liking.</p>
             </overlay>
         </widget>
-
         <widget class="question widget-right">
-            <img src="/images/blahaj.jpg">
             <div style="height: 100%;">
-                <button onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')"><i class="nf nf-cod-eye_closed"></i></button>
+                <row style="gap: 8px;">
+                    <h1>But the real question is</h1>
+                    <h1 class="spoiler-text">When is Half-Life 3?</h1>
+                </row>
             </div>
         </widget>
     </section>
 
-    <!--<section class="grids-personal-info" id="grid_info">
-        <widget class="commingsoon">
-            <h1>Comming soon</h1>
-        </widget>
-    </section>-->
-
     <footer>
-        <button onclick="window.open('/godot_game_build');">???</button>
-        <button onclick="changetolighttheme()" id="flashbangbutton">Flashbang mode</button>
-        <button onclick="showpopup('Hey there >w<')">Hia ^w^</button>
-        <p style="margin: 8px; opacity: 0.5;">
-            <i class="nf nf-md-shark" onclick="window.open('/images/blahaj.jpg')"></i>
+        <row style="gap: 16px;">
+            <button onclick="window.open('/godot_game_build');">???</button>
+            <button onclick="changetolighttheme()" id="flashbangbutton">Flashbang mode</button>
+            <button onclick="showpopup('Hey there >w<')">Hia ^w^</button>
+        </row>
+        <row style="gap: 8px; opacity: 0.5;">
+            <i class="nf nf-md-shark" onclick="window.open('/kk_images/blahaj.jpg')"></i>
             <small >“Do to others as you would have them do to you.” — Luke 6:31</small>
             <i class="nf nf-fa-cross" onclick="window.open('https://bible.com')"></i>
-        </p>
+        </row>
     </footer>
 
+
     <script src="javascript.js"></script>
+
+
+
 
 </body>
 </html>

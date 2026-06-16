@@ -1,27 +1,15 @@
-const popupParent = document.getElementById('popupParent');
-const popupContent = document.getElementById('popupContent');
-
-const artpopupParent = document.getElementById('artpopupParent');
-const artpopupContent = document.getElementById('artpopupContent');
-
-const popupwarningParent = document.getElementById('popupwarningParent');
-const popupwarningContent = document.getElementById('popupwarningContent');
-
 function showpopup(newText) {
   document.getElementById('popuptext').innerText = newText;
-
-  popupParent.classList.add('popupparentshown');
-  popupContent.classList.add('popupshown');
+  document.getElementById('popup').classList.add('popupshown');
 }
 
 function hidepopup() {
-  popupParent.classList.remove('popupparentshown');
-  popupContent.classList.remove('popupshown');
+  document.getElementById('popup').classList.remove('popupshown');
 }
 
 
 function closenotification() {
-  document.getElementById('notification').style.transform = 'translateX(500px)';
+  document.getElementById('sidepopup').style.transform = 'translateX(500px)';
 }
 
 // context menu
@@ -42,16 +30,12 @@ document.addEventListener('click', () => {
 
 //art work popup
 function artworkpopup() {
-  artpopupParent.classList.add('popupparentshown');
-  artpopupContent.classList.add('popupshown');
-
-  popupParent.classList.remove('popupparentshown');
-  popupContent.classList.remove('popupshown');
+  document.getElementById('artpopup').classList.add('popupshown');
+  document.getElementById('popup').classList.remove('popupshown');
 }
 
 function closeartwork() {
-  artpopupParent.classList.remove('popupparentshown');
-  artpopupContent.classList.remove('popupshown');
+  document.getElementById('artpopup').classList.remove('popupshown');
 }
 
 // Image slideshow for my artwork showcase
@@ -95,58 +79,159 @@ function fullscreenart() {
 // light theme lol
 function changetolighttheme() {
     document.getElementById('pfp').src = '/images/synth.png';
-    import('./thememode.js')
-    .then((theme) => {
-      theme.light();
-    });
+    //document.getElementById('welcome_message').innerText = "Hi, I'm Celeron"
+    //document.getElementById('furry_message').innerText = "As you can see I'm a furry (Synth, Beep Boop)"
+
+    //first get the root scene
+    var root = document.querySelector(':root');
+    root.style.setProperty('--background-color', 'rgb(255, 255, 255)');
+    root.style.setProperty('--widget-background', 'rgba(225, 225, 225, 0.5)');
+    root.style.setProperty('--button-background', 'rgba(255, 255, 255, 0.5)');
+    root.style.setProperty('--popup-background', 'rgba(227, 220, 195, 0.747)');
+    root.style.setProperty('--font-color', 'black');
+    root.style.setProperty('--font-background', 'white');
+
+    root.style.setProperty('--is-dark', '0');
+    root.style.setProperty('--tilebar-bright', '1');
+
+
+    root.style.setProperty('--widget-border', 'rgba(0,0,0,0.1)');
+
+    root.style.setProperty('--main-color', '#c19512');
+
+    root.style.setProperty('--background-img', "url('/images/wallpaperlightmode.jpeg')");
+
+
+    particlesJS(
+{
+  "particles": {
+    "number": {
+      "value": 60,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
+    },
+    "color": {
+      "value": "#000000"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 4
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 0.4,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 116,
+      "color": "#000000",
+      "opacity": 0.4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "top-right",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": false,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+}
+)
+    
 }
 
-// Easter Egg 
-let timesOpened = 0;
-
-const messages = ["Warning: This image may contain sensitive content, Continue?",
-  "Are you sure?",
-  "Are you really really sure?",
-  "Are you really really really really really sure?",
-  "Are you like 100% sure you want to see it?",
-  "Really?",
-  "Really really?",
-  "So you want to see the image?",
-  "So you won't get offended?",
-  "Really?",
-  "Have you considered the risks?",
-  "Are you sure",
-  "wow ok ummm, so you pinky promase you wont get mad?",
-  "Are you sure?",
-  "Last time I had people complain, so are you really sure?",
-  "Truely very sure?",
-  "So you are not going to get mad?",
-  "I mean ok fine, but last question, Do you want to continue?",
-  "Ok, I lied this is not the last question, but are you sure?",
-  "Not going to get mad?",
-  "So do you not want to not see the image?",
-  "Wow you really want to see this image, have you considered that this might not even be an image?",
-  "Wow ok ig you really want to see the image, welp last warning."]
-
-function showSpoilImages() {
-  if (timesOpened > (messages.length - 1)) {
-    console.log("Ok")
-  }
-
-  document.getElementById('popuptextwarning').innerText = messages[timesOpened];
-  document.getElementById('popupwarning').classList.add('popupshown');
-
-  timesOpened += 1;
+// Easter Egg game - Pissman Jump
+function bug() {
+  document.getElementById('modal').showModal();
+  document.getElementById('modal').classList.add('animated')
+  document.getElementById('modaltext').innerText = 'Click click click, I like to click buttons that idk what it does. Maybe I should scroll up.';
+  document.getElementById('blob').classList.add('blob_bug')
+  document.getElementById('easter-eggs').classList.add('show-bug-widget')
+  document.getElementById('main-info-page').remove();
 }
 
-function resettimeOpened() {
-  document.getElementById('popupwarning').classList.remove('popupshown');
-  timesOpened = 0;
+function showgamepanel() {
+  document.getElementById('blob').classList.add('blob_bug')
+  document.getElementById('easter-eggs').classList.add('show-bug-widget')
+  document.getElementById('main-info-page').remove();
 }
-
-
-
-
 
 function showgame() {
     window.open('godot_game_build/');
@@ -155,7 +240,7 @@ function showgame() {
 
 
 // Make Wigets move into view
-const elements = document.querySelectorAll('.grids-project > widget');
+const elements = document.querySelectorAll('.grids > widget');
 
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
@@ -199,21 +284,124 @@ window.addEventListener('scroll', function() {
   let scrollPos = window.scrollY;
 
   let transformpos = -(scrollPos / 2 );
-  let opacityamount = 1 - (scrollPos / 300);
 
   if (transformpos < -200) transformpos = -200;
 
-  if (opacityamount < 0) opacityamount = 0;
+  if (scrollPos != 0) scroll.style.display = `none`;
 
-  topwidget.style.transform = `translateY(${transformpos}px)`
-  scroll.style.opacity = opacityamount;
+  topwidget.style.transform = `translateY(${transformpos}px)`;
   
 });
 
-
-
-import('./thememode.js')
-  .then((theme) => {
-    theme.loadbackground();
-    theme.dark();
-});
+particlesJS(
+{
+  "particles": {
+    "number": {
+      "value": 60,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 4
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 0.1,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 116,
+      "color": "#ffffff",
+      "opacity": 0.06,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "top-right",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": false,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+}
+)

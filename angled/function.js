@@ -22,11 +22,9 @@ const playUnlimitedButton = document.getElementById('playUnlimitedButton');
 const dailyshareresaultsButton = document.getElementById('dailyshareresaultsButton');
 const playagainButton = document.getElementById('playagainButton');
 
-const popupParent = document.getElementById('popupParent');
-const popupContent = document.getElementById('popupContent');
+const popUp = document.getElementById('popup');
 
-const settingsParent = document.getElementById('settingsParent');
-const settingsContent = document.getElementById('settingsContent');
+const settings = document.getElementById('settings');
 const lightthemeToggle = document.getElementById('lightthemeToggle');
 
 
@@ -39,7 +37,6 @@ const unlimitedButton = document.getElementById('unlimitedButton');
 let angle = 1
 let currentAngle = 1
 let animationId = null;
-
 
 
 // For getting the Daily Angled. =========================
@@ -84,20 +81,11 @@ function getDaysSince(pastDateString) {
   return Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 }
 
+// Example usage:
+console.log(getDaysSince("2026-06-01")); 
+
 // ==============================
 
-// small little anti-cheat when shareing resaults
-// works untill you know how it works
-
-function get_random_spaaces() {
-  r = Math.floor(Math.random() * (32 - 1) + 1);
-  tmp = ""
-
-  for (let i = 1; i <= r; i++) {
-    tmp += " "
-  }
-  return tmp
-}
 
 // setting the angle ==================================
 
@@ -149,15 +137,9 @@ function drawAngle(degrees) {
 
 // Global Values
 let doneDaily = false;
-let dailysavescumattemps = 0
-let dayplayedon = 0
 
 //check if done daily on tab load
 if (getDaysSince("2026-06-01") == localStorage.getItem('didDaily')) doneDaily = true;
-
-dayplayedon = Number(localStorage.getItem("dayplayon"))
-
-if (dayplayedon != getDaysSince("2026-06-01")) localStorage.setItem('dailysavescumattemps', 0)
 
 // Values for per game
 let attemps = 0;
@@ -185,11 +167,8 @@ inputAngle.addEventListener("keydown", function(event) {
 // when you submit the guess
 
 function submitGuess() {
-  if (doingDaily == true) localStorage.setItem('dailysavescumattemps', Number(localStorage.getItem("dailysavescumattemps"))+1)
-
   if (inputAngle.value < angle) { // When guess number is lower then angle
-    if (angle - inputAngle.value <= 3 && doingDaily == false) hintText.innerText = "Higher ↑ So close";
-    else hintText.innerText = "Higher ↑";
+    hintText.innerText = "Higher ↑";
     hintsGiven += `Higher ↑
 `;
     hintText.classList.remove('hinttextscale');
@@ -200,8 +179,7 @@ function submitGuess() {
   }
 
   else if (inputAngle.value > angle) { // When guess number is higher then angle
-    if (inputAngle.value - angle  <= 3 && doingDaily == false) hintText.innerText = "Lower ↓ So close";
-    else hintText.innerText = "Lower ↓";
+    hintText.innerText = "Lower ↓";
     hintsGiven += `Lower ↓
 `;
     hintText.classList.remove('hinttextscale');
@@ -254,6 +232,8 @@ function win() {
     localStorage.setItem('Daily', Number(localStorage.getItem("Daily"))+1)
     doneDaily = true;
   }
+
+  return
 }
 
 function lose() {
@@ -279,9 +259,6 @@ function lose() {
 
 // Start new Game for Daily mode
 function dailyGame() {
-  attemps = Number(localStorage.getItem("dailysavescumattemps"));
-  localStorage.setItem("dayplayon", getDaysSince("2026-06-01"))
-  updatecounterText()
   angle = getDailyRandomNumber(1, 359);
   hintText.innerText = "Type your guess!";
   finalresultText.innerText = (attemps == 6) ? `x/6 Guesses` : `${attemps}/6 Guesses`;
@@ -335,11 +312,12 @@ function updatecounterText() { // update the counter
 // copy to clipboard to share
 async function copyToClipboard() {
   try {
-    await navigator.clipboard.writeText(`Daily Angled. No. ${getDaysSince("2026-06-01")}
----------------------------  
+    await navigator.clipboard.writeText(`
+Daily Angled. No. ${getDaysSince("2026-06-01")}
+---------------------------
 ${(didPlayerLose == true) ? `x/6 Guesses` : `${attemps}/6 Guesses`}
 ${hintsGiven}
-${get_random_spaaces()}
+        
 Play at: https://wolfthee.github.io/angled`);
     console.log('Text successfully copied!');
     alert("Copied to clipboard!")
@@ -347,6 +325,7 @@ Play at: https://wolfthee.github.io/angled`);
     console.error('Failed to copy text: ', err);
   }
 }
+
 // Change the type of Gamemode depending on the tab
 let tab = "daily"
 
@@ -400,68 +379,407 @@ function popup(visible) {
   Perfect Guesses: ${localStorage.getItem("singleGuesses")}
   Daily played: ${localStorage.getItem("Daily")}`;
 
-  if (visible == true) {
-    popupParent.classList.add('popupparentshown');
-    popupContent.classList.add('popupshown');
-  }
+  if (visible == true) popUp.classList.add('popupvisible');
 
-  else if (visible == false) {
-    popupParent.classList.remove('popupparentshown');
-    popupContent.classList.remove('popupshown');
-  }
+  else if (visible == false) popUp.classList.remove('popupvisible');
 }
 
 
 // settings menu
 function popupSettings(visible) {
-  if (visible == true) {
-    settingsParent.classList.add('popupparentshown');
-    settingsContent.classList.add('popupshown');
-  }
+  if (visible == true) settings.classList.add('popupvisible');
 
-  else if (visible == false) {
-    settingsParent.classList.remove('popupparentshown');
-    settingsContent.classList.remove('popupshown');
-  }
+  else if (visible == false) settings.classList.remove('popupvisible');
 }
 
 function lightthemePressed() {
   if (lightthemeToggle.checked == true) {
-    localStorage.setItem("lighttheme", true)
-    import('/thememode.js')
-      .then((theme) => {
-        theme.light();
-    });
-  }
+      localStorage.setItem("lighttheme", true)
+      var root = document.querySelector(':root');
+      root.style.setProperty('--background-color', 'rgb(255, 255, 255)');
+      root.style.setProperty('--widget-background', 'rgba(225, 225, 225, 0.75)');
+      root.style.setProperty('--button-background', 'rgba(255, 255, 255, 0.5)');
+      root.style.setProperty('--button-background', 'rgba(255, 255, 255, 0.5)');
+      root.style.setProperty('--popup-background', 'rgba(227, 220, 195, 0.747)');
+      root.style.setProperty('--font-color', 'black');
+      root.style.setProperty('--font-background', 'white');
+
+      root.style.setProperty('--is-dark', '0');
+      root.style.setProperty('--tilebar-bright', '1');
+
+
+      root.style.setProperty('--widget-border', 'rgba(0,0,0,0.1)');
+
+      root.style.setProperty('--main-color', '#c19512');
+
+      particlesJS(
+{
+  "particles": {
+    "number": {
+      "value": 60,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
+    },
+    "color": {
+      "value": "#000000"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 4
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 0.4,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 116,
+      "color": "#000000",
+      "opacity": 0.4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "top-right",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": false,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+  })}
   else {
     localStorage.setItem("lighttheme", false)
-      import('/thememode.js')
-      .then((theme) => {
-        theme.dark();
-    });
+    var root = document.querySelector(':root');
+    root.style.setProperty('--background-color', 'rgb(12, 12, 23)');
+    root.style.setProperty('--widget-background', 'rgba(10, 20, 25, 0.5)');
+    root.style.setProperty('--button-background', 'rgba(177, 177, 177, 0.15)');
+    root.style.setProperty('--popup-background', 'rgba(8, 18, 24, 0.747)');
+    root.style.setProperty('--font-color', 'rgb(255,255,255)');
+    root.style.setProperty('--font-background', 'black');
+
+    root.style.setProperty('--is-dark', '1');
+    root.style.setProperty('--tilebar-bright', '0');
+
+
+    root.style.setProperty('--widget-border', 'rgb(255, 255, 255, 0.1)');
+
+    root.style.setProperty('--main-color', '#1295c1');
+
+    particlesJS(
+{
+  "particles": {
+    "number": {
+      "value": 60,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 4
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 0.1,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 116,
+      "color": "#ffffff",
+      "opacity": 0.06,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "top-right",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": false,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+}
+)
+
   }
 }
 
 
 // when page loads
-
-import('/thememode.js')
-  .then((theme) => {
-    theme.loadbackground();
-});
-
-
 if (localStorage.getItem("lighttheme") == "true") {
   lightthemeToggle.checked = true;
   lightthemePressed();
 }
 
-else { 
-  import('/thememode.js')
-      .then((theme) => {
-        theme.dark();
-    });
-  
+
+
+
+
+
+// Particles JS thing
+
+particlesJS(
+{
+  "particles": {
+    "number": {
+      "value": 60,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 4
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 0.1,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 116,
+      "color": "#ffffff",
+      "opacity": 0.06,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "top-right",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": false,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
 }
-
-
+)
