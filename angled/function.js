@@ -155,9 +155,9 @@ let dayplayedon = 0
 //check if done daily on tab load
 if (getDaysSince("2026-06-01") == localStorage.getItem('didDaily')) doneDaily = true;
 
-dayplayedon = Number(localStorage.getItem("dayplayon"))
+//dayplayedon = Number(localStorage.getItem("dayplayon"))
 
-if (dayplayedon != getDaysSince("2026-06-01")) localStorage.setItem('dailysavescumattemps', 0)
+//if (dayplayedon != getDaysSince("2026-06-01")) localStorage.setItem('dailysavescumattemps', 0)
 
 // Values for per game
 let attemps = 0;
@@ -188,7 +188,7 @@ function submitGuess() {
   if (doingDaily == true) localStorage.setItem('dailysavescumattemps', Number(localStorage.getItem("dailysavescumattemps"))+1)
 
   if (inputAngle.value < angle) { // When guess number is lower then angle
-    if (angle - inputAngle.value <= 3 && doingDaily == false) hintText.innerText = "Higher ↑ So close";
+    if (angle - inputAngle.value <= 3) hintText.innerText = "Higher ↑ So close";
     else hintText.innerText = "Higher ↑";
     hintsGiven += `Higher ↑
 `;
@@ -200,7 +200,7 @@ function submitGuess() {
   }
 
   else if (inputAngle.value > angle) { // When guess number is higher then angle
-    if (inputAngle.value - angle  <= 3 && doingDaily == false) hintText.innerText = "Lower ↓ So close";
+    if (inputAngle.value - angle  <= 3) hintText.innerText = "Lower ↓ So close";
     else hintText.innerText = "Lower ↓";
     hintsGiven += `Lower ↓
 `;
@@ -279,8 +279,8 @@ function lose() {
 
 // Start new Game for Daily mode
 function dailyGame() {
-  attemps = Number(localStorage.getItem("dailysavescumattemps"));
-  localStorage.setItem("dayplayon", getDaysSince("2026-06-01"))
+  //attemps = Number(localStorage.getItem("dailysavescumattemps"));
+  //localStorage.setItem("dayplayon", getDaysSince("2026-06-01"))
   updatecounterText()
   angle = getDailyRandomNumber(1, 359);
   hintText.innerText = "Type your guess!";
