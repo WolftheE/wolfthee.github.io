@@ -1,0 +1,145 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KermitKrack Wabor Party – Building Wolfon&#39;s Future</title>
+
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="icon" type="image/x-icon" href="images/Wabortablogo.png">
+
+    <meta name="theme-color" content="#e13940">
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+                <row>
+                    <div class="col-md">
+                        <a class="header__logo-link" href="/wabor/">
+                            <img class="header__logo" src="/wabor/images/waborlogo.png">
+                        </a>
+                    </div>
+
+                    <div class="col-md button-row">
+                        <a href="the-plan/">Our Plan</a>
+                        <a href="/wabor/the-plan/">Our Future</a>
+                        <button onclick="popupShown('/wabor/pages/wolfon-news.html')">Media</button>
+                        <button onclick="popupShown('/wabor/pages/join.html')">Get involved</button>
+                        <button onclick="popupShown('/wabor/pages/history.html')">Our History</button>
+                        <button class="button-featured" onclick="popupShown('/wabor/pages/donate-trust.html')">Donate</button>
+                    </div>
+                </row>
+        </div>
+    </header>
+
+
+    <banner>
+        <img src="/wabor/images/home-banner.jpg">
+        <div class="textoverbanner">
+            <h1>Building Wolfon's Future</h1>
+        </div>
+    </banner>
+
+    <section class="section-grid">
+        <div class="formSignup">
+                    <div class="formcontentcontainer">
+                        <div>
+                            <div class="form-col-1__top">
+                                <div class="form-title">Stand with us</div>
+                                <div class="form-description">Sign up to join the campaign</div>
+                                <div class="form-fields">
+                                    <input class="form-input" type="text" placeholder="First Name" value="">
+                                    <input class="form-input" type="text" placeholder="Last Name" value="">
+                                    <input class="form-input" type="text" placeholder="Email" value="">
+                                    <input class="form-input" type="text" placeholder="Postcode" value="">
+                                    <input class="submit-button" type="submit" onclick="showcapcha()">
+                                </div>
+                                <div class="stage-indicator form-col-1__bot"><div class="circles float_center"><div class="circle-1 circle-active"></div><div class="circle-2 "></div><div class="circle-3 "></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <a class="ourplan widget" href="/wabor/the-plan/">
+        </a>
+
+        <div class="stoponebiome widget" onclick="popupShown('pages/donate-trust.html')">
+            <h1>Donate</h1>
+        </div>
+
+        <div class="media widget" onclick="popupShown('pages/wolfon-news.html')">
+            <h1>Media & News</h1>
+        </div>
+
+        <a class="housingproblem widget" href="/wabor/the-plan/" style="text-decoration: none;">
+            <h2>See how we are solving the housing problem</h2>
+            <button class="submit-button">Read More</button>
+        </a>
+    </section>
+
+    <footer>
+            <div class="container">
+                <row>
+                    <img class="footer-logo" src="/wabor/images/waborlogowhite.png" alt="KermitKrack Wabor Party" style="margin-right: auto;">
+
+                    <a href="/" class="widget">
+                        <img style="filter: grayscale(1); height: 48px; margin-right: 15px; border-radius: 100px;" src="/images/proto.jpg">
+                    </a>
+                </row>
+                <hr class="footer-hr">
+
+                <row class="footer-nav">
+                    <a class="footer-nav-button" onclick="popupShown('pages/wolfon-news.html')">Stay Informed</a>
+                    <a class="footer-nav-button" onclick="popupShown('pages/join.html')">Join Wabor!</a>
+                    <a class="footer-nav-button" href="the-plan">The big Plan!</a>
+                    <a class="footer-nav-button" onclick="popupShown('pages/disclaimer.html')">Disclaimer</a>
+                </row>
+
+                <p class="footer-authorised">Authorised by W. THEE, KWP, Wolfon</p>
+
+                <a class="footer-nav-button footer-authorised" style="display: block;" onclick="popupShown('pages/disclaimer.html')">Privacy Policy</a>
+
+            </div>
+    </footer>
+
+
+    <popup id="popup">
+        <navbar>
+            <button onclick="popuphide()">
+                <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" stroke-width="1.4" class="p-abs centered icon-stroke icon-stroke-2" aria-hidden="true"><path d="m18 6-12 12m0-12 12 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </button>
+        </navbar>
+
+        <iframe src="pages/donate-trust.html" id="iframe"></iframe>
+    </popup>
+
+    <capcha id="capchapopup">
+        <capchapopup>
+            <navbar>
+                <button onclick="hidecapcha()">
+                    <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" stroke-width="1.4" class="p-abs centered icon-stroke icon-stroke-2" aria-hidden="true"><path d="m18 6-12 12m0-12 12 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </button>
+            </navbar>
+            <iframe id="capchaPage" src=""></iframe>
+        </capchapopup>
+
+    </capcha>
+
+
+    
+
+    <script src="js.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+

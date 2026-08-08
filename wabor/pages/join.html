@@ -1,0 +1,85 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>KermitKrack Wabor Party – Building Wolfon&#39;s Future</title>
+
+    <link rel="stylesheet" type="text/css" href="/wabor/styles.css" />
+
+</head>
+
+<body>
+    <br>
+    <br>
+    <section style="text-align: center;">
+        <h1>Anyone can be apart of Wabor!</h1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="formSignup" style="max-width: 290px; margin:auto;">
+                    <div class="formcontentcontainer">
+                        <div>
+                            <div class="form-col-1__top">
+                                <div class="form-title">Stand with us</div>
+                                <div class="form-description">Sign up to join the campaign</div>
+                                <div class="form-fields">
+                                    <input class="form-input" type="text" placeholder="First Name" value="">
+                                    <input class="form-input" type="text" placeholder="Last Name" value="">
+                                    <input class="form-input" type="text" placeholder="Email" value="">
+                                    <input class="form-input" type="text" placeholder="Postcode" value="">
+                                    <input class="submit-button" type="submit" onclick="showcapcha()">
+                                </div>
+                                <div class="stage-indicator form-col-1__bot"><div class="circles float_center"><div class="circle-1 circle-active"></div><div class="circle-2 "></div><div class="circle-3 "></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+
+    <capcha id="capchapopup">
+        <capchapopup>
+            <navbar>
+                <button onclick="hidecapcha()">
+                    <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" stroke-width="1.4" class="p-abs centered icon-stroke icon-stroke-2" aria-hidden="true"><path d="m18 6-12 12m0-12 12 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </button>
+            </navbar>
+            <iframe id="capchaPage" src=""></iframe>
+        </capchapopup>
+
+    </capcha>
+
+
+    <script>
+
+const capchapopup = document.getElementById('capchapopup');
+const capchaiframe = document.getElementById('capchaPage');
+
+const capchapages = ["https://embed.neal.fun/not-a-robot/embed/10","https://embed.neal.fun/not-a-robot/embed/12","https://embed.neal.fun/not-a-robot/embed/18","https://embed.neal.fun/not-a-robot/embed/16","https://embed.neal.fun/not-a-robot/embed/31","https://embed.neal.fun/not-a-robot/embed/2"]
+
+function showcapcha() {
+    let randomnum = Math.floor(Math.random() * 6)
+    capchapopup.classList.add('popupvisable');
+    capchaiframe.src = "../pages/capcha.html" //capchapages[randomnum]
+}
+
+function hidecapcha() {
+    capchapopup.classList.remove('popupvisable');
+}
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+

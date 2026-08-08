@@ -1,279 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta name="theme-color" content="#1295c1">
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0&icon_names=chevron_left,chevron_right,open_in_full,open_in_new" />
-     <link rel="stylesheet" href="styles.css">
-     <link rel="stylesheet" href="https://www.nerdfonts.com/assets/css/webfont.css" />
-     <title>WolftheE's Website</title>
-     <link rel="icon" type="image/x-icon" href="images/proto.jpg">
+    <meta name="theme-color" content="#1295c1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://www.nerdfonts.com/assets/css/webfont.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <title>WolftheE's Website</title>
+    <link rel="icon" type="image/x-icon" href="images/proto.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
+    <meta name="description" content="Wolfthee's portfolio :3">
 </head>
 <body>
 
     <popup-parent id="popupParent">
         <popup-content id="popupContent">
             <titlebar>
-                <img src="resources/go-up.svg">
-                <img src="resources/go-down.svg">
-                <img class="close" src="resources/window-close.svg" onclick="hidepopup()">
-            </titlebar>
+                <button class="close">
+                    <svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m4 4 8 8m-8 0 8-8" fill="currentColor"/>
+                        <path d="M 4,3.1523438 3.1523438,4 7.1523437,8 3.1523438,12 4,12.847656 8,8.8476563 12,12.847656 12.847656,12 8.8476563,8 12.847656,4 12,3.1523438 8,7.1523437 Z" fill="currentColor"/>
+                    </svg>
+                </button>
+                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 4.293l-6 6 .707.707L8 5.707 13.293 11l.707-.707-6-6z" fill="currentColor"/>
+                </svg>
+                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 11.707l-6-6L2.707 5 8 10.293 13.293 5l.707.707-6 6z" fill="currentColor"/>
+                </svg>
+                </titlebar>
             <p id="popuptext">UwU</p>
             <button onclick="hidepopup()">Close</button>
-        </popup-content>
-    </popup-parent>
-
-
-    <popup-parent id="popupwarningParent">
-        <popup-content id="popupwarningContent">
-            <titlebar>
-                <img src="resources/go-up.svg">
-                <img src="resources/go-down.svg">
-                <img class="close" src="resources/window-close.svg" onclick="resettimeOpened()">
-            </titlebar>
-            <p id="popuptextwarning">Hey there, right now this website is a work in progress so stuff will be unfinshed!</p>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">See Image</a>
-            <row style="position: absolute; bottom: 8px;">
-                <button onclick="showSpoilImages()">Yes</button>
-                <button onclick="resettimeOpened()">No</button>
-            </row>
         </popup-content>
     </popup-parent>
 
     <popup-parent id="artpopupParent">
         <popup-content id="artpopupContent">
             <titlebar>
-                <img src="resources/go-up.svg">
-                <img src="resources/go-down.svg">
-                <img class="close" src="resources/window-close.svg" onclick="closeartwork()">
+                <button class="close">
+                    <svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m4 4 8 8m-8 0 8-8" fill="currentColor"/>
+                        <path d="M 4,3.1523438 3.1523438,4 7.1523437,8 3.1523438,12 4,12.847656 8,8.8476563 12,12.847656 12.847656,12 8.8476563,8 12.847656,4 12,3.1523438 8,7.1523437 Z" fill="currentColor"/>
+                    </svg>
+                </button>
+                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 4.293l-6 6 .707.707L8 5.707 13.293 11l.707-.707-6-6z" fill="currentColor"/>
+                </svg>
+                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 11.707l-6-6L2.707 5 8 10.293 13.293 5l.707.707-6 6z" fill="currentColor"/>
+                </svg>
             </titlebar>
-            <row class="artworkcontain">
-                <div>
+                <div class="artinfo">
                     <h1>Some of my art</h1>
                     <hr>
                     <p id="artworktext">Probaly one of the best ones I've made. It's a close up image of a realistic road with a fiat driving in the background.</p>
-                    <row class="toolbar">
+                </div>
+                <row class="arttoolbar">
                         <button onclick="imageslide(-1)"><</button>
                         <button onclick="imageslide(1)">></button>
                         <button onclick="fullscreenart()">Fullscreen</button>
                         <button onclick="closeartwork()">Close</button>
-                    </row>
-                </div>
-            <div id="artworkimg"></div>
+                </row>
+                <div id="artworkimg"></div>
         </popup-content>
-        </row>
-    
     </popup-parent>
 
-    <notification id="notification">
-        <titlebar style="width: 42px;">
-            <img src="resources/configure.svg">
-            <img src="resources/window-close.svg" onclick="closenotification()">
-        </titlebar>
-        <h1>Angled.</h1>
-        <p>An angle guessing game made by me!</p>
-        <br>
-        <div style="float: right; display: flex;">
-            <button onclick="window.open('/angled')">Take me there!</button>
-            <button onclick="closenotification()">Dismiss</button>
-        </div>
-    </notification>
-
-    <context-menu id="context_menu">
-        <small>Hia there ~w~</small>
-        <button onclick="window.open('/godot_game_build');">???</button>
-        <button onclick="changetolighttheme()">Enable Light Theme</button>
-    </context-menu>
-
-    <!--<background id="background"></background> -->
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/engine@4/tsparticles.engine.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/slim@4/tsparticles.slim.bundle.min.js"></script>
 
     <div id="tsparticlesbackground"></div>
 
+    <script src="background.js"></script>
 
-    <section class="top">
-        <widget class="window" id="topwidget">
-            <div>
-                <img src="images/proto.jpg" id="pfp" onclick="showpopup('Boop >w<')">
-            </div>
-            <div id="bio">
-                <h1 style="color: var(--main-color); line-height: 0.5;">Hello there ^w^</h1>
-                <hr>
-                <p style="line-height: 1.6;">
-                    <i class="nf nf-fa-paw" style="color: var(--main-color); opacity: 1;"></i> <span>: As you can see I'm a furry (protogen ^w^)</span>
-                    <br>
-                    <i class="nf nf-linux-tux" style="color: var(--main-color); opacity: 1;"></i> <span>: I love computers and Linux</span>
-                    <br>
-                    <i class="nf nf-fa-code" style="color: var(--main-color); opacity: 1;"></i> <span>: I love coding</span>
-                    <br>
-                    <i class="nf nf-md-balloon" style="color: var(--main-color); opacity: 1;"></i> <span>: Plays an unhealthy amount of BTD6</span>
-                    <br>
-                    <i class="nf nf-md-shark" onclick="window.open('/kk_images/blahaj.jpg')" style="color: var(--main-color); opacity: 1;"></i> <span>: I love my Blåhaj</span>
-                    <br>
-                    <i class="nf nf-fa-question" style="color: var(--main-color); opacity: 1;"></i> <small class="spoiler-text">may or may not be a femboy >w<</small>
-                </p>
-                <!--<row style="gap:4px;">
-                    <div style="color: var(--main-color); opacity: 1;">
-                        <p class="nf nf-fa-paw"></p>
-                        <p class="nf nf-linux-tux"></p>
-                        <p class="nf nf-fa-code"></p>
-                        <p class="nf nf-md-balloon"></p>
-                        <p class="nf nf-md-shark" onclick="window.open('/kk_images/blahaj.jpg')"></p>
-                        <p class="nf nf-fa-question"></p>
+
+    <section class="top-section">
+        <div class="content">
+            <widget class="top-widget">
+                <floating-note style="top: -50px; left: -50px" class="spark">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" height="64px" version="1.0">
+                        <path xmlns="http://www.w3.org/2000/svg" fill="currentColor" d="M 19.4849 8.955 C 19.6286 11.1357 19.8329 13.3603 20.4366 15.4636 C 20.5682 16.0252 21.4298 16.0916 21.6428 15.5346 C 22.2719 13.4486 22.5189 11.2557 22.7428 9.0883 C 22.9638 6.5988 23.3165 4.0695 22.8392 1.5887 C 22.7647 0.9571 22.2349 0.4434 21.6128 0.3598 C 18.8079 0.0238 19.4884 7.1368 19.4849 8.955 Z M 10.847 11.8976 C 9.9559 10.8442 8.9413 9.8416 8.374 8.5648 C 7.6468 7.0213 9.7008 5.4328 11.0029 6.5376 C 13.2167 8.8141 14.9204 11.5663 16.7897 14.1291 C 17.0892 14.5666 17.3917 15.0041 17.6935 15.4393 C 17.9301 15.7776 18.2978 16.1811 18.2279 16.6278 C 17.5717 19.0544 11.5771 12.8165 10.847 11.8976 Z M 3.114 12.9885 C 4.266 13.3833 5.3954 13.8364 6.5 14.3461 C 9.0988 15.6009 11.685 16.9176 14.1043 18.4992 C 14.6659 18.7976 15.6285 19.5387 14.9319 20.1765 C 14.4616 20.5066 13.8417 20.2925 13.3402 20.2013 C 12.7723 20.0974 12.2085 19.9756 11.6446 19.8498 C 8.2141 19.0787 4.88 17.7967 1.8178 16.0685 C 0.143 15.0809 1.2516 12.458 3.114 12.9885 Z M 3.114 12.9885" fill-opacity="1" fill-rule="nonzero"/>
+                    </svg>
+                </floating-note>
+                <floating-note class="paw">
+                    <h1 class="no-spacing stupid-projects-tm-title" style="font-size: 3rem;" data-text="\f1675"><l class="nf nf-md-paw_outline"></l></h1>
+                </floating-note>
+                <floating-note class="card3d personal-facts-card">
+                    <div class="tooltip card-element" style="pointer-events: none;">
+                        <h3 class="no-spacing">Fun Fact about me</h3>
+                        <hr>
+                        <p class="little-spacing"><l class="nf nf-md-owl"></l> Owls are my favourite animal</p>
+                        <p class="no-spacing"><l class="nf nf-md-gamepad_square"></l> I <3 Half life, best game of all time</p>
+                        <p class="little-spacing"><l class="nf nf-cod-color_mode"></l> Blue is my favourite colour</p>
+                        <p class="no-spacing"><l class="nf nf-md-fedora"></l> I use Fedora Linux with KDE</p>
                     </div>
-                    <div style="opacity: 0.65;">
-                        <p>: As you can see I'm a furry (protogen ^w^)</p>
-                        <p>: I love computers and Linux</p>
-                        <p>: I love coding</p>
-                        <p>: Plays an unhealthy amount of BTD6</p>
-                        <p>: I love my Blåhaj</p>
-                        <small class="spoiler-text">may or may not be a femboy >w<</small>
+                </floating-note>
+                <floating-note class="furry-fact-card">
+                    <h4><l class="nf nf-md-paw"></l> Yes I am a furry (protogen ^w^)</h4>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" fill="currentColor" style="top: -75px;left: 170px; width: 175px; transform: rotate(-32deg); pointer-events: none;" viewBox="0 0 512 190.285" class="svg-arrow">
+                        <path d="M512 62.269c-32.208 3.503-65.126 11.155-82.935 11.576-5.87.14-13.175-.651-5.825-3.929 17.743-7.915 39.85-13.415 61.461-14.291-4.787-1.077-9.548-2.473-15.993-4.683-42.916-14.717-91.165-23.694-138.308-23.756-39.015-.053-79.822 5.737-115.535 22.126 13.263 12.299 25.007 25.723 35.154 40.787 21.629 32.107 31.567 79.665-13.75 96.773-37.675 14.221-72.262-18.318-76.731-54.787-3.222-26.29 6.915-45.475 19.352-63.408 5.258-7.581 11.717-14.262 19.168-20.104C105.119-16.905 17.276 26.293 0 117.511 4.91 5.165 125.544-21.164 205.932 42.942c70.469-46.003 210.713-30.084 282.411 7.501-9.463-9.291-17.535-22.446-22.866-35.006-.79-1.859-4.569-8.993-4.29-12.878.102-1.443.766-2.442 2.348-2.553.903-.063 1.863.407 2.868 1.35 2.92 2.749 9.199 13.053 15.44 23.057C491.104 39.255 499.115 50.13 512 62.269zm-304.367-6.573c13.918 12.907 26.764 28.048 37.028 43.982 16.542 25.678 22.453 56.275-1.472 72.95-14.806 10.319-30.931 9.682-44.76 1.389-49.808-29.871-25.747-96.994 9.204-118.321z"/>
+                    </svg>
+                </floating-note>
+                <floating-note class="fun-fact-card">
+                    <h2 class="no-spacing">Did you know?</h2>
+                    <p class="little-spacing">The Blåhaj used to be called 'Klappar Haj'</p>
+                </floating-note>
+                <titlebar>
+                    <button class="close">
+                        <svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m4 4 8 8m-8 0 8-8" fill="currentColor"/>
+                            <path d="M 4,3.1523438 3.1523438,4 7.1523437,8 3.1523438,12 4,12.847656 8,8.8476563 12,12.847656 12.847656,12 8.8476563,8 12.847656,4 12,3.1523438 8,7.1523437 Z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 4.293l-6 6 .707.707L8 5.707 13.293 11l.707-.707-6-6z" fill="currentColor"/>
+                    </svg>
+                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 11.707l-6-6L2.707 5 8 10.293 13.293 5l.707.707-6 6z" fill="currentColor"/>
+                    </svg>
+                </titlebar>
+
+                <div class="content bio">
+                    <div class="card3d">
+                        <img id="pfp" class="card-element" src="images/proto.jpg">
                     </div>
-                </row> -->
-                <row style="gap: 8px; opacity: 0.75;">
-                    <div class="square" style="background-color: var(--red);"></div>
-                    <div class="square" style="background-color: var(--orange);"></div>
-                    <div class="square" style="background-color: var(--yellow);"></div>
-                    <div class="square" style="background-color: var(--green);"></div>
-                    <div class="square" style="background-color: var(--cyan);"></div>
-                    <div class="square" style="background-color: var(--blue);"></div>
-                    <div class="square" style="background-color: var(--purple);"></div>
-                    <div class="square" style="background-color: var(--font-color);"></div>
-                    <div class="square" style="background-color: var(--background-color);"></div>
-                </row>
-                <br>
-            </div>
-            <titlebar>
-                <img src="resources/go-up.svg">
-                <img src="resources/go-down.svg">
-                <img class="close" src="resources/window-close.svg">
-            </titlebar>
+                    <div class="bio-info">
+                        <h1 class="no-spacing bio-title">Hello there >w<</h1>
+                        <hr>
+                        <p><l class="nf nf-fa-user bio-icon"></l> : My name is Dan but my username is WolftheE (Wolfe for short)</p>
+                        <p><l class="nf nf-fa-code bio-icon"></l> : So far I have self taught python, HTML, CSS and a bit of JS</p>
+                        <p><l class="nf nf-md-monitor bio-icon"></l> : I love Computers & Operating systems and learning how they work</p>
+                        <p><l class="nf nf-md-school_outline bio-icon"></l> : In my final years of school</p>
+                        <p><l class="nf nf-md-balloon bio-icon"></l> : I may have a few too many hours on BTD6</p>
+                        <p><l class="nf nf-md-shark_fin_outline bio-icon"></l> : I love my Blåhaj</p>
+                        <br>
+                        <row class="colors-row"><a href="https://github.com/WolftheE" class="nf nf-cod-github"></a><a href="https://wolfthee.itch.io" class="nf nf-fa-itch_io"></a><a href="https://www.youtube.com/@WolftheE" class="nf nf-fa-square_youtube"></a><button id="show-popup-btn" data-popuptext="My username is @wolfthee" class="nf nf-fa-discord"></button><a href="/images/blahaj.jpg" class="nf nf-md-shark_fin_outline"></a><button id="show-artwork-btn" class="nf nf-md-tooltip_image"></button></row>
+                    </div>
+                </div>
+                <div class="terminal-line bio">
+                    <row><span class="terminal-color-one">&MediumSpace;&MediumSpace;<l class="nf nf-fa-bone">&MediumSpace;</l></span><l class="nf nf-pl-left_hard_divider terminal-color-one-divider"></l><span class="terminal-color-two"><l class="nf nf-fa-home"> ~ &MediumSpace;</l></span><l class="nf nf-pl-left_hard_divider terminal-color-two-divider"></l></row>
+                    <span class="nf nf-fa-caret_right"></span>
+                </div>
+            </widget>
+        </div>
+    </section>
+    <section>
+        <div class="content">
+            <widget>
+                <titlebar>
+                    <button class="close">
+                        <svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m4 4 8 8m-8 0 8-8" fill="currentColor"/>
+                            <path d="M 4,3.1523438 3.1523438,4 7.1523437,8 3.1523438,12 4,12.847656 8,8.8476563 12,12.847656 12.847656,12 8.8476563,8 12.847656,4 12,3.1523438 8,7.1523437 Z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 4.293l-6 6 .707.707L8 5.707 13.293 11l.707-.707-6-6z" fill="currentColor"/>
+                    </svg>
+                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 11.707l-6-6L2.707 5 8 10.293 13.293 5l.707.707-6 6z" fill="currentColor"/>
+                    </svg>
+                </titlebar>
 
-            <terminal-text>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 77" xmlns:bx="https://boxy-svg.com">
-                    <rect width="77" height="77" style="fill: rgb(216, 216, 216);"/>
-                    <rect width="77" height="77" style="fill: var(--main-color);" x="77"/>
-                    <path d="M 132.574 4.704 L 171.074 43.206 L 94.074 43.206 L 132.574 4.704 Z" bx:shape="triangle 94.074 4.704 77 38.502 0.5 0 1@7e436958" style="fill: rgb(216, 216, 216); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0, 1, -1, 0, -38.5, 14)"/>
-                    <rect width="77" height="77" style="fill: var(--main-color);" x="150"/>
-                    <path d="M 132.574 4.704 L 171.074 43.206 L 94.074 43.206 L 132.574 4.704 Z" bx:shape="triangle 94.0 4.704 77 38.502 0.5 0 1@7e436958" style="transform-origin: 132.574px 23.955px; fill: var(--main-color);" transform="matrix(0, 1, -1, 0, 112, 15)"/>
-                </svg>
-                <row style="gap: 20px;">
-                    <p class="nf nf-linux-tux"></p>
-                    <p class="nf nf-fa-home" style="color: var(--font-color)"> ~</p>
-                </row>
-                <p style="color: var(--green);">❯</p>
-            </terminal-text>
-        </widget>
-
-        <scroll-tooltip id="scroll">
-            <small>Scroll Down</small>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M468.08-386.96q-5.46-2.12-10.7-7.35L281.85-569.85q-5.62-5.61-6-13.77-.39-8.15 6-14.53 6.38-6.39 14.15-6.39 7.77 0 14.15 6.39L480-428.31l169.85-169.84q5.61-5.62 13.77-6 8.15-.39 14.53 6 6.39 6.38 6.39 14.15 0 7.77-6.39 14.15L502.62-394.31q-5.24 5.23-10.7 7.35-5.46 2.11-11.92 2.11t-11.92-2.11Z"/></svg>
-        </scroll-tooltip>
+                <h1 align="center">Some of my <span class="stupid-projects-tm-title" data-text="Stupid Projects™">Stupid Projects™</span></h1>
+                <grid>
+                    <a class="angled card" href="/angled">
+                            <l class="open-link-btn nf nf-md-open_in_new"></l>
+                        <card-overlay>
+                            <h2 class="no-spacing">Angled.</h2>
+                            <p class="little-spacing">An angle guessing game</p>
+                        </card-overlay>
+                    </a>
+                    <a class="better-ytm card" href="https://github.com/WolftheE/better-ytm">
+                        <l class="open-link-btn nf nf-md-open_in_new"></l>
+                        <card-overlay>
+                            <h2 class="no-spacing">Better-YTM</h2>
+                            <p class="little-spacing">A YTM theme made for better lyrics!</p>
+                        </card-overlay>
+                    </a>
+                    <a class="synth card" href="/synth-ai">
+                        <l class="open-link-btn nf nf-md-open_in_new"></l>
+                        <card-overlay>
+                            <h2 class="no-spacing">Synth AI</h2>
+                            <p class="little-spacing">A custom made very advance and ultra fast AI chatbot</p>
+                        </card-overlay>
+                    </a> 
+                    <a class="calc card" href="/calc">
+                        <l class="open-link-btn nf nf-md-open_in_new"></l>
+                        <card-overlay>
+                            <h2 class="no-spacing">Calc</h2>
+                            <p class="little-spacing">Best calc for 2026!</p>
+                        </card-overlay>
+                    </a>
+                    <a class="pissman card" href="https://wolfthee.itch.io/pissman-legacy">
+                        <l class="open-link-btn nf nf-md-open_in_new"></l>
+                        <card-overlay>
+                            <h2 class="no-spacing">Pissman</h2>
+                            <p class="little-spacing">That one game I made in year 9</p>
+                        </card-overlay>
+                    </a>
+                    <a class="vivaldi card" href="https://github.com/WolftheE/Wolf-Vivaldi">
+                        <l class="open-link-btn nf nf-md-open_in_new"></l>
+                        <card-overlay>
+                            <h2 class="no-spacing">Wolfe's Vivaldi</h2>
+                            <p class="little-spacing">Didn't like the default Vivaldi look & feel so I made my own mods for it!</p>
+                        </card-overlay>
+                    </a>
+                    <div class="question card">
+                        <h1>More comming <span class="stupid-projects-tm-title" data-text="Soon™">Soon™</span></h1>
+                    </div>
+                </grid>
+            </widget>
+        </div>
     </section>
 
-    <widget class="more-details">
-        <div class="background_details"></div>
-        <h1>Quick Links</h1>
-        <hr>
-        <br>
-        <div>
-            <a href="https://github.com/WolftheE">Github</a>
-            <a href="https://wolfthee.itch.io">Itch.io</a>
-            <a href="https://www.youtube.com/@WolftheE">Youtube</a>
-            <button onclick="showpopup('Discord username: @wolfthee')">Discord</button>
-            <button onclick="artworkpopup()">Artworks >w<</button>
-        </div>
-        <br>
-        <br>
-        <br>
-        <div class="navbar">
-            <button style="border-bottom: 1px solid var(--main-color);">My Projects</button>
-            <button style="opacity: 0.75;" onclick="showpopup('Comming Soon!')">More about me</button>
-        </div>
-    </widget>
 
-    <section class="grids-project" id="grid_project">
-        <widget class="angled widget-left" onclick="window.open('/angled');">
-            <div class="background_details"></div>
-            <span class="material-symbols-rounded openinnewtab">open_in_new</span>
-            <overlay>
-                <h2>Angled.</h2>
-                <p>An angle guessing game</p>
-            </overlay>
-        </widget>
-
-        <widget class="calc widget-right" onclick="window.open('/calc');">
-            <span class="material-symbols-rounded openinnewtab">open_in_new</span>
-            <overlay>
-                <h2>Calc</h2>
-                <p>A Calc</p>
-            </overlay>
-        </widget>
-
-        <widget class="synth widget-right" onclick="window.open('/synth-ai');">
-            <span class="material-symbols-rounded openinnewtab">open_in_new</span>
-            <overlay>
-                <h2>Synth AI</h2>
-                <p>A powerful custom AI chatbot built from scratch!</p>
-                <p class="discription">Power by a custom AI model built from scrach, Synth AI is ready for all the tasks you give it!</p>
-            </overlay>
-        </widget>
-
-
-        <widget class="better-ytm widget-left" onclick="window.open('https://github.com/WolftheE/better-ytm');">
-            <span class="material-symbols-rounded openinnewtab">open_in_new</span>
-            <overlay>
-                <h2>Better-YTM</h2>
-                <p>A custom YTM theme that makes YTM more modern!</p>
-                <p class="discription">A small CSS theme that makes Youtube Music so much more modern without changing the whole layout!</p>
-            </overlay>
-        </widget>
-
-        <widget class="pissman widget-left" onclick="window.open('https://wolfthee.itch.io/pissman-legacy');">
-            <span class="material-symbols-rounded openinnewtab">open_in_new</span>
-            <overlay>
-                <h2>Pissman</h2>
-                <p>A 2d Platformer Game Made by me ^w^</p>
-                <p class="discription">A stupid game that I had to make in year 9. Its a 2d platfomer game with some kind of lore. You got corupted and went into an unknown world and you need to try to get home!</p>
-            </overlay>
-        </widget>
-
-        <widget class="vivaldi widget-right" onclick="window.open('https://github.com/WolftheE/Wolf-Vivaldi');">
-            <span class="material-symbols-rounded openinnewtab">open_in_new</span>
-            <overlay>
-                <h2>Wolfe's Vivaldi</h2>
-                <p>A theme that makes Vivaldi to my liking.</p>
-            </overlay>
-        </widget>
-
-        <widget class="question widget-right">
-            <img src="/images/blahaj.jpg">
-            <div style="height: 100%;">
-                <button onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')"><i class="nf nf-cod-eye_closed"></i></button>
-            </div>
-        </widget>
-    </section>
-
-    <!--<section class="grids-personal-info" id="grid_info">
-        <widget class="commingsoon">
-            <h1>Comming soon</h1>
-        </widget>
-    </section>-->
 
     <footer>
-        <button onclick="window.open('/godot_game_build');">???</button>
-        <button onclick="changetolighttheme()" id="flashbangbutton">Flashbang mode</button>
-        <button onclick="showpopup('Hey there >w<')">Hia ^w^</button>
+        <a href="https://github.com/WolftheE" class="nf nf-cod-github"></a><a href="https://wolfthee.itch.io" class="nf nf-fa-itch_io"></a><a href="https://www.youtube.com/@WolftheE" class="nf nf-fa-square_youtube"></a><button id="show-popup-btn" data-popuptext="My username is @wolfthee" class="nf nf-fa-discord"></button>
+        <span>@wolfthee</span>
         <p style="margin: 8px; opacity: 0.5;">
             <i class="nf nf-md-shark" onclick="window.open('/images/blahaj.jpg')"></i>
             <small >“Do to others as you would have them do to you.” — Luke 6:31</small>
-            <i class="nf nf-fa-cross" onclick="window.open('https://bible.com')"></i>
+            <i class="nf nf-fa-cross"></i>
         </p>
     </footer>
 

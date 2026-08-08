@@ -8,17 +8,14 @@
     --radius: 6px;
     --blur: blur(10px);
 
-    --widget-background: rgba(10, 20, 25, 0.5);
-    --popup-background: rgba(8, 18, 24, 0.747);
+    --widget-background: rgba(10, 10, 10, 0.2);
+    --popup-background: rgba(10, 10, 10, 0.2);
     --widget-border: rgb(255, 255, 255, 0.1);
 
     --button-background: rgba(177, 177, 177, 0.15);
-    --button-hover: rgba(255,255,255,0.15);
-    --button-border: rgba(255,255,255,0.3);
+    --button-border: rgba(255,255,255,0.15);
 
-    --shadow: 4px 4px 16px rgba(0,0,0,0.5);
-    --background-img: url('/images/wallpaper.webp');
-
+    --shadow: 0px 4px 16px 1px rgba(0,0,0,0.5);
 
     --main-color: #1295c1;
     --second-color: #124fc1;
@@ -36,6 +33,40 @@
 
     --bounce:  cubic-bezier(0.34, 2.1, 0.64, 1);
     --popup: cubic-bezier(0.1, 1, 0.2, 1);
+
+    
+}
+/* animations */
+
+@keyframes dropdown {
+    from {
+        scale: 0;
+    }
+    to {
+        scale: 1;
+    }
+}
+
+@keyframes bobupanddown {
+    from {
+        transform: translateY(-4px);
+    }
+    to {
+        transform: translateY(4px);
+    }
+}
+
+@keyframes notificationslidein {
+    0% {
+        transform: translateX(300px);
+    }
+
+    80% {
+        transform: translateX(300px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 @keyframes hintTextChange {
@@ -48,7 +79,7 @@
         opacity: 1;
     }
 }
-
+/* important stuff */
 
 @font-face {
   font-family: 'Commit';
@@ -58,68 +89,220 @@
 }
 
 body {
+    overflow-x: hidden;
     margin: 0;
-    height: 100vh;
-    overflow: hidden;
-    background-image: linear-gradient(45deg, var(--background-color), color-mix(in srgb, var(--main-color), var(--font-background) 50%));
+    background: linear-gradient(45deg, var(--background-color), color-mix(in srgb, var(--main-color), var(--font-background) 50%));
+    background-color: rgb(12, 12, 23);
 
     font-family: 'Commit', sans-serif;
     color: var(--font-color);
+    font-size: 0.9em;
 }
 
-#particles-js {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    z-index: -10;
+p { /* Fixed it! */
+    margin-block-start: 0.4em;
+    margin-block-end: 0.4em;
+    line-height: 1.25
 }
 
-/* popup */
+h1, h2 {
 
-popup {
-    z-index: 1000;
-    position: fixed;
-    background: linear-gradient(45deg, var(--background-color), color-mix(in srgb, var(--main-color), var(--font-background) 70%));
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.5);
+    margin-block-start: 0.35em;
+    margin-block-end: 0.5em;
+
+}
+hr { 
+    border: none;
+    border-top: 1px solid var(--font-color);
+}
+
+.nf {
+    line-height: 0.75 !important;
+}
+
+.nf-md-shark:hover, .nf-fa-cross:hover {
+    scale: 1.5;
+    cursor: pointer;
+}
+
+/* main stuff */
+widget {
+    background-color: var(--widget-background);
+    border-radius: var(--radius);
+    display: block;
+    position: relative;
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+}
+
+.is-visible {
+    transform: translateX(0px) !important;
+    opacity: 1 !important;
+}
+
+.widget-left {
+    transform: translateX(-32px);
     opacity: 0;
+}
 
-    & > div {
-        max-height: 500px;
-        max-width: 600px;
+.widget-right {
+    transform: translateX(32px);
+    opacity: 0;
+}
 
-        padding: 6px;
+row {
+    display: flex;
+}
 
-        max-height: 500px;
-        min-width: 326px;
-        text-align: center;
+column {
+    display: flex;
+    flex-direction: column;
+}
 
-        & > div {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 
+
+/* diffrent types of widgets */
+.window {
+    border-top: 1px solid var(--widget-border);
+    width: 30vw;
+    height: 30vh;
+    backdrop-filter: var(--blur);
+
+    min-width: 600px;
+    min-height: 350px;
+    padding: 16px !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    animation: dropdown 2s var(--popup) 1s forwards;
+
+    scale: 0;
+
+
+}
+
+.bottom-window {
+    place-content: center;
+    max-width: 750px;
+    background-color: var(--background-color);
+}
+
+scroll-tooltip {
+    position: absolute;
+    bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    scale: 0;
+
+    animation: dropdown 3s var(--popup) 2s forwards;
+
+    & > svg {
+        animation: bobupanddown 2s linear alternate infinite;
+    }
+}
+
+
+/* window/profile widget */
+#pfp {
+    width: 200px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    border-top: 1px solid var(--widget-border);;
+    transition: scale 0.3s var(--bounce);
+    &:hover {
+        scale: 1.05;
+    }
+    &:active {
+        scale: 0.95;
+    }
+}
+
+#bio {
+    flex-grow: 1;
+
+    & > p > span {
+        opacity: 0.65;
+        font-size: 0.9em;
+    }
+}
+
+terminal-text {
+    position: absolute;
+    bottom: 0;
+    font-size: 0.75em;
+    left: 16px;
+    height: 64px;
+    width: 140px;
+    line-height: 0 !important;
+
+    & > row {
+        color: #252525;
+        position: absolute;
+        top: 2px;
+        left: 6px;
+    }
+}
+
+/* layouts */
+background {
+    position:fixed; 
+    top:0; 
+    z-index: -10; 
+    transform: scale(1.05);
+
+    width:100vw; 
+    height: 100vh;
+    background: var(--background-img) center center no-repeat;
+}
+
+/* TSparticles background ^w^ */
+#tsparticlesbackground {
+    z-index: -10000; 
+    position: relative;
+}
+
+
+/* layouts */
+.top, .algned-top {
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+titlebar {
+    position: absolute;
+    display: flex;
+    top: 0;
+    right: 0;
+    height: 18px;
+    width: 64px;
+
+    gap: 4px;
+    margin: 4px;
+
+    & > img {
+        filter: brightness(var(--tilebar-bright));
     }
 
-    border-radius: var(--radius);
-    outline: 1px solid var(--widget-border);
-    visibility: hidden;
+    & > .close {
+        background-color: var(--red);
+        border-radius: 50%;
+        filter: brightness(1);
+        transition: background-color 0.3s;
+        cursor: pointer;
+    }
 
-    box-shadow: 0 0 0 2000px rgba(0,0,0,0.5);
-
-
-    transition: opacity 0.4s, transform 0.6s var(--popup), visibility 0.6s;
-}
-
-.popupvisible {
-    transform: translate(-50%, -50%) scale(1) !important;
-    opacity: 1 !important;
-    visibility: visible !important;
+    & > .close:hover{
+        background-color: white;
+    }
 }
 
 /* the header bar */
@@ -132,129 +315,287 @@ navbar {
     line-height: 0.7;
 }
 
-navbar > button {
-    background-color: transparent;
-    outline: none;
-    border-bottom: 1px solid color-mix( var(--font-color), transparent);
-    border-radius: 0;
-    width: 128px;
 
-    transition: border-bottom 0.2s ease-out;
+footer {
+    text-align: center;
+    margin: 32px;
+    gap: 16px;
+}
+
+overlay { /* Darkening effect over widget */
+    width: 98%;
+    height: 35%;
+    padding: 8px;
+    text-align: left;
+    position: absolute;
+    color: white !important;
+    background: linear-gradient( rgba(0,0,0,0.75) 1%, rgba(0,0,0,0.5) 50%, transparent 100%);
+    transition: height 0.3s ease;
+
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+widget:hover > overlay {
+    height: 100%;
+
+    & > .discription {
+        opacity: 1;
+    }
+}
+
+/* the bottom part of my website */
+.more-details {
+    grid-area: details;
+    padding: 8px 16px;
+    backdrop-filter: var(--blur);
+    text-align: center;
+
+    max-width: 688px;
+    height: 208px;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8px;
+
+    & > row {
+        justify-content: center;
+    }
+
+    & > * {
+        opacity: 0.5;
+        transition: opacity 0.5s var(--popup);
+        flex-wrap: wrap;
+
+        color: var(--font-color);
+    }
+
+    &:hover > * {
+        opacity: 1;
+    }
+
+    &:hover > .background_details {
+        opacity: 0.4;
+        scale: 1.5;
+    }
+
+    & .background_details {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform-origin: bottom right;
+        z-index: -1;
+
+        background: linear-gradient(150deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, var(--main-color) 100%);
+        opacity: 0.15;
+
+        transition: opacity 0.4s ease, scale 0.6s var(--popup);
+    }
+}
+
+
+/* projects view */
+
+.grids-project {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-content: center;
+    max-width: 720px;
+    grid-auto-rows: 208px;
+    align-self: center;
+    padding: 8px;
+
+    grid-template-areas:
+    "angled synth synth"
+    "better-ytm better-ytm calc"
+    "pissman pissman vivaldi"
+    "question question vivaldi";
+
+
+    margin: 0 auto;
+    gap: 16px;
+}
+
+.grids-project > widget {
+    background-position: center;
+    background-size: 100%;
+    color: white;
+
+    transition: background-size 0.6s var(--popup), opacity 0.5s, transform 0.5s;
+
+    &:hover {
+        background-size: 105%;
+    }
+}
+
+
+.angled {
+    grid-area: angled;
+    background: url("images/angled_ss.png") no-repeat;
+
+}
+
+.calc {
+    grid-area: calc;
+    background: url("images/calc_ss.png") no-repeat;
+}
+
+.synth {
+    grid-area: synth;
+    background: url("images/synth_ss.png") no-repeat;
+}
+
+.better-ytm {
+    grid-area: better-ytm;
+    background: url("https://raw.githubusercontent.com/WolftheE/better-ytm/refs/heads/main/cover.png") no-repeat;
+}
+
+.vivaldi {
+    grid-area: vivaldi;
+    background: url("images/vivaldi_ss.jpg") no-repeat;
+    background-position: top !important;
+}
+
+.pissman {
+    grid-area: pissman;
+    background: url("images/pissman_ss.png") no-repeat;
+}
+
+.question {
+    grid-area: question;
+    position: relative;
+
+    & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: blur(64px) brightness(0.75);
+        z-index: -1;
+
+        position: absolute
+    }
+
+    & > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & > * {
+        color: var(--font-color);
+    } 
+}
+
+/* personal page */
+
+.grids-personal-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-content: center;
+    max-width: 720px;
+    grid-auto-rows: 208px;
+    align-self: center;
+    padding: 8px;
+
+    grid-template-areas:
+    "commingsoon commingsoon commingsoon"
+    "commingsoon commingsoon commingsoon";
+
+
+    margin: 0 auto;
+    gap: 16px;
+}
+.grids-personal-info > widget {
+    background-position: center;
+    background-size: 100%;
+    color: white;
+
+    transition: background-size 0.6s var(--popup), opacity 0.5s, transform 0.5s;
+
+    &:hover {
+        background-size: 105%;
+    }
+}
+
+.commingsoon {
+    grid-area: commingsoon;
+}
+
+
+
+/* text formats */
+.spoiler-text {
+    background-color: var(--font-color);
+    cursor: default;
+    transition: background-color 0.5s;
 
     &:hover {
         background-color: transparent;
-        outline: none;
-        border-bottom: 2px solid var(--font-color);
     }
 }
 
-
-/* main part */
-
-section {
-    height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.discription {
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
-/* the main widget, where the game is at */
-widget {
-
-    margin-top: 10vh;
-    margin-bottom: 16px;
-
-    background-color: var(--widget-background);
-    border-radius: var(--radius);
-    outline: 1px solid var(--widget-border);
-
-    overflow: hidden;
+.square {
+  height: 22px;
+  width: 22px;
+  border-radius: var(--radius);
+  background-color: #555;
 }
 
-#window {
-    width: 80vw;
-    height: 50vh;
-
-    min-width: 316px;
-    min-height: 500px;
-
-    max-width: 720px;
-    padding: 4px 16px 16px 16px !important;
-
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-}
-
-
-#resaultScreen, #doneDailyLevelScreen {
-    position: absolute;
-    bottom: 0;
-    background: linear-gradient(transparent, color-mix(var(--font-background), transparent));
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    align-items: end;
-    justify-content: center;
-    padding-bottom: 32px;
-    gap: 8px;
-
-
-    transform: translateY(100%);
-
-    transition: transform 0.7s ease-out;
-
-
-    & > div {
-        margin: 8px;
-    }
-
-}
-
-#guessamountText {
-    font-size: 0.8em;
-    opacity: 0.5;
-}
-
-
-
-#toolbar {
-    text-align: center;
-
-    transition: opacity 0.6s ease-out;
-}
-
-#angleSvg {
-    transition: transform 0.4s ease-out;
-    border-radius: 50%;
-
-    min-height: 300px;
-    min-width: 300px;
-}
-
-/* Button styles */
-
-button {
-    border: none;
-    outline: 1px solid var(--widget-border);
+/* buttons and inputs */
+button, a {
+    cursor: pointer;
     background-color: var(--button-background);
+    border: none;
+    border-top: 1px solid var(--button-border);
     color: var(--font-color);
-    height: 32px;
-    width: 128px;
     border-radius: var(--radius);
+    padding: 8px;
+    font-size: 1em;
+    line-height: normal;
 
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
 
-    transition: outline 0.3s ease-out, vbackground-color 0.3s, scale 0.3s var(--bounce);
+    margin: 0 3px;
+
+    transition: border 0.4s, background-color 0.25s, scale 0.3s var(--bounce);
 
     &:hover {
-        background-color: color-mix(var(--button-background) 70%, var(--font-color));
-        outline: 1px solid var(--main-color);
+        background-color: color-mix(var(--button-background) 93%, var(--font-color));
+    }
+
+    &:active {
+        scale: 0.9;
+        background-color: var(--main-color);
+    }
+}
+
+/* open in new tab button for widgets */
+.openinnewtab {
+    position: absolute;
+    display: flex;
+    top: 4px;
+    right: 4px;
+    padding: 4px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+
+    transition: background-color 0.4s ease-out, color 0.4s ease-out, scale 0.5s var(--bounce);
+
+    &:hover {
+        background-color: white;
+        color: black;
+        scale: 1.1;
     }
 
     &:active {
@@ -270,7 +611,9 @@ button {
 
     border-radius: 50%;
     width: 32px;
-    font-size: 1.5em;
+    height: 32px;
+    font-size: 1.75em;
+    padding: 0;
 }
 
 input {
@@ -317,24 +660,110 @@ input[type="checkbox" i] {
 }
 
 
+/* angled styles */
+.angled-widget {
+    width: 80vw;
+    height: 50vh;
 
+    min-width: 316px;
+    min-height: 500px;
+
+    max-width: 520px;
+    padding: 4px 16px 16px 16px !important;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    backdrop-filter: var(--blur);
+
+}
+
+
+#resaultScreen, #doneDailyLevelScreen {
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(transparent, color-mix(var(--font-background), transparent));
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    padding-bottom: 32px;
+    gap: 8px;
+
+
+    transform: translateY(100%);
+
+    transition: transform 0.7s ease-out;
+
+
+    & > div {
+        margin: 8px;
+    }
+
+}
+
+#guessamountText {
+    font-size: 0.8em;
+    opacity: 0.5;
+    text-align: center;
+}
+
+
+#toolbar {
+    text-align: center;
+
+    transition: opacity 0.6s ease-out;
+}
+
+#angleSvg {
+    transition: transform 0.4s ease-out;
+    border-radius: 50%;
+
+    min-height: 300px;
+    min-width: 300px;
+}
 
 .angle-button {
     height: 32px;
     width: 32px;
+    padding: 0;
 }
-
 
 .hinttextscale {
     animation: hintTextChange 0.4s ease-out;
 }
+navbar > button, .navbar > button {
+    background-color: transparent;
+    outline: none !important;
+    border: none;
+    border-radius: 0;
+    width: 128px;
+    box-shadow: none;
 
+    border-bottom: 1px solid color-mix( var(--font-color), transparent);
 
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.2));
 
-/* mobile view */
+    position: relative;
+
+    &:hover {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid var(--font-color);
+    }
+}
+
+/* mobile view for angled */
 @media screen and (max-height: 720px) {
-    section {
-        align-items: end;
+    .algned-top {
+        align-items: end !important;
     }
 
     navbar > p {
@@ -346,5 +775,271 @@ input[type="checkbox" i] {
 @media screen and (max-width: 445px) {
     navbar > button {
         width: 72px;
+    }
+}
+
+
+
+/* artwork popup */
+#artpopupContent {
+    height: 90vh;
+    width: 90vw;
+    text-align: left;
+
+    & > .artworkcontain {
+        height: 80vh;
+        width: 87vw;
+        gap: 16px;
+
+        & > div:not(#artworkimg) {
+            width: 20%;
+            min-width: 256px;
+            height: 100%;
+            position: relative;
+        }
+    }
+}
+.toolbar {
+    position: absolute;
+    bottom: 16px;
+    gap: 16px;
+}
+
+#artworkimg {
+    width: 80%;
+    background-image: url('images/artwork/fiat_500_on_track.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: var(--radius);
+    outline: 1px solid var(--widget-border);
+}
+
+/* context menu */
+context-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: var(--widget-background);
+    border-top: 1px solid var(--widget-border);
+    padding: 8px;
+    box-shadow: 0px 4px 16px rgba(0,0,0,0.5);
+    gap: 8px;
+    border-radius: var(--radius);
+    width: 128px;
+    visibility: hidden;
+    scale: 0.5;
+    opacity: 0;
+    z-index: 1000;
+    backdrop-filter: var(--blur);
+    line-height: 1;
+
+    transition: scale 0.6s var(--popup), opacity 0.15s ease-out, visibility 0.6s;
+    transform-origin: top left;
+}
+
+.visible-context-menu {
+    scale: 1;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+popup-parent {
+    visibility: hidden;
+    position:fixed;
+    z-index: 100;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background-color: rgba(0,0,0,0.5);
+    
+
+    transition: opacity 0.4s, visibility 0.6s;
+
+    opacity: 0;
+
+}
+
+popup-content {
+
+    position:fixed;
+    z-index: 100;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    min-width: max(276px, 30vw);
+    min-height: max(175px, 35vh);
+
+    box-shadow: var(--shadow);
+    background-color: var(--popup-background);
+    border-top: 1px solid var(--widget-border);
+    border-radius: var(--radius);
+    z-index: 1;
+    padding: 12px;
+
+    min-height: max(175px, 35vh);
+    min-width: max(276px, 30vw);
+
+
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    backdrop-filter: var(--blur);
+
+    transition: transform 0.6s var(--popup), visibility 0.6s;
+
+    & > button {
+        position: absolute;
+        bottom: 8px;
+    }
+}
+
+.popupparentshown {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popupshown {
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+
+notification {
+    position: fixed;
+    background-color: var(--widget-background);
+    padding: 16px;
+    border-top: 1px solid var(--widget-border);
+    border-radius: var(--radius);
+    right: 16px;
+    top: 16px;
+    backdrop-filter: var(--blur);
+
+    box-shadow: var(--shadow);
+
+    z-index: 1000;
+
+    animation: notificationslidein 3.5s cubic-bezier(0.2, 0.1, 0.5, 1);
+
+    transition: transform 0.9s cubic-bezier(0.55, -0.3, 0.4, 1);
+}
+
+/* mobile ui */
+@media screen and (max-width: 760px) {
+    .grids-project {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        place-content: center;
+        max-width: 720px;
+        grid-auto-rows: 208px;
+        align-self: center;
+
+        grid-template-areas:
+        "synth synth"
+        "angled angled"
+        "calc vivaldi"
+        "better-ytm better-ytm"
+        "pissman pissman"
+        "question question";
+
+
+        margin: 0 auto;
+        gap: 16px;
+    }
+
+    .question {
+        font-size: 0.65em;
+    }
+
+
+    widget > overlay {
+        height: 100%;
+
+        & > .discription {
+            opacity: 1;
+        }
+    }
+
+    .grids-project > widget {
+        background-size: cover;
+        &:hover {
+            background-size: cover;
+        }
+    }
+
+    sidepopup {
+        display: none;
+    }
+
+    
+
+
+    .window {
+        min-width: 256px;
+        width: 90vw;
+        min-height: 500px;
+        flex-direction: column;
+    }
+
+
+
+    .more-details {
+
+        & > * {
+            opacity: 1;
+        }
+
+
+
+        & .background_details {
+            opacity: 0.4;
+            scale: 1.5;
+        }  
+
+    }
+}
+
+
+@media screen and (max-width: 1170px) {
+    .artworkcontain {
+            height: 87vh;
+            width: 85vw;
+            gap: 16px;
+            flex-direction: column !important;
+
+            & > div:not(#artworkimg) {
+                width: 100% !important;
+                min-width: 256px !important;
+                height: 25% !important;
+                position: relative !important;
+
+                & > hr {
+                    scale: 0.7 1  !important;
+                    transform-origin: left  !important;
+                }
+            }
+        }
+
+    #artworkimg {
+        width: 100%;
+        height: 55vw;
+    }
+
+    .toolbar {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        gap: 8px;
     }
 }

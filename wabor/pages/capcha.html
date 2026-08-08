@@ -1,0 +1,169 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>KermitKrack Wabor Party – Building Wolfon&#39;s Future</title>
+
+</head>
+
+<body>
+    <capcha>
+        <div id="verifiy-robot" onclick="verifiyimnotarobot()"></div>
+            <div class="spinner">
+                <div class="checkmark-spinner" id="spinner"></div>
+            </div>
+            <div class="tick">
+                <svg width="42" height="42" viewBox="0 0 100 100" class="checkmark-svg check"><path d="M20 55 L40 75 L80 30" fill="none" stroke="green" stroke-width="7" stroke-dasharray="100" stroke-dashoffset="100"><animate id="tick" attributeName="stroke-dashoffset" from="100" to="0" dur="0.4s" fill="freeze" begin="indefinite"></animate></path></svg>
+            </div>
+            <span>I'm not a robot</span>
+            <div class="logo">
+                <img src="https://embed.neal.fun/not-a-robot/recaptcha.png" width="32px">
+                <div>reCAPTCHA</div>
+            </div>
+    </capcha>
+
+    <style>
+        /* robot */
+
+capcha {
+    color: #000;
+    cursor: pointer;
+    font-family: Roboto, helvetica, arial, sans-serif;
+
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #d3d3d3;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, .06);
+    display: flex;
+    height: 76px;
+    position: relative;
+    width: 100%;
+
+    & > #verifiy-robot {
+        background-color: #fff;
+        border: 2px solid #c3c3c3;
+        border-radius: 2px;
+        cursor: pointer;
+        height: 27px;
+        left: 0;
+        outline: none;
+        top: 50%;
+        width: 27px;
+        z-index: 2;
+        margin-left: 14px;
+        margin-right: 14px;
+    }
+
+    & > span {
+        color: #000;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    & > .logo {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        right: 16px;
+        gap: 4px;
+
+        & > div {
+            color: #555;
+            font-size: 10px;
+        }
+    }
+}
+
+.capchafail {
+    animation: shake 1s 0.5s;
+}
+
+.checkmark-spinner-shown {
+    opacity: 1 !important;
+}
+
+.checkmark-spinner {
+    animation: spinner-spin 2.5s linear infinite;
+    border-color: #4d90fe #4d90fe transparent transparent;
+    border-radius: 36px;
+    border-style: solid;
+    border-width: 6px;
+    box-sizing: border-box;
+    height: 36px;
+    left: -4px;
+    outline: 0;
+    top: -4px;
+    transform: rotate(0deg);
+    transition-duration: 0.4s;
+    width: 36px;
+    opacity: 0;
+    position: absolute;
+    translate: 0 65%;
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
+.tick {
+    height: 36px;
+    left: -4px;
+    outline: 0;
+    top: -4px;
+    transform: rotate(0deg);
+    transition-duration: 1s;
+    width: 36px;
+    position: absolute;
+    translate: 0 50%;
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
+
+@keyframes spinner-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    10% {
+        transform: rotate(135deg);
+    }
+
+    20% {
+        transform: rotate(245deg);
+    }
+
+    60% {
+        transform: rotate(700deg);
+    }
+
+    75% {
+        transform: rotate(810deg);
+    }
+
+    100% {
+        transform: rotate(3turn);
+    }
+}
+    </style>
+
+    <script>
+        function verifiyimnotarobot() {
+            document.getElementById('verifiy-robot').style.visibility = "hidden";
+            document.getElementById('spinner').classList.add('checkmark-spinner-shown');
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
