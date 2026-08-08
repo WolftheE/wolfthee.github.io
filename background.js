@@ -20,7 +20,7 @@
       particles: {
         number: { value: 80, density: { enable: true } },
         paint: {
-          color: "#ffffff",
+          color: "#9dc4d9",
         },
         shape: { type: "circle" },
         opacity: { value: 0.3 },
@@ -28,7 +28,7 @@
         links: {
           enable: true,
           distance: 150,
-          color: "#ffffff",
+          color: "#9dc4d9",
           opacity: 0.1,
           width: 1,
         },
