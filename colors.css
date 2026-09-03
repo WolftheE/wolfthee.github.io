@@ -1,0 +1,35 @@
+:root {
+    /* Background */
+    --bg-dark: oklch(0.16 0.0299 228.56);
+    --bg: oklch(0.2 0.0299 228.56);
+    --bg-light: oklch(0.25 0.0299 228.56);
+    --bg-transparent: oklch(0.25 0.0299 228.56 / 0.75);
+
+    /* Fonts */
+    --text: oklch(0.96 0.06 228.56);
+    --text-muted: oklch(0.76 0.06 228.56);
+
+    /* Borders */
+    --highlights: oklch(0.5 0.06 228.56);
+    --border: oklch(0.6267 0.06 228.56 / 0.1);
+    --border-muted: oklch(0.35 0.06 228.56);
+
+    /* Main colors very important */
+    --primary-color: oklch(0.6267 0.1196 228.56); /*#1295c1*/
+    --primary-color-dark: #005078;
+    --secondary-color: oklch(0.5244 0.1549 352.26); /*#a93b73*/
+    --third-color: #c19512;
+
+    --danger: oklch(0.5267 0.1749 359.26);
+    --warning: oklch(0.7267 0.1496 99.867);
+    --sucess: green;
+    --info: oklch(0.6058 0.1206 245.15);
+
+    /* Other colors TODO, REMOVE THESE*/
+    --primary-color-strong: oklch(0.6267 0.1196 228.56); /*#1295c1*/
+    --primary-color-mid: oklch(0.6058 0.1206 245.15); /*#3988c5*/
+    --primary-color-weak: oklch(0.5861 0.1143 268.76); /*#6078c0*/
+    --secondary-color-weak: oklch(0.5671 0.1162 300.58); /*#8265b0*/
+    --secondary-color-mid: oklch(0.5467 0.134 330.25); /*#9b5095*/
+    --secondary-color-strong: oklch(0.5244 0.1549 352.26); /*#a93b73*/
+}
